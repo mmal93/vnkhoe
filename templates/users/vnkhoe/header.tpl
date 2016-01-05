@@ -60,8 +60,8 @@
 					{/if}
 					<li class="level-0"><a href="{$BASE_URL}contacts"><span>Danh bạ</span></a></li>
 					<li class="level-0"><a href="{$BASE_URL}jobs"><span>Việc làm</span></a></li>
-					<li class="level-0"><a href="{$BASE_URL}tu-van-nghe-nghiep"><span>Tư vấn nghề nghiệp</span></a></li>
-					<li class="level-0"><a href="{$BASE_URL}tu-van-suc-khoe"><span>Tư vấn sức khỏe</span></a></li>
+					<li class="level-0"><a href="{$BASE_URL}tu_van_nghe_nghiep"><span>Tư vấn nghề nghiệp</span></a></li>
+					<li class="level-0"><a href="{$BASE_URL}tu_van_suc_khoe"><span>Tư vấn sức khỏe</span></a></li>
 				</nav>
 				{if isset($_session)&&(!empty($_session))}
 					{include file='account\\header_logout.tpl'}
