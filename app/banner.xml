@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<banner>
+	<active>true</active>
+	<images>banner</images>
+	<extensions>jpg,png,JPG,PNG</extensions>
+	<alt>header banner slider</alt>
+	<width></width>
+	<height></height>
+</banner>

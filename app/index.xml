@@ -1,0 +1,197 @@
+<?xml version="1.0" ?>
+<index_page>
+	<head>
+		<title>Trang chủ - vnkhoe</title>
+	</head>
+	<container>
+		<width></width>
+		<height></height>
+	</container>
+	<content>
+	</content>
+	<section name="section-1">
+		<class_name>advertisment</class_name>
+		<title>Chúng tôi có thể giúp bạn</title>
+		<rows>
+			<class_name>quang-cao-1</class_name>
+			<cols name="col-1">
+				<class_name>first</class_name>
+				<background></background>
+				<image>images/advertisements/advertisement_1.png</image>
+				<link></link>
+				<header></header>
+				<text></text>
+			</cols>
+			<cols name="col-2">
+				<class_name>second</class_name>
+				<background>#935f9f</background>
+				<image></image>
+				<link>#</link>
+				<header>Building great careers</header>
+				<text>Our enabling environment &amp; talent management strategy ensures our pepple get exciting career paths in Airtel.</text>
+			</cols>
+			<cols name="col-3">
+				<class_name>last</class_name>
+				<background></background>
+				<image>images/advertisements/advertisement_3.png</image>
+				<link></link>
+				<header></header>
+				<text></text>
+			</cols>
+		</rows>
+		<rows>
+			<class_name>quang-cao-1</class_name>
+			<cols name="col-1">
+				<class_name>first</class_name>
+				<background>#3c89d2</background>
+				<image></image>
+				<link>#</link>
+				<header>Inspiring woment at work</header>
+				<text>We consciously in culcate a diversity-friendly enviroment, policies and programs that support women in living their dreams and making a difference at work.</text>
+			</cols>
+			<cols name="col-2">
+				<class_name>second</class_name>
+				<background></background>
+				<image>images/advertisements/advertisement_2.jpg</image>
+				<link></link>
+				<header></header>
+				<text></text>
+			</cols>
+			<cols name="col-3">
+				<class_name>last</class_name>
+				<background>#83c3e7</background>
+				<image></image>
+				<link>#</link>
+				<header>Fun with responsibility</header>
+				<text>We believe in packing each moment of our life with loads of fun and frolic. However, while celebrating life we also keep in mind our duty towards the society.</text>
+			</cols>
+		</rows>
+	</section>
+	<brands name="section-2">
+		<class_name>brands</class_name>
+		<title>Đối tác tiêu biểu</title>
+		<rows>
+			<class_name>brands-row-2</class_name>
+			<cols name="col-1">
+				<class_name>first</class_name>
+				<image>images/brands/bridgestone.jpg</image>
+				<link>#</link>
+				<title>Bridgestone</title>
+			</cols>
+			<cols name="col-2">
+				<class_name>second</class_name>
+				<image>images/brands/microsoft.jpg</image>
+				<link>#</link>
+				<title>Microsoft</title>
+			</cols>
+			<cols name="col-3">
+				<class_name>second</class_name>
+				<image>images/brands/fpt.jpg</image>
+				<link>#</link>
+				<title>FPT</title>
+			</cols>
+			<cols name="col-4">
+				<class_name>second</class_name>
+				<image>images/brands/eva.jpg</image>
+				<link>#</link>
+				<title>eva</title>
+			</cols>
+			<cols name="col-5">
+				<class_name>second</class_name>
+				<image>images/brands/canon.jpg</image>
+				<link>#</link>
+				<title>canon</title>
+			</cols>
+			<cols name="col-6">
+				<class_name>second</class_name>
+				<image>images/brands/panasonic.jpg</image>
+				<link>#</link>
+				<title>Panasonic</title>
+			</cols>
+		</rows>
+		<rows>
+			<class_name>brands-row-2</class_name>
+			<cols name="col-1">
+				<class_name>first</class_name>
+				<image>images/brands/bridgestone.jpg</image>
+				<link>#</link>
+				<title>Bridgestone</title>
+			</cols>
+			<cols name="col-2">
+				<class_name>second</class_name>
+				<image>images/brands/microsoft.jpg</image>
+				<link>#</link>
+				<title>Microsoft</title>
+			</cols>
+			<cols name="col-3">
+				<class_name>second</class_name>
+				<image>images/brands/fpt.jpg</image>
+				<link>#</link>
+				<title>FPT</title>
+			</cols>
+			<cols name="col-4">
+				<class_name>second</class_name>
+				<image>images/brands/eva.jpg</image>
+				<link>#</link>
+				<title>eva</title>
+			</cols>
+			<cols name="col-5">
+				<class_name>second</class_name>
+				<image>images/brands/canon.jpg</image>
+				<link>#</link>
+				<title>canon</title>
+			</cols>
+			<cols name="col-6">
+				<class_name>second</class_name>
+				<image>images/brands/panasonic.jpg</image>
+				<link>#</link>
+				<title>Panasonic</title>
+			</cols>
+		</rows>
+	</brands>
+	<section_info>
+		<class_name>information</class_name>
+		<title>Đối với tổ chức</title>
+		<background>#53b6d0</background>
+		<text>Are you an employer looking to attrract the best talent? Showcase the heart and soul of your company and find the candidates that you are searching for!</text>
+		<text_link>Learn more</text_link>
+		<link>#</link>
+		<image_href>images/home/employer.jpg</image_href>
+		<imgae_alt>Employer</imgae_alt>
+	</section_info>
+	<bottom_link name="section-4">
+		<class_name>bottom-link</class_name>
+		<title>vnkhoe trong</title>
+		<background>#f1f1f1</background>
+		<cols name="col-1">
+			<class_name>first</class_name>
+			<image>images/home/bloomberg.jpg</image>
+			<link>#</link>
+			<title>bloomberg</title>
+		</cols>
+		<cols name="col-2">
+			<class_name>second</class_name>
+			<image>images/home/tc.jpg</image>
+			<link>#</link>
+			<title>tc</title>
+		</cols>
+		<cols name="col-3">
+			<class_name>second</class_name>
+			<image>images/home/wsj.jpg</image>
+			<link>#</link>
+			<title>wsj</title>
+		</cols>
+		<cols name="col-4">
+			<class_name>second</class_name>
+			<image>images/home/cw.jpg</image>
+			<link>#</link>
+			<title>cw</title>
+		</cols>
+		<cols name="col-5">
+			<class_name>second</class_name>
+			<image>images/home/fastcompany.jpg</image>
+			<link>#</link>
+			<title>fastcompany</title>
+		</cols>
+	</bottom_link>
+</index_page>

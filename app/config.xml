@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<config>
+	<type>mysql</type>
+	<host>localhost</host>
+	<username>root</username>
+	<password></password>
+	<db>vnkhoe</db>
+	<charset>utf-8</charset>
+</config>

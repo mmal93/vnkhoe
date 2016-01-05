@@ -1,0 +1,43 @@
+<?xml version="1.0" ?>
+<default>
+	<head>
+		<title>
+			<all_page>0</all_page>
+			<value>wellcome to vnkhoe.com</value>
+		</title>
+		<charset>utf-8</charset>
+		<keyword>vnkhoe</keyword>
+		<css>
+			<!-- <items>flexslider.css</items> -->
+			<items>bxslider.css</items>
+			<items>styles.css</items>
+			<items>custom.css</items>
+			<items>responsive.css</items>
+		</css>
+		<js>
+			<!-- <items>jquery.flexslider-min.js</items> -->
+			<items>jquery.bxslider.min.js</items>
+			<items>jquery.bxslider.js</items>
+			<items>custom.js</items>
+		</js>
+		<logo>
+			<src>images/logo/top_logo.png</src>
+			<alt>vnkhoe.com</alt>
+			<title>vnkhoe.com</title>
+		</logo>
+		<banner>
+			<active>true</active>
+			<images>banner</images>
+		</banner>
+	</head>
+	<nav>
+		<show_home_link>1</show_home_link>
+		<target>_parent</target>
+		<text_link>Trang chủ</text_link>
+	</nav>
+	
+	<container>
+		<width></width>
+		<height></height>
+	</container>
+</default>

@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<page_404>
+	<head>
+		<title>404 - page not found</title>
+	</head>
+	<container>
+		<width></width>
+		<height></height>
+	</container>
+	<content>
+		<image>
+			<src>images/hllm_404.png</src>
+			<alt></alt>
+			<href>http://localhost/vnkhoe/</href>
+			<href_title>Trở về trang chủ >></href_title>
+			<width></width>
+			<height></height>
+		</image>
+		<text>
+			Liên kết không tồn tại hoặc đã bị xóa!
+		</text>
+	</content>
+	
+</page_404>
