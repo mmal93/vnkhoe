@@ -13,9 +13,6 @@ class Index extends Controller {
 		$this->view->show_header_banner();
 		$this->view->showHeader();
 		$this->view->display('index/content_index.tpl');
-		//$this->view->display('footer.tpl');
-		//$this->view->showTemplate('partner.tpl');
 		$this->view->showFooter();
-    }
-    
+    }   
 }

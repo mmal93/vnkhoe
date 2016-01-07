@@ -158,7 +158,30 @@ p, span, label {
     font-family: 'Open Sans';
     font-size: 14px;
     font-weight: normal;
+    line-height: 1.3;
 }
+
+.relative {
+	position: relative;
+}
+
+.center {
+	text-align: center;
+}
+
+.row .relative img {
+    cursor: pointer;
+}
+
+section .row .col-sm-3 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+p {
+	line-height: 1.2;
+}
+
 /**/
 
 /*header*/
@@ -187,11 +210,13 @@ p, span, label {
 
 width: 100%;
 
+background-color: rgba(0, 0, 0, 0.3);
+
 padding-left: 0;
 
 padding-right: 0;
 
-position: absolute;
+position: fixed;
 
 top: 0;
 
@@ -274,7 +299,7 @@ nav {
     border-style: none;
     border: none;
     font-size: 16px;
-    padding: 12px 5px 11px 5px;
+    padding: 14px 5px 14px 5px;
     margin-right: -4px;
 }
 
@@ -303,14 +328,14 @@ nav {
     background-color: #fa4633;
     color: #fff;
     padding: 10px;
-    margin-top: 3px;
+    margin-top: 5px;
 }
 
 .top-right-section a.top-register-link, .top-right-section a.top-account-link {
     font-size: 16px;
     font-weight: bold;
     display: inline-block;
-    padding: 12px 0;
+    padding: 13px 0;
 }
 
 .top-login-section li {
@@ -855,6 +880,18 @@ section.bottom-link .section-title h2 {
     text-align: center;
 }
 
+#category-section h4 {
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    left: 0;
+    right: 0;
+    color: #fff;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+}
+
 /*top login*/
 .top-login-section {
     background-color: rgb(255, 255, 255);
@@ -880,6 +917,12 @@ section.bottom-link .section-title h2 {
 /*register page*/
 #register-form li {
     margin: 10px 0;
+}
+
+#register-form label.required {
+    color: #f00;
+    margin:  0 10px;
+    min-width: initial;
 }
 
 #register-form label {
@@ -934,6 +977,7 @@ section.bottom-link .section-title h2 {
     text-align: left;
     padding: 15px 0;
 }
+/*contact page*/
 
 .contact-page section {
     padding: 30px 0;
@@ -944,6 +988,23 @@ section.bottom-link .section-title h2 {
     font-weight: bold;
     text-transform: uppercase;
     padding: 10px 0;
+}
+
+.information {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: #fff;
+    font-size: 12px;
+}
+
+.information div, .information p {
+    padding: 5px;
+}
+
+.information i {
+    padding-right: 5px;
 }
 
 section .title {
@@ -957,12 +1018,12 @@ section .title, section .title a {
     font-family: Open Sans;
 }
 
-.row .col-sm-3 .col-sm-9, .row .col-sm-3 .col-sm-3 {
+.row .col-sm-3 .col-left, .row .col-sm-3 .col-right {
     padding-left: 0;
     padding-right: 0;
 }
 
-.row .col-sm-3 .col-sm-3 img {
+.row .col-sm-3 .col-right img {
     width: 100%;
     padding-top: 30px;
 }
@@ -972,4 +1033,40 @@ section .title, section .title a {
     padding: 5px 7px;
     margin-left: 9px;
     background-color: transparent;
-    }
+}
+
+#detail-section {
+    padding: 40px 0;
+}
+
+#detail-section .relative .title {
+    display: table-cell;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    bottom: 0;
+    left: 15px;
+    right: 15px;
+    vertical-align: middle;
+}
+
+#detail-section .relative .title:hover {
+    background-color:  rgba(0, 0, 0, 0.4);
+}
+
+#detail-section .relative .title p {
+    font-size: 14px;
+    text-transform: none;
+}
+
+#detail-section .relative .title h3 {
+    padding: 10px 0;
+}
+
+#detail-section .col-right .sologan {
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 1.5;
+}

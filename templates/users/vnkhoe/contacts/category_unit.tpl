@@ -7,12 +7,12 @@
 		{foreach from=$_categories item=category}
 			{if $count==1 || $count==7}
 				<div class="col-sm-8 relative">
-				<img src="{$TEMPLATE_URL}images/contacts/types/{$category.type_image}" title="{$category.nganhnghe_tieude }" style="max-width: 100%;" />
+				<img src="{$MEDIA_URL}images/company_categories/{$category.type_image}" title="{$category.nganhnghe_tieude }" style="max-width: 100%;" />
 				<h4>{$category.nganhnghe_tieude }</h4>
 				</div>
 			{else}
 				<div class="col-sm-4 relative">
-				<img src="{$TEMPLATE_URL}images/contacts/types/{$category.type_image}" title="{$category.nganhnghe_tieude }" style="max-width: 100%;" />
+				<img src="{$MEDIA_URL}images/company_categories/{$category.type_image}" title="{$category.nganhnghe_tieude }" style="max-width: 100%;" />
 				<h4>{$category.nganhnghe_tieude }</h4>
 				</div>
 			{/if}

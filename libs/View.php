@@ -52,7 +52,7 @@ class View extends Smarty{
 		$this->config_dir = BASE_DIR.'configs';
         //$this->setConfigDir(BASE_DIR.'configs');
 		$this->debugging = false;
-		$this->compile_check = true;
+		$this->compile_check = false;
 		$this->caching = false;
 		//$this->caching = Smarty::CACHING_LIFETIME_CURRENT;
 		//$this->cache_lifetime = 120;
@@ -60,6 +60,7 @@ class View extends Smarty{
 		//$this->Smarty();
 		//assign variable to default template
 		$this->assign('BASE_URL', BASE_URL);
+		$this->assign('MEDIA_URL', BASE_URL.'media/');
 		//$this->assign('TEMPLATE_DIR', USER_TEMPLATE_DIR);
 		$this->assign('TEMPLATE_URL', BASE_URL.'templates/users/vnkhoe/');
 		$this->assign('LIB_TEMPLATE_URL', BASE_URL.'libs/template');
@@ -100,7 +101,7 @@ class View extends Smarty{
 	}
 	
 	public function showFooter($footer_file_name = 'footer.tpl') {
-		if(file_exists(USER_TEMPLATE_DIR.$footer_file_name)) {
+		if(file_exists(USER_TEMPLATE_DIR.$footer_file_name) || file_exists(USER_TEMPLATE_DIR.$footer_file_name.'.tpl')) {
 			$this->display(USER_TEMPLATE_DIR.$footer_file_name);
 		}
 	}
@@ -108,8 +109,36 @@ class View extends Smarty{
 	public function showTemplate($template_name) {
         if(file_exists(USER_TEMPLATE_DIR.$template_name)) {
 			$this->display(USER_TEMPLATE_DIR.$template_name);
+			return;
+		}
+		if(file_exists(USER_TEMPLATE_DIR.$template_name.'.tpl')) {
+			$this->display(USER_TEMPLATE_DIR.$template_name.'.tpl');
 		}
     }
+	
+	public function mainStart($class='') {
+		if(!empty(trim($class))) {
+			$this->assign('main_class', $class);
+		}
+		$this->showTemplate('main_start');
+	}
+	
+	public function mainEnd() {
+		$this->showTemplate('main_end');
+	}
+	
+	public function showPartner($file_name = '') {
+		$partner_data = xml_data::get_config_data(BASE_DIR.'app/partner.xml');
+		if(!$partner_data) {
+			return;
+		}
+		$this->assign("_partner_data", $partner_data);
+		if(!empty(trim($file_name))) {
+			$this->showTemplate($file_name);
+			return;
+		}
+		$this->showTemplate('partner');
+	}
 	
 	public function loadRootConfig() {
 		$root_config = xml_data::get_config_data(BASE_DIR.'app/local.xml');
@@ -134,8 +163,8 @@ class View extends Smarty{
 		$_banner = xml_data::get_xml_data(BASE_DIR.'app/banner.xml');
 		$file_extension = $_banner->extensions;
 		if($_banner->active == true) {
-			$_images_url = USER_TEMPLATE_URL.'images/'.$_banner->images.'/';
-			$_images_dir = USER_TEMPLATE_DIR.'images'.DS.$_banner->images.DS;
+			$_images_url = MEDIA_URL.$_banner->images.'/';
+			$_images_dir = BASE_DIR.'media'.DS.$_banner->images.DS;
 			if(is_dir($_images_dir)) {
 				$_images_arr = glob($_images_dir.'*.{'.$file_extension.'}', GLOB_BRACE);
 				$images_list = array();
@@ -144,6 +173,8 @@ class View extends Smarty{
 				}
 				$this->assign('banner_images', $images_list);
 				$this->assign('banner_alt', $_banner->alt);
+			} else {
+				echo 'banner folder is not found';
 			}
 		}
 	}

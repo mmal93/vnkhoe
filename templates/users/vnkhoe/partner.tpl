@@ -12,7 +12,7 @@
 		{foreach from=$section->cols item=col}
 			<div class="section-col">
 					<a href="{$col->link}" target="_blank">
-						{if isset($col->image) && $col->image!=''}<img src="{$TEMPLATE_URL}{$col->image}" title="{$col->title}"/>{/if}
+						{if isset($col->image) && $col->image!=''}<img src="{$MEDIA_URL}{$col->image}" title="{$col->title}"/>{/if}
 					</a>
 			</div>
 		{/foreach}

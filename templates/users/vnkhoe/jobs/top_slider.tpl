@@ -10,7 +10,7 @@
 	<div class="inner-slider">
 		{foreach from=$_data item=data}
 			<div class="slide">
-				<img src="{$TEMPLATE_URL}images/contacts/companys/{$data.congty_id}/{$data.congty_anhvp}" title="{$data['congty_name']}" />
+				<img src="{$MEDIA_URL}images/companies/{$data.congty_id}/{$data.congty_anhvp}" title="{$data['congty_name']}" />
 				<h3>{$data['congty_name']}</h3>
 			</div>
 		{/foreach}

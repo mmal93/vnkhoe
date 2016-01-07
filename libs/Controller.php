@@ -35,4 +35,43 @@ class Controller {
 		}
 		return $pageURL;
 	}
+	
+	public function rstrtrim($str, $remove=null) { 
+		$str    = (string)$str; 
+		$remove = (string)$remove;    
+		
+		if(empty($remove)) 
+		{ 
+			return rtrim($str); 
+		} 
+		
+		$len = strlen($remove); 
+		$offset = strlen($str)-$len; 
+		while($offset > 0 && $offset == strpos($str, $remove, $offset)) 
+		{ 
+			$str = substr($str, 0, $offset); 
+			$offset = strlen($str)-$len; 
+		} 
+		
+		return rtrim($str);    
+		
+	}
+	
+	public function getParam($param_name = null) {
+		if(!isset($param_name) || empty($param_name)) {
+			return false;
+		}
+		$param_name = trim($param_name.'/');
+		$url = isset($_GET['url']) ? $_GET['url'] : null;
+        $url = $this->rstrtrim($url, '/');
+		$url = strstr($url, $param_name);
+		$url = $this->rstrtrim($url, '.html');
+		$url = $this->rstrtrim($url, '.htm');
+        $url = filter_var($url, FILTER_SANITIZE_URL);
+		$url = explode('/', $url);
+		if(count($url)>1) {
+			return $url[1];
+		}
+		return false;
+	}
 }

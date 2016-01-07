@@ -18,7 +18,7 @@
 					{$item_col=$row->cols|@count}
 					{foreach from=$row->cols item=col}
 						<div class="col-sm-{12/$item_col} {$col->class_name} section-col" {if isset($col->background) && $col->background!=''}style="background-color: {$col->background};"{/if}>
-							{if isset($col->image) && $col->image!=''}<img src="{$TEMPLATE_URL}{$col->image}"/>{/if}
+							{if isset($col->image) && $col->image!=''}<img src="{$MEDIA_URL}{$col->image}"/>{/if}
 							{if isset($col->header) && $col->header}
 								<h3>
 									{if isset($col->link) && $col->link}<a href="{$col->link}">{$col->header}</a>{else}{$col->link}{/if}
@@ -47,7 +47,7 @@
 					{foreach from=$row->cols item=col}
 						<div class="col-sm-{12/$item_col} {$col->class_name} section-col" {if isset($col->background) && $col->background!=''}style="background-color: {$col->background};"{/if}>
 							<a href="{$col->link}" target="_blank">
-							{if isset($col->image) && $col->image!=''}<img src="{$TEMPLATE_URL}{$col->image}" title="{$col->title}"/>{/if}
+							{if isset($col->image) && $col->image!=''}<img src="{$MEDIA_URL}{$col->image}" title="{$col->title}"/>{/if}
 						</a>
 						</div>
 					{/foreach}
@@ -66,7 +66,7 @@
 					<a href="{$section->link}">{$section->text_link}<i class="fa fa-angle-double-right"></i></a>
 				</div>
 				<div class="col-sm-6 right">
-					<img src="{$TEMPLATE_URL}{$section->image_href}" alt="{$section->image_alt}"/>
+					<img src="{$MEDIA_URL}{$section->image_href}" alt="{$section->image_alt}"/>
 				</div>
 			</div>
 		</section>
@@ -86,7 +86,7 @@
 			{foreach from=$section->cols item=col}
 				<div class="section-col">
 						<a href="{$col->link}" target="_blank">
-							{if isset($col->image) && $col->image!=''}<img src="{$TEMPLATE_URL}{$col->image}" title="{$col->title}"/>{/if}
+							{if isset($col->image) && $col->image!=''}<img src="{$MEDIA_URL}{$col->image}" title="{$col->title}"/>{/if}
 						</a>
 				</div>
 			{/foreach}
