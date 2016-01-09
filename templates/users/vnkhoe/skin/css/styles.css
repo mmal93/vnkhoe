@@ -10,18 +10,7 @@ Author: Richard Clark
     margin: 0;
     padding: 0;
 }
-html, body, div, span, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-abbr, address, cite, code,
-del, dfn, em, img, ins, kbd, q, samp,
-small, strong, sub, sup, var,
-b, i,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section, summary,
-time, mark, audio, video {
+html, body, div, span, object, iframe, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
  margin:0;
  padding:0;
  border:0;
@@ -150,9 +139,11 @@ li {
 
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: LatoSemibold;
+    font-family: LatoRegular;
     font-weight: 600;
 }
+
+img {max-width: 100%;}
 
 p, span, label {
     font-family: 'Open Sans';
@@ -171,6 +162,7 @@ p, span, label {
 
 .row .relative img {
     cursor: pointer;
+    width: 100%;
 }
 
 section .row .col-sm-3 {
@@ -180,6 +172,16 @@ section .row .col-sm-3 {
 
 p {
 	line-height: 1.2;
+}
+
+header, main, footer {
+    clear: both;
+}
+
+header:before, header:after, main:before, main:after, footer:before, footer:after {
+    content: '';
+    display: table;
+    clear: both;
 }
 
 /**/
@@ -303,20 +305,25 @@ nav {
     margin-right: -4px;
 }
 
-.top-right-section button, .top-right-section input[type="submit"] {
+.top-right-section .hiring, .top-right-section input[type="submit"] {
     border: none;
     padding: 8px;
     outline: none;
 }
 
-.top-right-section button {
+.top-right-section .hiring {
     background-color: #bfbcbc;
     color: #52545e;
     border: 9px solid rgba(211,216,219, 0.5);
-    padding: 0;
+    text-decoration: none;
 }
 
-.top-right-section button span {
+.top-right-section .hiring:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.top-right-section .hiring span {
     border: 1px solid #666465;
     padding: 4px 7px;
     background-color: #bfbcbc;
@@ -329,12 +336,18 @@ nav {
     color: #fff;
     padding: 10px;
     margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
-.top-right-section a.top-register-link, .top-right-section a.top-account-link {
+.top-right-section a.top-register-link, .top-right-section a.top-account-link, .top-right-section a.hiring {
     font-size: 16px;
     font-weight: bold;
     display: inline-block;
+    padding: 0;
+}
+
+.top-right-section a.top-register-link {
     padding: 13px 0;
 }
 
@@ -880,6 +893,10 @@ section.bottom-link .section-title h2 {
     text-align: center;
 }
 
+#category-section .relative {
+    padding: 10px;
+}
+
 #category-section h4 {
     position: absolute;
     top: 50%;
@@ -944,7 +961,7 @@ section.bottom-link .section-title h2 {
     padding: 20px 0;
 }
 
-#search-section input[type="text"], #search-section select {
+#search-section input[type="text"], #search-section select, #search-section input[type="number"] {
     border: 1px solid #ddd;
     border-radius: 3px;
     width: 100%;
@@ -990,7 +1007,7 @@ section.bottom-link .section-title h2 {
     padding: 10px 0;
 }
 
-.information {
+.relative .information {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -1069,4 +1086,73 @@ section .title, section .title a {
     margin-top: 20px;
     font-size: 14px;
     line-height: 1.5;
+}
+
+.hiring-page #banner {
+    margin-top: 145px;
+    margin-bottom: 200px;
+    text-align: center;
+    border-bottom: 3px solid #0f0;
+}
+
+#banner .inner {
+    background-color: #005184;
+    max-width: 60%;
+    margin:  auto;
+    height: 128px;
+    padding: 0 25px;
+}
+
+#banner .bottom {
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    right: 0;
+}
+
+
+#banner .inner .col-sm-6 {
+    background-color: #fff;
+    border: 2px solid #a8c3d4;
+    width: 49%;
+    position: absolute;
+    top: 45px;
+    padding: 20px 0;
+}
+
+#banner .inner .col-sm-6:last-child {
+    right: 0;
+}
+
+#banner .relative .register, #banner .relative .order-now {
+    background-color: #f7941c;
+    padding:  6px 10px;
+    border-radius: 3px;
+    color: #fff;
+}
+
+#banner .relative .register:hover, #banner .relative .order-now:hover, #banner .relative .register:active, #banner .relative .order-now:active {
+    background-color: #1a83c3;
+    text-decoration: none;
+}
+
+#banner .relative ul li {
+    float: none;
+    text-align: left;
+    padding: 5px 15px;
+    font-size: 12px;
+}
+
+#banner .col-sm-6 h2 {
+    margin: 0;
+}
+
+#banner .col-sm-6 h6 {
+    font-size: 14px;
+}
+
+#services-section .center .title {
+    color: #53b6d0;
+    margin: 20px 0 0;
+    padding-bottom: 0;
 }

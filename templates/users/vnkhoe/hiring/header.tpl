@@ -68,15 +68,6 @@
 				{else}
 					{include file='account\\header_login.tpl'}
 				{/if}
-				<!-- <div class="top-right-section">
-					<form name="tuyendung" id="tuyen-dung-form">
-						<input type="search" value="" required />
-						<button class="tuyen-dung"><span>Nhà tuyển dụng</span></button>
-					</form>
-					<button class="login-toggle-button">Đăng nhập</button>
-					<a href="{BASE_URL}register" class="top-register-link"><span>Đăng ký</span></a>
-				{include file='account\\login\\top_login_form.tpl'}
-				</div> -->
 			</div>
 		</div>
 		{else}
@@ -85,13 +76,12 @@
 				{if $root_config->nav->show_home_link==true}
 					<li class="level-0"><a class="home-link" href="{$BASE_URL}index.html"><span>{if $root_config->nav->text_link}{$root_config->nav->text_link}{else}Trang chủ{/if}</span></a></li>
 				{/if}
-				<li class="level-0"><a href="{$BASE_URL}danh-ba"><span>Danh bạ</span></a></li>
-				<li class="level-0"><a href="{$BASE_URL}viec-lam"><span>Việc làm</span></a></li>
-				<li class="level-0"><a href="{$BASE_URL}tu-van-nghe-nghiep"><span>Tư vấn nghề nghiệp</span></a></li>
-				<li class="level-0"><a href="{$BASE_URL}tu-van-suc-khoe"><span>Tư vấn sức khỏe</span></a></li>
+				<li class="level-0"><a href="{$BASE_URL}contacts"><span>Danh bạ</span></a></li>
+				<li class="level-0"><a href="{$BASE_URL}jobs"><span>Việc làm</span></a></li>
+				<li class="level-0"><a href="{$BASE_URL}tu_van_nghe_nghiep"><span>Tư vấn nghề nghiệp</span></a></li>
+				<li class="level-0"><a href="{$BASE_URL}tu_van_suc_khoe"><span>Tư vấn sức khỏe</span></a></li>
 			</nav>
 			<form name="top-login" id="top-login">
-				<input type="search" value="" required />
 				<button class="tuyen-dung"><span>Nhà tuyển dụng</span></button>
 				<input type="submit" value="Đăng nhập" />
 				<a href="#" onclick="return false;" class="register-link"><span>Đăng ký</span></a>
@@ -99,46 +89,44 @@
 		</div>
 		{/if}
 	</div>
-	<!--end top-header-->
-	<div id="header-banner">
-		<div class="header-slider">
-			<ul class="bxslider">
-				{foreach from=$banner_images item=image}
-					<li style="background-image: url('{$image}');">
-						<!--<img src="{$image}" title="Funky roots" />-->
-					</li>
-				{/foreach}
-			</ul>
-			
-			<!--<ul class="slides">
-				{foreach from=$banner_images item=image}
-					<li>
-					<img src="{$image}" alt="{$banner_alt}"/>
-					</li>
-				{/foreach}
-			</ul>-->
+	<!--banner-->
+	<div id="banner" class="relative">
+		<div class="top">
+			<h1>Trang web hàng đầu Tuyển dụng nhân sự ngành Y tế.</h1>
+			<h4>Giới thiệu những hình ảnh trái tim và linh hồn của công ty bạn để thu hút các tài năng tốt nhất.</h4>
 		</div>
-	</div>
-	<!--top search-->
-	<div id="top-search">
-		<div class="inner-search container">
-			<div class="col-sm-12">
-				<h3>Tìm kiếm bệnh viện, phòng khám...</h3>
-			</div>
-			<form name="top-search" id="top-search-form" class="row">
-				<div class="col-sm-6 left">
-					<input type="search" value="" placeholder="Từ khóa cần tìm" title="Nhập từ khóa cần tìm" />
-					<span><i class="fa fa-clock-o"></i></span>
-				</div>
-				<div class="col-sm-6 right">
-					<div class="col-sm-10">
-						<input type="search" value="" placeholder="Chọn khu vực" title="Chọn khu vực cần tìm" />
-						<span><i class="fa fa-map-marker"></i></span>
+		<div class="middle">
+			<img src="{$MEDIA_URL}images/tuyendung.jpg" title="vnKhoe" alt="vnkhoe-banner" />
+		</div>
+		<div class="bottom container">
+			<div class="inner row relative">
+				<div class="relative">
+					<div class="col-sm-6">
+						<div class="top-price"></div>
+						<h2>Đăng tuyển</h2>
+						<h6>Trang web tuyển dụng hàng đầu Việt Nam</h6>
+						<ul>
+							<li>Đảm bảo chất lượng 100%</li>
+							<li>Đăng tuyển <strong>nhanh chóng</strong> và nhận hồ sơ <strong>ngay lập tức</strong></li>
+							<li>Nhận <em>lời khuyên về mức lương</em> <strong>miễn phí</strong> cho tin tuyển dụng</li>
+							<a href="dang_tuyen" class="register">Đăng tuyển</a>
+						</ul>
 					</div>
-					<button class="col-sm-2" title="Tìm kiếm"><span><i class="fa fa-search"></i></span></button>
+					<div class="col-sm-6">
+						<div class="top-price"></div>
+						<h2>Tìm hồ sơ</h2>
+						<h6>Tìm ứng viên mới nhất</h6>
+						<ul>
+							<li>Đảm bảo chất lượng 100%</li>
+							<li>Đăng tuyển <strong>nhanh chóng</strong> và nhận hồ sơ <strong>ngay lập tức</strong></li>
+							<li>Nhận <em>lời khuyên về mức lương</em> <strong>miễn phí</strong> cho tin tuyển dụng</li>
+							<a href="#" class="order-now">Tìm hồ sơ</a>
+						</ul>
+					</div>
 				</div>
-			</form>
+			</div>
 		</div>
 	</div>
-	<!--end top search-->
+	<!--end banner-->
+	
 </header>

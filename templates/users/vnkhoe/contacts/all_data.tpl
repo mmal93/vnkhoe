@@ -1,5 +1,5 @@
 <!-- all contact-->
-<section id="new-section">
+<section id="contacts-section">
 	{assign var=i value=0}
 	{assign var=count value=$_all_data|@count}
 	{while $i<$count}

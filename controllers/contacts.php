@@ -50,12 +50,12 @@ class Contacts extends Controller {
 		$this->view->showTemplate('contacts/form.tpl');
 		
 		$id = $this->getParam('id');
-		isset($_POST['job']) && $job = $_POST['job'];
-		isset($_POST['place']) && $place = $_POST['place'];
-		isset($_POST['type']) && $type = $_POST['type'];
-		isset($_POST['count']) && $type = $_POST['count'];
-		
-		if($id) {
+		$data = $this->model->getSearchData();
+		if(isset($_POST['submit'])) {
+			$this->view->assign('_search_data', $data);
+			$this->view->ShowTemplate('contacts/result');
+		}
+		else if($id) {
 			$_data = $this->model->getDetailData($id);
 			if($_data) {
 				$this->view->assign('_contact_data', $_detail_data);

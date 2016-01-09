@@ -52,7 +52,7 @@ class View extends Smarty{
 		$this->config_dir = BASE_DIR.'configs';
         //$this->setConfigDir(BASE_DIR.'configs');
 		$this->debugging = false;
-		$this->compile_check = false;
+		$this->compile_check = true;
 		$this->caching = false;
 		//$this->caching = Smarty::CACHING_LIFETIME_CURRENT;
 		//$this->cache_lifetime = 120;

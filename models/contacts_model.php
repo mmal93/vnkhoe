@@ -111,6 +111,57 @@ class Contacts_Model extends Model
         }
 	}
 	
+	public function getSearchData() {
+		$_job = $_place = $_type = $_count = null;
+		isset($_POST['job']) && $_job = $_POST['job'];
+		isset($_POST['place']) && $_place = $_POST['place'];
+		isset($_POST['type']) && $_type = $_POST['type'];
+		isset($_POST['count']) && $_count = $_POST['count'];
+		$param_arr = array();
+		$table_arr = array();
+		if($_type) {
+			$param_arr[] = "congty_nganh = ".$_type."";
+			$table_arr[] = '';
+		}
+		if($_place) {
+			$param_arr[] = "tbl_cauhinh_diadiem.diadiem like '%".trim($_place)."%' and tbl_congty.congty_diadiem = tbl_cauhinh_diadiem.id";
+			$table_arr[] = '';
+		}
+		if($_count) {
+			$param_arr[] = "congty_size = ".trim($_count);
+			$table_arr[] = '';
+		}
+		
+		$_query = "SELECT distinct tbl_congty.*, tbl_cauhinh_diadiem.diadiem as dia_diem, tbl_cauhinh_nganh.nganh as ten_nganh FROM tbl_congty, tbl_cauhinh_diadiem, tbl_cauhinh_nganh";
+		foreach($table_arr as $_table) {
+			if($_table!='') {
+				$_query .= ', '.$_table;
+			}
+		}
+		$_query .= ' where tbl_congty.congty_diadiem = tbl_cauhinh_diadiem.id and tbl_congty.congty_nganh = tbl_cauhinh_nganh.id and ';
+		if($table_arr) {
+			$_query .="(";
+		}
+		foreach($param_arr as $_param) {
+			$_query .= $_param . ' or ';
+		}
+		$_query = preg_replace('/\sor\s$/', '', $_query);
+		$_query = preg_replace('/\sand\s$/', '', $_query);
+		if($table_arr) {
+			$_query .=")";
+		}
+		//echo $_query;
+		$sth = $this->db->prepare($_query);
+        $sth->execute();
+        $data = $sth->fetchAll();
+        $count =  $sth->rowCount();
+        if ($count > 0) {
+			return $data;
+        } else {
+			return false;
+        }
+	}
+	
 	public function getAllDetailData($_limit = 0) {
 		if($_limit!=0) {
 			$sth = $this->db->prepare("SELECT tbl_congty.*, tbl_cauhinh_diadiem.diadiem as dia_diem, tbl_cauhinh_nganh.nganh as ten_nganh 

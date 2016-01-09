@@ -1,85 +1,83 @@
 <?xml version="1.0" ?>
-<default>
-	<partner name="partner-section">
-		<class_name>brands</class_name>
-		<title>Đối tác tiêu biểu</title>
-		<rows>
-			<class_name>brands-row-2</class_name>
-			<cols name="col-1">
-				<class_name>first</class_name>
-				<image>images/brands/bridgestone.jpg</image>
-				<link>#</link>
-				<title>Bridgestone</title>
-			</cols>
-			<cols name="col-2">
-				<class_name>second</class_name>
-				<image>images/brands/microsoft.jpg</image>
-				<link>#</link>
-				<title>Microsoft</title>
-			</cols>
-			<cols name="col-3">
-				<class_name>second</class_name>
-				<image>images/brands/fpt.jpg</image>
-				<link>#</link>
-				<title>FPT</title>
-			</cols>
-			<cols name="col-4">
-				<class_name>second</class_name>
-				<image>images/brands/eva.jpg</image>
-				<link>#</link>
-				<title>eva</title>
-			</cols>
-			<cols name="col-5">
-				<class_name>second</class_name>
-				<image>images/brands/canon.jpg</image>
-				<link>#</link>
-				<title>canon</title>
-			</cols>
-			<cols name="col-6">
-				<class_name>second</class_name>
-				<image>images/brands/panasonic.jpg</image>
-				<link>#</link>
-				<title>Panasonic</title>
-			</cols>
-		</rows>
-		<rows>
-			<class_name>brands-row-2</class_name>
-			<cols name="col-1">
-				<class_name>first</class_name>
-				<image>images/brands/bridgestone.jpg</image>
-				<link>#</link>
-				<title>Bridgestone</title>
-			</cols>
-			<cols name="col-2">
-				<class_name>second</class_name>
-				<image>images/brands/microsoft.jpg</image>
-				<link>#</link>
-				<title>Microsoft</title>
-			</cols>
-			<cols name="col-3">
-				<class_name>second</class_name>
-				<image>images/brands/fpt.jpg</image>
-				<link>#</link>
-				<title>FPT</title>
-			</cols>
-			<cols name="col-4">
-				<class_name>second</class_name>
-				<image>images/brands/eva.jpg</image>
-				<link>#</link>
-				<title>eva</title>
-			</cols>
-			<cols name="col-5">
-				<class_name>second</class_name>
-				<image>images/brands/canon.jpg</image>
-				<link>#</link>
-				<title>canon</title>
-			</cols>
-			<cols name="col-6">
-				<class_name>second</class_name>
-				<image>images/brands/panasonic.jpg</image>
-				<link>#</link>
-				<title>Panasonic</title>
-			</cols>
-		</rows>
-	</partner>
-</default>
+<partner name="partner-section">
+	<class_name>brands</class_name>
+	<title>Đối tác tiêu biểu</title>
+	<rows>
+		<class_name>brands-row-2</class_name>
+		<cols name="col-1">
+			<class_name>first</class_name>
+			<image>images/brands/bridgestone.jpg</image>
+			<link>#</link>
+			<title>Bridgestone</title>
+		</cols>
+		<cols name="col-2">
+			<class_name>second</class_name>
+			<image>images/brands/microsoft.jpg</image>
+			<link>#</link>
+			<title>Microsoft</title>
+		</cols>
+		<cols name="col-3">
+			<class_name>second</class_name>
+			<image>images/brands/fpt.jpg</image>
+			<link>#</link>
+			<title>FPT</title>
+		</cols>
+		<cols name="col-4">
+			<class_name>second</class_name>
+			<image>images/brands/eva.jpg</image>
+			<link>#</link>
+			<title>eva</title>
+		</cols>
+		<cols name="col-5">
+			<class_name>second</class_name>
+			<image>images/brands/canon.jpg</image>
+			<link>#</link>
+			<title>canon</title>
+		</cols>
+		<cols name="col-6">
+			<class_name>second</class_name>
+			<image>images/brands/panasonic.jpg</image>
+			<link>#</link>
+			<title>Panasonic</title>
+		</cols>
+	</rows>
+	<rows>
+		<class_name>brands-row-2</class_name>
+		<cols name="col-1">
+			<class_name>first</class_name>
+			<image>images/brands/bridgestone.jpg</image>
+			<link>#</link>
+			<title>Bridgestone</title>
+		</cols>
+		<cols name="col-2">
+			<class_name>second</class_name>
+			<image>images/brands/microsoft.jpg</image>
+			<link>#</link>
+			<title>Microsoft</title>
+		</cols>
+		<cols name="col-3">
+			<class_name>second</class_name>
+			<image>images/brands/fpt.jpg</image>
+			<link>#</link>
+			<title>FPT</title>
+		</cols>
+		<cols name="col-4">
+			<class_name>second</class_name>
+			<image>images/brands/eva.jpg</image>
+			<link>#</link>
+			<title>eva</title>
+		</cols>
+		<cols name="col-5">
+			<class_name>second</class_name>
+			<image>images/brands/canon.jpg</image>
+			<link>#</link>
+			<title>canon</title>
+		</cols>
+		<cols name="col-6">
+			<class_name>second</class_name>
+			<image>images/brands/panasonic.jpg</image>
+			<link>#</link>
+			<title>Panasonic</title>
+		</cols>
+	</rows>
+</partner>

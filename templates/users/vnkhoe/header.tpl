@@ -15,6 +15,9 @@
 				{$root_config->head->title->value}
 			{/if}
 		</title>
+		<meta property="og:description" content="vnkhoe.com - Tư vấn nghề nghiệp, tìm kiếm công việc, tư vấn sức khoẻ chuyên nghiệp" />
+		<meta name="description" content="vnkhoe.com - Tư vấn nghề nghiệp, tìm kiếm công việc, tư vấn sức khoẻ chuyên nghiệp" />
+		<meta name="keywords" content="vnkhoe.com - Tư vấn nghề nghiệp, tìm kiếm công việc, tư vấn sức khoẻ chuyên nghiệp">
 		
 		{if $CSS|@count > 0}
 			{foreach from=$CSS item=css}
@@ -82,8 +85,7 @@
 				<li class="level-0"><a href="{$BASE_URL}tu-van-suc-khoe"><span>Tư vấn sức khỏe</span></a></li>
 			</nav>
 			<form name="top-login" id="top-login">
-				<input type="search" value="" required />
-				<button class="tuyen-dung"><span>Nhà tuyển dụng</span></button>
+				<a href="{BASE_URL}hiring"><span>Nhà tuyển dụng</span></a>
 				<input type="submit" value="Đăng nhập" />
 				<a href="#" onclick="return false;" class="register-link"><span>Đăng ký</span></a>
 			</form>
