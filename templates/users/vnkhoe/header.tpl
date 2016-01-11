@@ -42,7 +42,9 @@
 				<script type="text/javaScript" src="{$TEMPLATE_URL}skin/js/{$js}"></script>
 			{/foreach}
 		{/if}
-		
+		{if $root_config->head->favorite_icon}
+			<link rel="shortcut icon" type="image/icon" href="{$MEDIA_URL}{$root_config->head->favorite_icon}" />  
+		{/if}
 	</head>
 <body{if isset($body_class)} class="{$body_class}"{/if}>
 <header id="header">

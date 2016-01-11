@@ -6,7 +6,9 @@
 			<value>wellcome to vnkhoe.com</value>
 		</title>
 		<charset>utf-8</charset>
-		<keyword>vnkhoe</keyword>
+		<keyword>vnkhoe keyword</keyword>
+		<description>vnkhoe description</description>
+		<favorite_icon>images/logo_web.png</favorite_icon>
 		<css>
 			<!-- <items>flexslider.css</items> -->
 			<items>bxslider.css</items>
