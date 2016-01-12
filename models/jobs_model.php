@@ -19,7 +19,7 @@ class Jobs_Model extends Model
 	}
 	
 	public function getHotContacts() {
-		$sth = $this->db->prepare("SELECT tbl_job.*, congty_id, congty_name, tbl_typejob.name_vi, congty_anhvp, tbl_cauhinh_diadiem.diadiem, chucvu from tbl_job, tbl_congty, tbl_typejob, tbl_cauhinh_diadiem, tbl_cauhinh_chucvu Where tbl_job.id_company = tbl_congty.congty_id and tbl_job.typejob = tbl_typejob.id and tbl_congty.congty_diadiem = tbl_cauhinh_diadiem.id and  limit 8");
+		$sth = $this->db->prepare("SELECT tbl_vieclam.congty_name, tbl_vieclam.vieclam_ten, tbl_congty.congty_logo, congty_anhvp, congty_sologan, congty_diachi, vieclam_gioithieu, tbl_cauhinh_capbac.capbac, tbl_cauhinh_chucvu.chucvu  FROM tbl_vieclam, tbl_congty, tbl_cauhinh_capbac, tbl_cauhinh_chucvu WHERE tbl_vieclam.congty_id = tbl_congty.congty_id and tbl_vieclam.vieclam_capbac = tbl_cauhinh_capbac.id and tbl_vieclam.vieclam_chucvu = tbl_cauhinh_chucvu.id limit 8");
         $sth->execute();
 		
         $data = $sth->fetchAll();
