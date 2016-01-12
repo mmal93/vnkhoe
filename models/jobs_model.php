@@ -19,7 +19,7 @@ class Jobs_Model extends Model
 	}
 	
 	public function getHotContacts() {
-		$sth = $this->db->prepare("SELECT tbl_vieclam.congty_name, tbl_vieclam.vieclam_ten, tbl_congty.congty_logo, congty_anhvp, congty_sologan, congty_diachi, vieclam_gioithieu, tbl_cauhinh_capbac.capbac, tbl_cauhinh_chucvu.chucvu  FROM tbl_vieclam, tbl_congty, tbl_cauhinh_capbac, tbl_cauhinh_chucvu WHERE tbl_vieclam.congty_id = tbl_congty.congty_id and tbl_vieclam.vieclam_capbac = tbl_cauhinh_capbac.id and tbl_vieclam.vieclam_chucvu = tbl_cauhinh_chucvu.id limit 8");
+		$sth = $this->db->prepare("SELECT tbl_congty.congty_id, tbl_vieclam.congty_name, tbl_vieclam.vieclam_ten, tbl_congty.congty_logo, congty_anhvp, congty_sologan, congty_diachi, vieclam_gioithieu, tbl_cauhinh_capbac.capbac, tbl_cauhinh_chucvu.chucvu  FROM tbl_vieclam, tbl_congty, tbl_cauhinh_capbac, tbl_cauhinh_chucvu WHERE tbl_vieclam.congty_id = tbl_congty.congty_id and tbl_vieclam.vieclam_capbac = tbl_cauhinh_capbac.id and tbl_vieclam.vieclam_chucvu = tbl_cauhinh_chucvu.id limit 8");
         $sth->execute();
 		
         $data = $sth->fetchAll();
@@ -32,7 +32,7 @@ class Jobs_Model extends Model
 	}
 	
 	public function getNewContacts() {
-		$sth = $this->db->prepare("SELECT * FROM tbl_congty Order By congty_ngaydangky DESC limit 8");
+		$sth = $this->db->prepare("SELECT tbl_congty.congty_id, tbl_vieclam.congty_name, tbl_vieclam.vieclam_ten, tbl_congty.congty_logo, congty_anhvp, congty_sologan, congty_diachi, vieclam_gioithieu, tbl_cauhinh_capbac.capbac, tbl_cauhinh_chucvu.chucvu  FROM tbl_vieclam, tbl_congty, tbl_cauhinh_capbac, tbl_cauhinh_chucvu WHERE tbl_vieclam.congty_id = tbl_congty.congty_id and tbl_vieclam.vieclam_capbac = tbl_cauhinh_capbac.id and tbl_vieclam.vieclam_chucvu = tbl_cauhinh_chucvu.id limit 8");
         $sth->execute();
 		
         $data = $sth->fetchAll();
