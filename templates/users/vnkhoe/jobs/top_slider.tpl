@@ -11,7 +11,7 @@
 		{foreach from=$_data item=data}
 			<div class="slide">
 				<img src="{$MEDIA_URL}images/companies/{$data.congty_id}/{$data.congty_anhvp}" title="{$data['name']}" />
-				<h3>{$data['name']}</h3>
+				<h3><a href="{$BASE_URL}contacts/id/{$data['congty_id']}">{$data['name']}</a></h3>
 			</div>
 		{/foreach}
 	</div>
