@@ -99,6 +99,27 @@ jQuery(document).ready(function(){
 		jQuery('#hllm-body-popup').hide();
 	});
 	
+	//tuyen-dung click event
+	jQuery(document).on('click', '#dang-tuyen-section .top-control .control', function() {
+		var id = jQuery(this).attr('id');
+		if(id=='dich-vu-goi') {
+			if(!jQuery('#tuyen-dung-form').hasClass('active')) {
+				jQuery('#tuyen-dung-form').stop().slideDown(500);
+				jQuery('#tuyen-dung-form').addClass('active');
+			}
+		} else {
+			if(jQuery('#tuyen-dung-form').hasClass('active')) {
+				jQuery('#tuyen-dung-form').stop().slideUp(500);
+				jQuery('#tuyen-dung-form').removeClass('active');
+			}
+		}
+		jQuery('#dang-tuyen-section .top-control .control').each(function(index, value) {
+			if(jQuery(value).hasClass('active')) {
+				jQuery(value).removeClass('active');
+			}
+		});
+		jQuery(this).addClass('active');
+	});
 });
 
 function top_login_form_close() {
