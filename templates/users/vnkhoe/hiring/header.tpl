@@ -109,7 +109,7 @@
 							<li>Đảm bảo chất lượng 100%</li>
 							<li>Đăng tuyển <strong>nhanh chóng</strong> và nhận hồ sơ <strong>ngay lập tức</strong></li>
 							<li>Nhận <em>lời khuyên về mức lương</em> <strong>miễn phí</strong> cho tin tuyển dụng</li>
-							<a href="dang_tuyen" class="register">Đăng tuyển</a>
+							<a href="{$BASE_URL}hiring/dang_tuyen" class="register">Đăng tuyển</a>
 						</ul>
 					</div>
 					<div class="col-sm-6">
