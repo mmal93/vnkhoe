@@ -154,7 +154,7 @@ p, span, label {
 
 .relative {
 	position: relative;
-	overflow: hidden;
+	/*overflow: hidden;*/
 }
 
 .center {
