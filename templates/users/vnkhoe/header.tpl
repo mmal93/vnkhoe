@@ -112,7 +112,7 @@
 			<div class="col-sm-12">
 				<h3>Tìm kiếm bệnh viện, phòng khám...</h3>
 			</div>
-			<form name="top-search" id="top-search-form" class="row">
+			<form name="top-search" id="top-search-form" class="row" action="{BASE_URL}jobs/search/">
 				<div class="col-sm-6 left">
 					<input type="search" value="" placeholder="Từ khóa cần tìm" title="Nhập từ khóa cần tìm" />
 					<span><i class="fa fa-clock-o"></i></span>

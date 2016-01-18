@@ -32,12 +32,11 @@ class Contacts extends Controller {
 			$this->view->assign('_categories', $category_data);
 			$this->view->showTemplate('contacts/category_unit.tpl');
 		}
-		$this->view->showTemplate('contacts/main_end.tpl');
+		$this->view->mainEnd();
         $this->view->showFooter();
     }
 	
 	function search() {
-		$this->getParam('id');
 		$this->view->showBodyClass('contact-page');
 		$this->view->loadPageConfig('contact');
 		$this->view->show_header_banner();
@@ -82,7 +81,7 @@ class Contacts extends Controller {
 		$this->view->loadPageConfig('job');
 		$this->view->show_header_banner();
         $this->view->showHeader();
-		$this->view->showTemplate('jobs/main_start.tpl');
+		$this->view->mainStart('container-fluid');
 		$_id = $this->getId();
 		if($_id) {
 			$_detail_data = $this->model->getDetailData($_id);
@@ -95,7 +94,7 @@ class Contacts extends Controller {
 		} else {
 			echo 'Không tìm thấy nội dung!';
 		}
-		$this->view->showTemplate('jobs/main_end.tpl');
+		$this->view->mainEnd();
         $this->view->showFooter();
     }
 	

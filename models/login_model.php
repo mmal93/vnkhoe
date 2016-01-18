@@ -47,7 +47,7 @@ class Login_Model extends Model
 			return $data;
         } else {
 			Session::destroy();
-			return null;
+			return false;
 			
             //header('location: ./login');
         }

@@ -9,11 +9,14 @@ class Register extends Controller {
     {    
 		//$this->view->title = 'Đăng nhập - vnkhoe';
 		Session::destroy();
-		$this->view->showBodyClass('register-page');
+		
 		$this->view->loadPageConfig('register');
+		$this->view->showBodyClass('register-page');
 		$this->view->show_header_banner();
-        $this->view->showHeader();
-		$this->view->showTemplate('account/register/index.tpl');
+		$this->view->showHeader();
+		$this->view->mainStart('container');
+		$this->view->showTemplate('account/register_form');
+		$this->view->mainEnd();
         $this->view->showFooter();
     }
     

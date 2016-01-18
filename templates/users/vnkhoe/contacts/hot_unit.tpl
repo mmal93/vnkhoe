@@ -10,7 +10,7 @@
 				<div class="relative">
 					<img src="{$MEDIA_URL}images/companies/{$_hot_data[$i].congty_id}/{$_hot_data[$i].congty_anhvp}" title="{$_hot_data[$i].congty_name}" style="max-width: 100%;" />
 					<div class="information">
-						<div class="col-sm-4 company-type"><i class="glyphicon glyphicon-home"></i>{$_hot_data[$i].ten_nganh}</div>
+						<div class="col-sm-4 company-type"><i class="glyphicon glyphicon-home"></i>{$_hot_data[$i].nganh_name}</div>
 						<div class="col-sm-4 company-count"><i class="glyphicon glyphicon-user"></i>{$_hot_data[$i].congty_size} người</div>
 						<div class="col-sm-4 company-location"><i class="glyphicon glyphicon-map-marker"></i>{$_hot_data[$i].dia_diem}</div>
 					</div>
@@ -28,7 +28,7 @@
 				<div class="relative">
 					<img src="{$MEDIA_URL}images/companies/{$_hot_data[$i].congty_id}/{$_hot_data[$i].congty_anhvp}" title="{$_hot_data[$i].congty_name}" style="max-width: 100%;" />
 					<div class="information">
-						<div class="col-sm-4 company-type"><i class="glyphicon glyphicon-home"></i>{$_hot_data[$i].ten_nganh}</div>
+						<div class="col-sm-4 company-type"><i class="glyphicon glyphicon-home"></i>{$_hot_data[$i].nganh_name}</div>
 						<div class="col-sm-4 company-count"><i class="glyphicon glyphicon-user"></i>{$_hot_data[$i].congty_size} người</div>
 						<div class="col-sm-4 company-location"><i class="glyphicon glyphicon-map-marker"></i>{$_hot_data[$i].dia_diem}</div>
 					</div>
@@ -47,7 +47,7 @@
 				<div class="relative">
 					<img src="{$MEDIA_URL}images/companies/{$_hot_data[$i].congty_id}/{$_hot_data[$i].congty_anhvp}" title="{$_hot_data[$i].congty_name}" style="max-width: 100%;" />
 					<div class="information">
-						<div class="col-sm-4 company-type"><i class="glyphicon glyphicon-home"></i>{$_hot_data[$i].ten_nganh}</div>
+						<div class="col-sm-4 company-type"><i class="glyphicon glyphicon-home"></i>{$_hot_data[$i].nganh_name}</div>
 						<div class="col-sm-4 company-count"><i class="glyphicon glyphicon-user"></i>{$_hot_data[$i].congty_size} người</div>
 						<div class="col-sm-4 company-location"><i class="glyphicon glyphicon-map-marker"></i>{$_hot_data[$i].dia_diem}</div>
 					</div>

@@ -471,6 +471,13 @@ clear: both;
     background-position: top center;
     background-size: cover;
 }
+
+#top-slider .bx-wrapper .bx-viewport, #top-slider .bx-wrapper .bx-viewport .inner-slider {
+    overflow-y: visible !important;
+    height: initial !important;
+    max-height: 415px;
+}
+
 .bx-wrapper .bx-viewport{
     border: none !important;
     height: 450px;
@@ -621,6 +628,8 @@ clear: both;
     margin-right: 10px;
     vertical-align: top;
     text-transform: uppercase;
+    padding: 0;
+    margin: 0;
 }
 
 #footer h6 + a{
@@ -1005,6 +1014,10 @@ section.bottom-link .section-title h2 {
     text-align: left;
     padding: 15px 0;
 }
+
+#top-slider h3 a {
+    color: #000;
+}
 /*contact page*/
 
 .contact-page section {
@@ -1172,6 +1185,19 @@ section .title, section .title a {
     padding-bottom: 0;
 }
 
+.top-jobs-slider .company-name a, .top-jobs-slider .job-type {
+    font-weight: normal;
+    color: #000;
+}
+
+.top-jobs-slider .company-name, .top-jobs-slider .job-type {
+    margin: 0;
+}
+
+#detail-section .col-left.relative {
+    overflow: hidden;
+}
+
 /*jobs article*/
 #detail-job-article-section, detail-healthy-section {
     margin-top: 30px;
@@ -1181,6 +1207,14 @@ section .title, section .title a {
 #new-job-article-section .col-new {
     padding-top: 10px;
 	padding-bottom: 10px;
+}
+
+#new-job-article-section .col-new:nth-child(3n) {
+    clear: right;
+}
+
+#new-job-article-section .col-new:nth-child(3n+1) {
+    clear: left;
 }
 
 #new-job-article-section .col-new .bottom {
@@ -1223,6 +1257,35 @@ section .title, section .title a {
     width: 100%;
 }
 
+.job-page section .title {
+    padding: 0;
+    font-weight: 700;
+}
+
+.job-page section.hot-job .job-type, .job-page section.new-job .job-type {
+    font-size: 16px;
+    margin: 0;
+}
+
+.job-page section.hot-job .bottom, .job-page section.new-job .bottom {
+    background-color: rgba(0, 0, 0, 0.04);
+    margin: 15px 0;
+    padding:  10px 0;
+}
+
+.job-page section.hot-job .col-sm-4, .job-page section.new-job .col-sm-4 {
+    /* min-height: 35px; */
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 9px;
+}
+
+.job-page section.hot-job .col-sm-4:nth-child(2), .job-page section.new-job .col-sm-4:nth-child(2) {
+	border-left: 1px solid #000;
+	border-right: 1px solid #000;
+}
 
 /*end jobs article*/
 
@@ -1335,6 +1398,270 @@ background-color: #1a83c3;
 
 /*end hiring*/
 
+/*job - detail page */
+.job-detail-page {}
+
+.job-detail-page #detail-section {}
+
+.job-detail-page #detail-section .top-detail {
+    max-width: 80%;
+    margin: auto;
+}
+
+.job-detail-page #detail-section .like {
+    margin: 20px 0;
+}
+
+.job-detail-page #detail-section .like .heart, .job-detail-page #detail-section .like .send-mail {
+    display: inline-block;
+}
+
+.job-detail-page #detail-section .like .heart i, .job-detail-page #detail-section .like .send-mail i {
+    padding: 10px 10px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.job-detail-page #detail-section .like .heart i {
+    background-color: #ffe1d7;
+    color: #ff623f;
+}
+
+.job-detail-page #detail-section .like .send-mail i {
+    background-color: #f7ffff;
+    color: #000;
+    margin-right: 5px;
+}
+
+
+.job-detail-page #detail-section .require-info {
+    max-width: 60%;
+    margin: 20px auto;
+}
+
+.require-info .require-name.title {
+    font-size: 32px;
+    font-family: latosemibold;
+    text-transform: capitalize;
+    padding: 0;
+}
+
+.require-info .title, .require-info .title span {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.require-info .title {
+    margin:  0;
+    text-transform: none;
+}
+
+.require-info .apply-work {
+    margin: 20px 0;
+}
+
+.require-info .apply-work button {
+    padding-left: 30px;
+    padding-right: 30px;
+    text-transform: uppercase;
+}
+
+.require-info .top, .require-info .middle {
+    border-bottom: 2px solid #484848;
+    padding: 20px 0;
+}
+
+.require-info .middle .title span {
+    background-color: #f3f3f3;
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 0;
+    text-transform: none;
+}
+
+.bottom-info {
+    background-color: #f3f3f3;
+    display:  inline-block;
+    padding:  10px 25px 10px 7px;
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+.bottom-info i {
+    margin-right: 10px;
+}
+/*end job - detail page */
+
+/*healthy - detail - page*/
+#detail-healthy-section .social-like.center {}
+
+#detail-healthy-section .social-like div, #detail-job-article-section .social-like div {
+    display: inline-block;
+    margin-bottom: 25px;
+    margin-right: 10px;
+}
+
+#detail-healthy-section .social-like i, #detail-job-article-section .social-like i {
+    padding: 10px 18px;
+    cursor: pointer;
+}
+
+#detail-healthy-section .social-like .heart i, #detail-job-article-section .social-like .heart i {
+    background-color: #ffe1dc;
+    color: #ff5842;
+}
+
+#detail-healthy-section .social-like .facebook, #detail-healthy-section .social-like .facebook i,
+#detail-job-article-section .social-like .facebook, #detail-job-article-section .social-like .facebook i{
+    background-color: #37599a;
+    color: #fff;
+    padding-right: 18px;
+    position: relative;
+}
+
+#detail-healthy-section .social-like .facebook i:after, #detail-job-article-section .social-like .facebook .i:after {
+    content: '';
+    background-color: #fff;
+    display: block;
+    width: 1px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+}
+
+#detail-healthy-section .social-like .send-mail i, #detail-job-article-section .social-like .send-mail i {
+    background-color: #f5fdff;
+    color: #000;
+}
+
+#detail-healthy-section .social-like .google-plus i, #detail-job-article-section .social-like .google-plus {
+    background-color: #e44b36;
+    color: #fff;
+}
+
+#detail-healthy-section .content, #detail-healthy-section .content *, #detail-job-article-section .content, #detail-job-article-section .content * {
+    line-height: 1.7;
+}
+
+#detail-healthy-section .right, #detail-job-article-section .right {}
+
+#detail-healthy-section .right .right-social, #detail-job-article-section .right .right-social {
+    display: -webkit-inline-box;
+    clear: both;
+    padding: 15px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+#detail-healthy-section .right .like, #detail-job-article-section .right .like {
+    border: 1px solid #ffbaaf;
+    color: #ff8b6e;
+}
+
+#related-article-section .relative {
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+#related-article-section .relative h4{
+    position: absolute;
+    top: 20%;
+    left: 4px;
+    bottom: 50%;
+    right: 4px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#related-article-section .relative h4 a {
+    color: #fff;
+    font-weight: normal;
+}
+
+#detail-healthy-section .right .facebook, #detail-healthy-section .right .linkedin, #detail-healthy-section .right .twitter, #detail-healthy-section .right .mail,
+#detail-job-article-section .right .facebook, #detail-job-article-section .right .linkedin, #detail-job-article-section .right .twitter, #detail-job-article-section .right .mail {
+    background-color: #e1e1e1;
+    color: #fff;
+    width: 48px;
+    height: 48px;
+    margin: 5px auto;
+}
+/*end healthy - detail - page*/
+
+/*authors page*/
+.author-detail-page {}
+
+#header .author-bottom {
+    
+margin-top: 113px;
+}
+
+#author-top-nav {
+    background-color: #4f4f4f;
+    padding: 7px 0;
+    width: 100%;
+    text-align: center;
+    margin: auto;
+}
+
+#author-top-nav li {
+    list-style-type: none;
+    display: inline-block;
+    padding: 5px;
+    margin: 0 3px;
+}
+
+#author-top-nav li a {
+    color: #fff;
+    font-weight: 300;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+#author-top-nav li a:hover, #header .top-author-message .title a:hover {
+    text-decoration: none;
+}
+
+#header .top-author-message {
+    background-color: #ff775b;
+    text-align: center;
+    padding: 10px 0;
+}
+
+#header .top-author-message .close {
+    color: #fff;
+    z-index: 999;
+    cursor: pointer;
+}
+
+#header .top-author-message .close:after {
+    content: 'x';
+    color: #fff;
+}
+
+#header .top-author-message .close i {
+    display: none;
+}
+
+#header .top-author-message .title, #header .top-author-message .title a {
+    margin: 0;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+#header .top-author-message .title a{
+    background-color: #db4736;
+    border-radius: 5px;
+    padding: 6px 15px;
+}
+
+#header .author-info {
+    background-color: #54bad6;
+}
+/*end authors page*/
 /*Responsive*/
 @media only screen and (min-width: 992px) {
 	.col-5 {

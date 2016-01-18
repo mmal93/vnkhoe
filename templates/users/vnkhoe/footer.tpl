@@ -8,22 +8,22 @@
 						<li>
 							<div class="facebook">
 								<div class="inner">
-									<a href="facebook.com/vnkhoe" title="Facebook - vnkhoe" target="_blank"><i class="fa fa-facebook"></i></a>
+									<a href="https://www.facebook.com/vnkhoe" title="Facebook - vnkhoe" target="_blank"><i class="fa fa-facebook"></i></a>
 								</div>
 							</div>
 							<div class="twistter">
 								<div class="inner">
-									<a href="twitter.com/vnkhoe" title="Twitter - vnkhoe"><i class="fa fa-twitter"></i></a>
+									<a href="https://twitter.com/vnkhoe" title="Twitter - vnkhoe" target="_blank"><i class="fa fa-twitter"></i></a>
 								</div>
 							</div>
 							<div class="google-plus">
 								<div class="inner">
-									<a href="plus.google.com/vnkhoe" title="G+ - vnkhoe"><i class="fa fa-google-plus"></i></a>
+									<a href="https://plus.google.com/vnkhoe" title="G+ - vnkhoe" target="_blank"><i class="fa fa-google-plus"></i></a>
 								</div>
 							</div>
 							<div class="instagram">
 								<div class="inner">
-									<a href="instagram.com/vnkhoe" title="Instagram - vankhoe"><i class="fa fa-instagram"></i></a>
+									<a href="https://instagram.com/vnkhoe" title="Instagram - vankhoe" target="_blank"><i class="fa fa-instagram"></i></a>
 								</div>
 							</div>
 						</li>

@@ -7,15 +7,11 @@ class Contacts_Model extends Model
     }
 	
 	public function getSlideContacts() {
-		$sth = $this->db->prepare("SELECT id, name, image FROM tbl_congty limit 10");
+	$sth = $this->db->prepare("SELECT congty_id, congty_name, congty_anhvp FROM tbl_congty WHERE congty_trangthai = 1 and congty_topslide=1 ORDER BY congty_thutu ASC limit 10");
         $sth->execute();
 		
         $data = $sth->fetchAll();
-		//PDO::FETCH_ASSOC: Return next row as an array indexed by column name
-		//PDO::FETCH_BOTH: Return next row as an array indexed by both column name and number
-		//PDO::FETCH_LAZY: Return next row as an anonymous object with column names as properties
-		
-        $count =  $sth->rowCount();
+		$count =  $sth->rowCount();
         if ($count > 0) {
 			return $data;
         } else {
@@ -24,9 +20,9 @@ class Contacts_Model extends Model
 	}
 	
 	public function getHotContacts() {
-		$sth = $this->db->prepare("SELECT tbl_congty.*, tbl_cauhinh_diadiem.diadiem as dia_diem, tbl_cauhinh_nganh.nganh as ten_nganh 
+		$sth = $this->db->prepare("SELECT tbl_congty.*, tbl_cauhinh_diadiem.diadiem as dia_diem, tbl_cauhinh_nganh.nganh_name 
 			FROM tbl_congty, tbl_cauhinh_diadiem, tbl_cauhinh_nganh 
-			Where tbl_congty.congty_diadiem = tbl_cauhinh_diadiem.id and tbl_congty.congty_nganh = tbl_cauhinh_nganh.id 
+			Where tbl_congty.congty_diadiem = tbl_cauhinh_diadiem.id and tbl_congty.congty_nganh = tbl_cauhinh_nganh.nganh_id 
 			Order By congty_ngaydangky DESC limit 8");
         $sth->execute();
 		
@@ -51,11 +47,7 @@ class Contacts_Model extends Model
         $sth->execute();
 		
         $data = $sth->fetchAll();
-		//PDO::FETCH_ASSOC: Return next row as an array indexed by column name
-		//PDO::FETCH_BOTH: Return next row as an array indexed by both column name and number
-		//PDO::FETCH_LAZY: Return next row as an anonymous object with column names as properties
-		
-        $count =  $sth->rowCount();
+		$count =  $sth->rowCount();
         if ($count > 0) {
 			$return = array();
 			foreach($data as $item) {
@@ -100,7 +92,7 @@ class Contacts_Model extends Model
 	}
 	
 	public function getDetailData($_id) {
-		$sth = $this->db->prepare("SELECT * FROM tbl_congty Where congty_id = '".$_id."' Order By congty_ngaydangky DESC");
+		$sth = $this->db->prepare("SELECT * FROM tbl_congty, tbl_cauhinh_nganh Where tbl_congty.congty_nganh = tbl_cauhinh_nganh.nganh_id and congty_id = '".$_id."'");
         $sth->execute();
         $data = $sth->fetchAll();
         $count =  $sth->rowCount();
@@ -132,13 +124,13 @@ class Contacts_Model extends Model
 			$table_arr[] = '';
 		}
 		
-		$_query = "SELECT distinct tbl_congty.*, tbl_cauhinh_diadiem.diadiem as dia_diem, tbl_cauhinh_nganh.nganh as ten_nganh FROM tbl_congty, tbl_cauhinh_diadiem, tbl_cauhinh_nganh";
+		$_query = "SELECT distinct tbl_congty.*, tbl_cauhinh_diadiem.diadiem as dia_diem, tbl_cauhinh_nganh.nganh_name FROM tbl_congty, tbl_cauhinh_diadiem, tbl_cauhinh_nganh";
 		foreach($table_arr as $_table) {
 			if($_table!='') {
 				$_query .= ', '.$_table;
 			}
 		}
-		$_query .= ' where tbl_congty.congty_diadiem = tbl_cauhinh_diadiem.id and tbl_congty.congty_nganh = tbl_cauhinh_nganh.id and ';
+		$_query .= ' where tbl_congty.congty_diadiem = tbl_cauhinh_diadiem.id and tbl_congty.congty_nganh = tbl_cauhinh_nganh.nganh_id and ';
 		if($table_arr) {
 			$_query .="(";
 		}
@@ -164,14 +156,14 @@ class Contacts_Model extends Model
 	
 	public function getAllDetailData($_limit = 0) {
 		if($_limit!=0) {
-			$sth = $this->db->prepare("SELECT tbl_congty.*, tbl_cauhinh_diadiem.diadiem as dia_diem, tbl_cauhinh_nganh.nganh as ten_nganh 
+			$sth = $this->db->prepare("SELECT tbl_congty.*, tbl_cauhinh_diadiem.diadiem as dia_diem, tbl_cauhinh_nganh.nganh_name 
 			FROM tbl_congty, tbl_cauhinh_diadiem, tbl_cauhinh_nganh 
-			Where tbl_congty.congty_diadiem = tbl_cauhinh_diadiem.id and tbl_congty.congty_nganh = tbl_cauhinh_nganh.id 
+			Where tbl_congty.congty_diadiem = tbl_cauhinh_diadiem.id and tbl_congty.congty_nganh = tbl_cauhinh_nganh.nganh_id 
 			Order By congty_ngaydangky DESC limit ".$_limit);
 		} else {
-			$sth = $this->db->prepare("SELECT tbl_congty.*, tbl_cauhinh_diadiem.diadiem as dia_diem, tbl_cauhinh_nganh.nganh as ten_nganh 
+			$sth = $this->db->prepare("SELECT tbl_congty.*, tbl_cauhinh_diadiem.diadiem as dia_diem, tbl_cauhinh_nganh.nganh_name 
 			FROM tbl_congty, tbl_cauhinh_diadiem, tbl_cauhinh_nganh 
-			Where tbl_congty.congty_diadiem = tbl_cauhinh_diadiem.id and tbl_congty.congty_nganh = tbl_cauhinh_nganh.id 
+			Where tbl_congty.congty_diadiem = tbl_cauhinh_diadiem.id and tbl_congty.congty_nganh = tbl_cauhinh_nganh.nganh_id 
 			Order By congty_ngaydangky DESC");
 		}
         $sth->execute();

@@ -68,6 +68,7 @@ class Ajax extends Controller {
 		// $login_data = $this->model->login($_email, $_password);
 		$return['is_member'] = $this->model->is_member('ducmonmz@gmail.com');
 		$login_data = $this->model->login('ducmonmz@gmail.com', 'admin');
+		$return['email'] = $_email;
 		if(isset($login_data)&&!empty($login_data)) {
 			//loged in 
 			// array(8) { 

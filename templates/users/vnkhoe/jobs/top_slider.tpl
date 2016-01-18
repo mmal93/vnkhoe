@@ -1,5 +1,5 @@
 <!--top-slider-->
-<section id="top-slider">
+<section id="top-slider" class="top-jobs-slider">
 	<div class="col-sm-6">
 		<h2>Khám phá các đơn vị</h2>
 		<p>Xem trước nơi <em>bạn muốn làm việc</em></p>
@@ -10,8 +10,9 @@
 	<div class="inner-slider">
 		{foreach from=$_data item=data}
 			<div class="slide">
-				<img src="{$MEDIA_URL}images/companies/{$data.congty_id}/{$data.congty_anhvp}" title="{$data['name']}" />
-				<h3><a href="{$BASE_URL}contacts/id/{$data['congty_id']}">{$data['name']}</a></h3>
+				<img src="{$MEDIA_URL}images/companies/{$data.congty_id}/{$data.congty_anhvp}" title="{$data['vieclam_ten']}" />
+				<h3 class="company-name"><a href="{$BASE_URL}contacts/id/{$data['congty_id']}">{$data['congty_name']}</a></h3>
+				<h4 class="job-type"><a href="{$BASE_URL}jobs/id/{$data['vieclam_id']}">{$data['vieclam_ten']}</a></h4>
 			</div>
 		{/foreach}
 	</div>
