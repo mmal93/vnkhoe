@@ -7,9 +7,13 @@ class Model {
 	public $_page_number;
 
     function __construct() {
-        $this->db = new Database(DB_TYPE, DB_HOST, DB_NAME, DB_USER, DB_PASS);
-		$sth = $this->db->prepare("set names 'utf8'");
-        $sth->execute();
+		try{
+			$this->db = new Database(DB_TYPE, DB_HOST, DB_NAME, DB_USER, DB_PASS);
+			$sth = $this->db->prepare("set names 'utf8'");
+			$sth->execute();
+		} catch(PDOException $e) {
+			echo $e->getMessage();
+		}
     }
 	
 	function readMore($string, $len=160){
@@ -24,9 +28,12 @@ class Model {
 		if(!$table) {
 			return false;
 		}
-		$sth = $this->db->prepare("SELECT * FROM ".$table.($limit==null?'':'limit '.$limit));
-        $sth->execute();
-		
+		try{
+			$sth = $this->db->prepare("SELECT * FROM ".$table.($limit==null?'':'limit '.$limit));
+			$sth->execute();
+		} catch(PDOException $e) {
+			echo $e->getMessage();
+		}
         $data = $sth->fetchAll($fetch);
 		$count =  $sth->rowCount();
         if ($count > 0) {

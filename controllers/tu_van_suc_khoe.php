@@ -9,7 +9,7 @@ class Tu_van_suc_khoe extends Controller {
     {
 		$this->view->showBodyClass('healthy-index');
 		$this->view->loadPageConfig('index');
-		$this->view->show_header_banner();
+		//$this->view->show_header_banner();
 		$this->view->showHeader();
 		$this->view->mainStart('container-fluid');
 		$data = $this->model->getData(null, 12);
@@ -17,7 +17,7 @@ class Tu_van_suc_khoe extends Controller {
 			$this->view->assign('_new_data', $data);
 			$this->view->showTemplate('tu_van_suc_khoe'.DS.'new_unit');
 		}
-		$this->view->showPartner();
+		//$this->view->showPartner();
 		$this->view->mainEnd();
 		$this->view->showFooter();
     }
@@ -25,7 +25,7 @@ class Tu_van_suc_khoe extends Controller {
 	public function search() {
 		$this->view->showBodyClass('healthy-search');
 		$this->view->loadPageConfig('index');
-		$this->view->show_header_banner();
+		//$this->view->show_header_banner();
 		$this->view->showHeader();
 		$this->view->mainStart('container-fluid');
 		$data = $this->model->getData();
@@ -33,13 +33,13 @@ class Tu_van_suc_khoe extends Controller {
 			$this->view->assign('_new_data', $data);
 			$this->view->showTemplate('tu_van_suc_khoe'.DS.'new_unit');
 		}
-		$this->view->showPartner();
+		//$this->view->showPartner();
 		$this->view->mainEnd();
 		$this->view->showFooter();
 	}
 	public function id() {
 		$this->view->loadPageConfig('index');
-		$this->view->show_header_banner();
+		//$this->view->show_header_banner();
 		$this->view->showHeader();
 		$this->view->mainStart('container-fluid');
 		$_id = $this->getParam('id');
@@ -63,7 +63,7 @@ class Tu_van_suc_khoe extends Controller {
 		} else {
 			echo 'Không tìm thấy nội dung!';
 		}
-		$this->view->showPartner();
+		//$this->view->showPartner();
 		$this->view->mainEnd();
 		$this->view->showFooter();
 	}

@@ -23,17 +23,26 @@ class Authors extends Controller {
 		$this->view->loadPageConfig('author-detail');
 		$_id = $this->getParam('id');
 		if($_id) {
-			$_detail_data = $this->model->getData($_id);
-			if($_detail_data) {
-				$this->view->assign('_author_data', $_detail_data);
+			$_author = $this->model->getAuthor($_id);
+			if($_author) {
+				$this->view->assign('_author_data', $_author);
 				$this->view->showTemplate('authors/author_header');
-				$this->view->mainStart('container-fluid');
-				$this->view->ShowTemplate('authors/detail');
 			} else {
-				$this->view->mainStart('container-fluid');
+				$this->view->show_header_banner();
+				$this->view->showHeader();
+			}
+			$this->view->mainStart('container-fluid');
+			
+			$_detail_data = $this->model->getArticleData($_id);
+			if($_detail_data) {
+				$this->view->assign('article_data', $_detail_data);
+				$this->view->ShowTemplate('authors/authors_detail');
+			} else {
 				echo 'Không tìm thấy nội dung';
 			}
 		} else {
+			$this->view->show_header_banner();
+			$this->view->showHeader();
 			$this->view->mainStart('container-fluid');
 			echo 'Không tìm thấy nội dung!';
 		}

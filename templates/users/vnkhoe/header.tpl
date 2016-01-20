@@ -86,15 +86,16 @@
 				<li class="level-0"><a href="{$BASE_URL}tu-van-nghe-nghiep"><span>Tư vấn nghề nghiệp</span></a></li>
 				<li class="level-0"><a href="{$BASE_URL}tu-van-suc-khoe"><span>Tư vấn sức khỏe</span></a></li>
 			</nav>
-			<form name="top-login" id="top-login">
-				<a href="{BASE_URL}hiring"><span>Nhà tuyển dụng</span></a>
-				<input type="submit" value="Đăng nhập" />
-				<a href="#" onclick="return false;" class="register-link"><span>Đăng ký</span></a>
-			</form>
+			{if isset($_session)&&(!empty($_session))}
+				{include file='account\\header_logout.tpl'}
+			{else}
+				{include file='account\\header_login.tpl'}
+			{/if}
 		</div>
 		{/if}
 	</div>
 	<!--end top-header-->
+	{if isset($banner_images) && (!empty($banner_images))}
 	<div id="header-banner">
 		<div class="header-slider">
 			<ul class="bxslider">
@@ -106,26 +107,8 @@
 			</ul>
 		</div>
 	</div>
-	<!--top search-->
-	<div id="top-search">
-		<div class="inner-search container">
-			<div class="col-sm-12">
-				<h3>Tìm kiếm bệnh viện, phòng khám...</h3>
-			</div>
-			<form name="top-search" id="top-search-form" class="row" action="{BASE_URL}jobs/search/">
-				<div class="col-sm-6 left">
-					<input type="search" value="" placeholder="Từ khóa cần tìm" title="Nhập từ khóa cần tìm" />
-					<span><i class="fa fa-clock-o"></i></span>
-				</div>
-				<div class="col-sm-6 right">
-					<div class="col-sm-10">
-						<input type="search" value="" placeholder="Chọn khu vực" title="Chọn khu vực cần tìm" />
-						<span><i class="fa fa-map-marker"></i></span>
-					</div>
-					<button class="col-sm-2" title="Tìm kiếm"><span><i class="fa fa-search"></i></span></button>
-				</div>
-			</form>
-		</div>
-	</div>
-	<!--end top search-->
+	{/if}
+	{if isset($_top_search) && ($_top_search == true)}
+		{include file='top_search.tpl'}
+	{/if}
 </header>

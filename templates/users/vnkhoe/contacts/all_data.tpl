@@ -7,7 +7,7 @@
 		<div class="row">
 			<div class="col-sm-3">
 				<div class="relative">
-					<img src="{$MEDIA_URL}images/companies/{$_all_data[$i].congty_id}/{$_all_data[$i].congty_anhvp}" title="{$_all_data[$i].congty_name}" style="max-width: 100%;" />
+					<a href="{$BASE_URL}contacts/id/{$_all_data[$i].congty_id}"><img src="{$MEDIA_URL}images/companies/{$_all_data[$i].congty_id}/{$_all_data[$i].congty_anhvp}" title="{$_all_data[$i].congty_name}" style="max-width: 100%;" /></a>
 					<div class="information">
 						<div class="col-sm-4 company-type"><i class="glyphicon glyphicon-home"></i>{$_all_data[$i].nganh_name}</div>
 						<div class="col-sm-4 company-count"><i class="glyphicon glyphicon-user"></i>{$_all_data[$i].congty_size} người</div>
@@ -19,13 +19,13 @@
 					<p class="sologan" style="text-overflow: ellipsis; ">{$_all_data[$i].congty_sologan}</p>
 				</div>
 				<div class="col-sm-3 col-left">
-					<img src="{$MEDIA_URL}images/companies/{$_all_data[$i].congty_id}/{$_all_data[$i].congty_logo}" title="{$_all_data[$i].congty_name}" style="max-width: 100%;" />
+					<a href="{$BASE_URL}contacts/id/{$_all_data[$i].congty_id}"><img src="{$MEDIA_URL}images/companies/{$_all_data[$i].congty_id}/{$_all_data[$i].congty_logo}" title="{$_all_data[$i].congty_name}" style="max-width: 100%;" /></a>
 				</div>
 			</div>
 		{elseif (($i%4==3)|| $i+1==$count)}
 			<div class="col-sm-3">
 				<div class="relative">
-					<img src="{$MEDIA_URL}images/companies/{$_all_data[$i].congty_id}/{$_all_data[$i].congty_anhvp}" title="{$_all_data[$i].congty_name}" style="max-width: 100%;" />
+					<a href="{$BASE_URL}contacts/id/{$_all_data[$i].congty_id}"><img src="{$MEDIA_URL}images/companies/{$_all_data[$i].congty_id}/{$_all_data[$i].congty_anhvp}" title="{$_all_data[$i].congty_name}" style="max-width: 100%;" /></a>
 					<div class="information">
 						<div class="col-sm-4 company-type"><i class="glyphicon glyphicon-home"></i>{$_all_data[$i].nganh_name}</div>
 						<div class="col-sm-4 company-count"><i class="glyphicon glyphicon-user"></i>{$_all_data[$i].congty_size} người</div>
@@ -37,14 +37,14 @@
 					<p class="sologan" style="text-overflow: ellipsis; ">{$_all_data[$i].congty_sologan}</p>
 				</div>
 				<div class="col-sm-3 col-left">
-					<img src="{$MEDIA_URL}images/companies/{$_all_data[$i].congty_id}/{$_all_data[$i].congty_logo}" title="{$_all_data[$i].congty_name}" style="max-width: 100%;" />
+					<a href="{$BASE_URL}contacts/id/{$_all_data[$i].congty_id}"><img src="{$MEDIA_URL}images/companies/{$_all_data[$i].congty_id}/{$_all_data[$i].congty_logo}" title="{$_all_data[$i].congty_name}" style="max-width: 100%;" /></a>
 				</div>
 			</div>
 		</div>
 		{else}
 			<div class="col-sm-3">
 				<div class="relative">
-					<img src="{$MEDIA_URL}images/companies/{$_all_data[$i].congty_id}/{$_all_data[$i].congty_anhvp}" title="{$_all_data[$i].congty_name}" style="max-width: 100%;" />
+					<a href="{$BASE_URL}contacts/id/{$_all_data[$i].congty_id}"><img src="{$MEDIA_URL}images/companies/{$_all_data[$i].congty_id}/{$_all_data[$i].congty_anhvp}" title="{$_all_data[$i].congty_name}" style="max-width: 100%;" /></a>
 					<div class="information">
 						<div class="col-sm-4 company-type"><i class="glyphicon glyphicon-home"></i>{$_all_data[$i].nganh_name}</div>
 						<div class="col-sm-4 company-count"><i class="glyphicon glyphicon-user"></i>{$_all_data[$i].congty_size} người</div>
@@ -56,7 +56,7 @@
 					<p class="sologan" style="text-overflow: ellipsis; ">{$_all_data[$i].congty_sologan}</p>
 				</div>
 				<div class="col-sm-3 col-left">
-					<img src="{$MEDIA_URL}images/companies/{$_all_data[$i].congty_id}/{$_all_data[$i].congty_logo}" title="{$_all_data[$i].congty_name}" style="max-width: 100%;" />
+					<a href="{$BASE_URL}contacts/id/{$_all_data[$i].congty_id}"><img src="{$MEDIA_URL}images/companies/{$_all_data[$i].congty_id}/{$_all_data[$i].congty_logo}" title="{$_all_data[$i].congty_name}" style="max-width: 100%;" /></a>
 				</div>
 			</div>
 		{/if}

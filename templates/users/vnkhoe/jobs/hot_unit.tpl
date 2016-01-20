@@ -7,7 +7,7 @@
 		{if (($i)%4)==0}
 		<div class="row">
 			<div class="col-sm-3">
-				<img src="{$MEDIA_URL}images/companies/{$_hot_data[$i].congty_id}/{$_hot_data[$i].congty_anhvp}" title="{$_hot_data[$i].congty_name}" style="max-width: 100%;" />
+				<a href="{$BASE_URL}contacts/id/{$_hot_data[$i].congty_id}"><img src="{$MEDIA_URL}images/companies/{$_hot_data[$i].congty_id}/{$_hot_data[$i].congty_anhvp}" title="{$_hot_data[$i].congty_name}" style="max-width: 100%;" /></a>
 				<h3 class="title"><a href="{$BASE_URL}contacts/id/{$_hot_data[$i].congty_id}">{$_hot_data[$i].congty_name}</a></h3>
 				<h3 class="job-type" style="text-overflow: ellipsis; "><a href="{$BASE_URL}jobs/id/{$_hot_data[$i].vieclam_id}">{$_hot_data[$i].congty_name}</a></h3>
 				<div class="bottom row">
@@ -18,7 +18,7 @@
 			</div>
 		{elseif (($i%4==3)|| $i+1==$count)}
 			<div class="col-sm-3">
-				<img src="{$MEDIA_URL}images/companies/{$_hot_data[$i].congty_id}/{$_hot_data[$i].congty_anhvp}" title="{$_hot_data[$i].congty_name}" style="max-width: 100%;" />
+				<a href="{$BASE_URL}contacts/id/{$_hot_data[$i].congty_id}"><img src="{$MEDIA_URL}images/companies/{$_hot_data[$i].congty_id}/{$_hot_data[$i].congty_anhvp}" title="{$_hot_data[$i].congty_name}" style="max-width: 100%;" /></a>
 				<h3 class="title"><a href="{$BASE_URL}contacts/id/{$_hot_data[$i].congty_id}">{$_hot_data[$i].congty_name}</a></h3>
 				<h3 class="job-type" style="text-overflow: ellipsis; "><a href="{$BASE_URL}jobs/id/{$_hot_data[$i].vieclam_id}">{$_hot_data[$i].congty_name}</a></h3>
 				<div class="bottom row">
@@ -30,7 +30,7 @@
 		</div>
 		{else}
 			<div class="col-sm-3">
-				<img src="{$MEDIA_URL}images/companies/{$_hot_data[$i].congty_id}/{$_hot_data[$i].congty_anhvp}" title="{$_hot_data[$i].congty_name}" style="max-width: 100%;" />
+				<a href="{$BASE_URL}contacts/id/{$_hot_data[$i].congty_id}"><img src="{$MEDIA_URL}images/companies/{$_hot_data[$i].congty_id}/{$_hot_data[$i].congty_anhvp}" title="{$_hot_data[$i].congty_name}" style="max-width: 100%;" /></a>
 				<h3 class="title"><a href="{$BASE_URL}contacts/id/{$_hot_data[$i].congty_id}">{$_hot_data[$i].congty_name}</a></h3>
 				<h3 class="job-type" style="text-overflow: ellipsis; "><a href="{$BASE_URL}jobs/id/{$_hot_data[$i].vieclam_id}">{$_hot_data[$i].congty_name}</a></h3>
 				<div class="bottom row">

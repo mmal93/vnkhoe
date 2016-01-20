@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <partner name="partner-section">
-	<class_name>brands</class_name>
+	<class_name>partner</class_name>
 	<title>Đối tác tiêu biểu</title>
 	<rows>
 		<class_name>brands-row-2</class_name>

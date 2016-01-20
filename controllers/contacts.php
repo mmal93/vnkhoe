@@ -9,28 +9,28 @@ class Contacts extends Controller {
     {
 		$this->view->showBodyClass('contact-page');
 		$this->view->loadPageConfig('contact');
-		$this->view->show_header_banner();
+		//$this->view->show_header_banner();
         $this->view->showHeader();
-		$this->view->showTemplate('contacts/main_start.tpl');
+		$this->view->mainStart('contact-page container-fluid');
 		$top_slider_data = $this->model->getSlideContacts();
 		if($top_slider_data) {
 			$this->view->assign('_data', $top_slider_data);
-			$this->view->showTemplate('contacts/top_slider.tpl');
+			$this->view->showTemplate('contacts/top_slider');
 		}
 		$hot_data = $this->model->getHotContacts();
 		if($hot_data) {
 			$this->view->assign('_hot_data', $hot_data);
-			$this->view->showTemplate('contacts/hot_unit.tpl');
+			$this->view->showTemplate('contacts/hot_unit');
 		}
 		$new_data = $this->model->getHotContacts();
 		if($new_data) {
 			$this->view->assign('_new_data', $hot_data);
-			$this->view->showTemplate('contacts/new_unit.tpl');
+			$this->view->showTemplate('contacts/new_unit');
 		}
 		$category_data = $this->model->getCategories();
 		if($category_data) {
 			$this->view->assign('_categories', $category_data);
-			$this->view->showTemplate('contacts/category_unit.tpl');
+			$this->view->showTemplate('contacts/category_unit');
 		}
 		$this->view->mainEnd();
         $this->view->showFooter();
@@ -46,7 +46,7 @@ class Contacts extends Controller {
 		if($_form_data) {
 			$this->view->assign('_form_data', $_form_data);
 		}
-		$this->view->showTemplate('contacts/form.tpl');
+		$this->view->showTemplate('contacts/form');
 		
 		$id = $this->getParam('id');
 		$data = $this->model->getSearchData();

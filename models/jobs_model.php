@@ -7,7 +7,7 @@ class Jobs_Model extends Model
     }
 	
 	public function getSlideContacts() {
-		$sth = $this->db->prepare("SELECT tbl_vieclam.vieclam_id, vieclam_ten, tbl_vieclam.congty_id, tbl_congty.congty_name, tbl_cauhinh_nganh.nganh_name, congty_anhvp 
+		$sth = $this->db->prepare("SELECT tbl_vieclam.vieclam_id, vieclam_ten, vieclam_anhvp, tbl_vieclam.congty_id, tbl_congty.congty_name, tbl_cauhinh_nganh.nganh_name, congty_anhvp 
 			from tbl_vieclam, tbl_congty, tbl_cauhinh_nganh 
 			Where tbl_vieclam.congty_id = tbl_congty.congty_id and tbl_vieclam.vieclam_nganh = tbl_cauhinh_nganh.nganh_id 
 			limit 10");
@@ -27,6 +27,7 @@ class Jobs_Model extends Model
 			tbl_congty.congty_id, 
 			tbl_vieclam.congty_name, 
 			tbl_vieclam.vieclam_ten, 
+			vieclam_anhvp, 
 			tbl_congty.congty_logo, 
 			congty_anhvp, 
 			congty_sologan, 
@@ -66,6 +67,7 @@ class Jobs_Model extends Model
 			tbl_congty.congty_id, 
 			tbl_vieclam.congty_name, 
 			tbl_vieclam.vieclam_ten, 
+			vieclam_anhvp, 
 			tbl_congty.congty_logo, 
 			congty_anhvp, 
 			congty_sologan, 
@@ -227,14 +229,14 @@ class Jobs_Model extends Model
 	
 	public function getAllDetailData($_limit = 0) {
 		if($_limit!=0) {
-			$sth = $this->db->prepare("SELECT tbl_congty.*, tbl_cauhinh_diadiem.diadiem as dia_diem, tbl_cauhinh_nganh.nganh_name 
+			$sth = $this->db->prepare("SELECT tbl_congty.*, tbl_vieclam.*, tbl_cauhinh_diadiem.diadiem as dia_diem, tbl_cauhinh_nganh.nganh_name 
 			FROM tbl_congty, tbl_cauhinh_diadiem, tbl_cauhinh_nganh 
-			Where tbl_congty.congty_diadiem = tbl_cauhinh_diadiem.id and tbl_congty.congty_nganh = tbl_cauhinh_nganh.nganh_id 
+			Where tbl_congty.congty_diadiem = tbl_cauhinh_diadiem.id and tbl_congty.congty_nganh = tbl_cauhinh_nganh.nganh_id and tbl_congty.congty_id = tbl_vieclam.congty_id 
 			Order By congty_ngaydangky DESC limit ".$_limit);
 		} else {
-			$sth = $this->db->prepare("SELECT tbl_congty.*, tbl_cauhinh_diadiem.diadiem as dia_diem, tbl_cauhinh_nganh.nganh_name 
-			FROM tbl_congty, tbl_cauhinh_diadiem, tbl_cauhinh_nganh 
-			Where tbl_congty.congty_diadiem = tbl_cauhinh_diadiem.id and tbl_congty.congty_nganh = tbl_cauhinh_nganh.nganh_id 
+			$sth = $this->db->prepare("SELECT tbl_congty.*, tbl_vieclam.*, tbl_cauhinh_diadiem.diadiem as dia_diem, tbl_cauhinh_nganh.nganh_name 
+			FROM tbl_congty, tbl_cauhinh_diadiem, tbl_cauhinh_nganh, tbl_vieclam 
+			Where tbl_congty.congty_diadiem = tbl_cauhinh_diadiem.id and tbl_congty.congty_nganh = tbl_cauhinh_nganh.nganh_id and tbl_congty.congty_id = tbl_vieclam.congty_id 
 			Order By congty_ngaydangky DESC");
 		}
         $sth->execute();
@@ -243,8 +245,8 @@ class Jobs_Model extends Model
         if ($count > 0) {
 			$return = array();
 			foreach($data as $item) {
-				if(strlen($item['congty_sologan']) >= 120) {
-					$item['congty_sologan'] = $this->readMore($item['congty_sologan'], 120);
+				if(strlen($item['vieclam_gioithieu']) >= 120) {
+					$item['vieclam_gioithieu'] = $this->readMore($item['vieclam_gioithieu'], 120);
 				}
 				$return[] = $item;
 			}

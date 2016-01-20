@@ -4,7 +4,9 @@ class Controller {
 
     function __construct() {
         //Main controller
+		Session::init();
         $this->view = new View();
+		$this->view->assign('CURRENT_URL', $this->getCurrentPageURL());
     }
     
     /**

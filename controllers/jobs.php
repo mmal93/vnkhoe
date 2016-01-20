@@ -9,7 +9,7 @@ class Jobs extends Controller {
     {
 		$this->view->showBodyClass('job-page');
 		$this->view->loadPageConfig('job');
-		$this->view->show_header_banner();
+		//$this->view->show_header_banner();
         $this->view->showHeader();
 		$this->view->mainStart('container-fluid');
 		$top_slider_data = $this->model->getSlideContacts();

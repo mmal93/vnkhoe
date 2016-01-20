@@ -94,27 +94,33 @@
 		</div>
 		{/if}
 	</div>
-	<div class="author-bottom">
-		<nav id="author-top-nav">
-			<li class="item level-0"><a href="#">Sống khỏe</a></li>
-			<li class="item level-0"><a href="#">Nha khoa</a></li>
-			<li class="item level-0"><a href="#">Bệnh</a></li>
-			<li class="item level-0"><a href="#">Làm đẹp</a></li>
-			<li class="item level-0"><a href="#">Rau - củ - quả</a></li>
-			<li class="item level-0"><a href="#">Mẹ và bé</a></li>
+	<div class="author-bottom container-fluid">
+		<nav id="author-top-nav" class="row">
+			<ul class="col-sm-12">
+				<li class="item level-0"><a href="#">Sống khỏe</a></li>
+				<li class="item level-0"><a href="#">Nha khoa</a></li>
+				<li class="item level-0"><a href="#">Bệnh</a></li>
+				<li class="item level-0"><a href="#">Làm đẹp</a></li>
+				<li class="item level-0"><a href="#">Rau - củ - quả</a></li>
+				<li class="item level-0"><a href="#">Mẹ và bé</a></li>
+			</ul>
 		</nav>
-		<div class="top-author-message" class="relative">
-			<div class="close">
-				<i class="fa fa-close"></i>
+		<div class="top-author-message row">
+			<div class="inner relative col-sm-12">
+				<div class="close">
+					<i class="fa fa-close"></i>
+				</div>
+				<h6 class="title">Chương trình đào tạo của chúng tôi có thể giúp bạn <a href="#" class="author-goto">Đi đến</a></h6>
 			</div>
-			<h6 class="title">Chương trình đào tạo của chúng tôi có thể giúp bạn <a href="#" class="author-goto">Đi đến</a></h6>
 		</div>
 		<div class="row author-info">
 			<div class="col-sm-5 author-name">
-				<h1 class="title">{$_author_data[0].author_name}</h1>
-				<h6 class="login"><a href="{$BASE_URL}account/login/">Đăng nhập</a></h6>
+				<div class="center">
+					<h1 class="title">{$_author_data[0].author_name}</h1>
+					<h6 class="login"><a href="{$BASE_URL}account/login/">Đăng nhập</a></h6>
+				</div>
 			</div>
-			<div class="col-sm-2 author-logo"><img src="{$BASE_URL}{$_author_data[0].author_logo}" title="{$_author_data[0].author_name}" /></div>
+			<div class="col-sm-2 author-logo"><img src="{$MEDIA_URL}{$_author_data[0].author_logo}" title="{$_author_data[0].author_name}" /></div>
 			<div class="col-sm-5 author-description"><h6>{$_author_data[0].author_description}</h6></div>
 		</div>
 	</div>

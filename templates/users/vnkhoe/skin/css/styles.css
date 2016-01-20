@@ -120,9 +120,9 @@ input[type="submit"], button {
 input[type="text"], input[type="submit"], input[type="password"], input[type="submit"], input[type="email"], input[type="tel"], textarea {
 	border: 1px solid #ddd;
 	border-radius: 3px;
-    padding: 9px;
-    color: #000;
-    font-size: 14px;
+	padding: 9px;
+	color: #000;
+	font-size: 14px;
 }
 
 input[type="submit"], input[type="reset"], button {
@@ -131,6 +131,10 @@ input[type="submit"], input[type="reset"], button {
     background-color: #1a83c3;
     color: #fff;
     padding: 10px;
+}
+
+input[type="submit"]:hover, input[type="reset"]:hover, button:hover {
+	background-color: #FA4633;
 }
 
 li {
@@ -195,6 +199,64 @@ section:before, section:after {
 	clear: both;
 }
 
+.hllm-error-box {
+    border: 1px solid #C83D7A;
+    padding: 5px;
+    border-radius: 2px;
+    background-color: rgba(198, 189, 182, 0.27);
+}
+
+.hllm-success-box {
+    background-color: rgb(205, 253, 11);
+    border: 1px solid rgba(0, 0, 255, 0.31);
+}
+
+.hllm-error-box .item, .hllm-success-box .item {
+    color: #f00;
+    display: list-item;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px;
+    margin: 2px 0;
+}
+
+.hllm-error-box .item strong, .hllm-success-box .item strong, .hllm-error-box .item b, .hllm-success-box .item b , .hllm-error-box .item strong *, .hllm-success-box .item strong *, .hllm-error-box .item b *, .hllm-success-box .item b *{
+	font-weight: 900;
+}
+
+.hllm-success-box .item {
+    color: #1863D6;
+}
+
+.hllm-error-box .item i.fa {
+    color: #00f;
+    padding-right: 5px;
+}
+
+.hllm-success-box .item i.fa {
+    /* color: fff; */
+}
+
+.login-button{
+	background-color: #1a83c3;
+	border-radius: 3px;
+	border: none;
+	color: rgb(255, 255, 255);
+	cursor: pointer;
+	font-size: 16px;
+	line-height: 16px;
+	padding: 9px 15px;
+	text-align: center;
+	text-decoration: none;
+}
+
+.login-button.btn {
+	color: #fff;
+}
+
+.login-button:hover {
+	background-color: #FA4633;
+}
 /**/
 
 /*header*/
@@ -209,6 +271,7 @@ section:before, section:after {
     clear: both;
     overflow: hidden;
     min-height: 120px;
+    margin-top: -113px;
 }
 
 #header-banner .bx-wrapper, #header-banner .header-slider .bx-wrapper {
@@ -220,22 +283,14 @@ section:before, section:after {
 }
 
 #top-header {
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.3);
+	padding-left: 0;
+	padding-right: 0;
+}
 
-width: 100%;
-
-background-color: rgba(0, 0, 0, 0.3);
-
-padding-left: 0;
-
-padding-right: 0;
-
-position: fixed;
-
-top: 0;
-
-z-index: 9999;
-
-overflow: hidden;
+.top-logo .logo {
+    max-width: 250px;
 }
 
 #top-header .top-logo a {
@@ -247,10 +302,8 @@ overflow: hidden;
 }
 
 .top-nav {
-    
-padding-top: 10px;
-    
-padding-right: 30px;
+	padding-top: 10px;
+	padding-right: 30px;
 }
 
 .top-nav #nav {
@@ -261,7 +314,7 @@ padding-right: 30px;
 }
 
 nav {
-
+	
 }
 
 #nav li {
@@ -302,8 +355,24 @@ nav {
     text-transform: uppercase;
 }
 
-.top-right-section input, .top-right-section button, .top-right-section a {
-    vertical-align: top;
+.top-right-section .account-toggle {
+    background-color: #fff;
+    padding: 10px;
+    display: none;
+    overflow: hidden;
+}
+
+.top-right-section .account-toggle a {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    text-align: center;
+}
+
+.top-right-section .account-toggle button {
+    width: 100%;
 }
 
 .top-right-section input[type="search"] {
@@ -341,14 +410,14 @@ nav {
     display: block;
 }
 
-.top-right-section .login-toggle-button, .top-right-section .top-logout-button {
+.top-right-section .top-logout-button {
     border: none;
-    background-color: #fa4633;
-    color: #fff;
+    background-color: #1a83c3;
+    /* color: #fff; */
     padding: 10px;
     margin-top: 5px;
-    margin-left: 10px;
-    margin-right: 10px;
+    /* margin-left: 10px; */
+    /* margin-right: 10px; */
 }
 
 .top-right-section a.top-register-link, .top-right-section a.top-account-link, .top-right-section a.hiring {
@@ -356,6 +425,11 @@ nav {
     font-weight: bold;
     display: inline-block;
     padding: 0;
+}
+
+.top-account-button-toggle {
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 .top-right-section a.top-register-link {
@@ -384,7 +458,7 @@ nav {
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 9999;
+    z-index: 9;
 }
 
 #top-search .inner-search {
@@ -478,7 +552,7 @@ clear: both;
     max-height: 415px;
 }
 
-.bx-wrapper .bx-viewport{
+#header .bx-wrapper .bx-viewport{
     border: none !important;
     height: 450px;
     box-shadow: none;
@@ -545,7 +619,10 @@ clear: both;
     color: #fff;
 }
 
-.col-sm-7, .col-sm-5 {padding-left: 0 !important;padding-right: 0 !important;}
+.col-sm-7, .col-sm-5 {
+    /* padding-left: 0 !important; */
+    /* padding-right: 0 !important; */
+}
 
 #footer .footer-title {
     font-size: 20px;
@@ -704,40 +781,6 @@ clear: both;
     margin-left: -1px;
 }/*end 404 page*/
 
-/*login page*/
-.login-page .main-login {
-    max-width: 380px;
-    margin: auto;
-}
-
-.login-page h1 {
-    font-size: 18px;
-    padding: 10px 0;
-    font-weight: bold;
-}
-
-#login-form li {
-    padding: 10px 0;
-}
-
-#login-form label {
-    font-size: 14px;
-    font-weight: normal;
-    min-width: 30%;
-}
-
-#login-form input {
-    border: 1px solid #ddd;
-    padding: 5px;
-}
-
-#login-form input[type="text"], #login-form input[type="password"] {min-width: 70%;}
-
-#login-form input[type="submit"] {
-}
-
-/*end login page*/
-
 /*home page*/
 main section.advertisment {
     margin-top: 25px;
@@ -747,7 +790,7 @@ section .section-title {
     text-align: center;
 }
 
-section .section-title h2 {
+section .section-title h2, section .section-title h1 {
     font-size: 30px;
     color: #35273c;
     display: inline-block;
@@ -756,7 +799,7 @@ section .section-title h2 {
     padding-top: 10px;
 }
 
-section .section-title h2:after {
+section .section-title h2:after, section .section-title h1:after {
     content: '';
     display: block;
     height: 1px;
@@ -842,6 +885,16 @@ section.brands {
     padding: 25px 0;
     margin-left: -10px;
     margin-right: -10px;
+}
+
+section.partner .section-col {
+    padding: 5px;
+}
+
+section.partner .section-col a {
+    display: block;
+    padding: 5px;
+    border: 1px solid #ddd;
 }
 
 section.information .inner {
@@ -954,6 +1007,10 @@ section.bottom-link .section-title h2 {
 /*register page*/
 #register-form li {
     margin: 10px 0;
+}
+
+#register-form .hllm-error-box li, .hllm-success-box li {
+    margin: 2px 0;
 }
 
 #register-form label.required {
@@ -1117,7 +1174,6 @@ section .title, section .title a {
 }
 
 .hiring-page #banner {
-    margin-top: 145px;
     margin-bottom: 200px;
     text-align: center;
     border-bottom: 3px solid #0f0;
@@ -1199,21 +1255,24 @@ section .title, section .title a {
 }
 
 /*jobs article*/
-#detail-job-article-section, detail-healthy-section {
+#detail-job-article-section, #detail-healthy-section {
     margin-top: 30px;
     margin-bottom: 20px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-#new-job-article-section .col-new {
-    padding-top: 10px;
-	padding-bottom: 10px;
+#new-job-article-section .col-new, #author-article-section .col-item {
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
-#new-job-article-section .col-new:nth-child(3n) {
+#new-job-article-section .col-new:nth-child(3n), #uthor-article-section .col-item:nth-child(3n), #author-article-section .col-item:nth-child(3n) {
     clear: right;
 }
 
-#new-job-article-section .col-new:nth-child(3n+1) {
+#new-job-article-section .col-new:nth-child(3n+1), #uthor-article-section .col-item:nth-child(3n+1), #author-article-section .col-item:nth-child(3n+1) {
     clear: left;
 }
 
@@ -1227,11 +1286,17 @@ section .title, section .title a {
     padding: 0;
 }
 
-#new-job-article-section img {
+.col-new .title, .col-item .title {
+    margin-top: 0;
+    margin-bottom: 0;
+    clear: both;
+}
+
+#new-job-article-section img, #author-article-section .col-item img {
     width: 100%;
 }
 
-#new-job-article-section a.detail {
+#new-job-article-section a.detail, #author-article-section .detail {
     background-color: #7ED282;
     padding:  5px 12px;
     color: #fff;
@@ -1544,7 +1609,13 @@ background-color: #1a83c3;
     line-height: 1.7;
 }
 
-#detail-healthy-section .right, #detail-job-article-section .right {}
+#detail-healthy-section .right, #detail-job-article-section .right {
+    padding-left: 0;
+}
+
+#detail-healthy-section .left, #detail-job-article-section .left {
+    padding-right: 2px;
+}
 
 #detail-healthy-section .right .right-social, #detail-job-article-section .right .right-social {
     display: -webkit-inline-box;
@@ -1555,9 +1626,19 @@ background-color: #1a83c3;
     cursor: pointer;
 }
 
+#detail-healthy-section .right .right-social:hover, #detail-job-article-section .right .right-social:hover {
+    background-color: #fa4633;
+}
+
 #detail-healthy-section .right .like, #detail-job-article-section .right .like {
     border: 1px solid #ffbaaf;
     color: #ff8b6e;
+}
+
+#detail-healthy-section .right .like:hover, #detail-job-article-section .right .like:hover {
+    border-color: #1a83c3;
+    background-color: #1a83c3;
+    color: #fff;
 }
 
 #related-article-section .relative {
@@ -1578,6 +1659,10 @@ background-color: #1a83c3;
 #related-article-section .relative h4 a {
     color: #fff;
     font-weight: normal;
+}
+
+#related-article-section .relative h4 a:hover {
+    text-decoration: none;
 }
 
 #detail-healthy-section .right .facebook, #detail-healthy-section .right .linkedin, #detail-healthy-section .right .twitter, #detail-healthy-section .right .mail,
@@ -1601,9 +1686,9 @@ margin-top: 113px;
 #author-top-nav {
     background-color: #4f4f4f;
     padding: 7px 0;
-    width: 100%;
+    /* width: 100%; */
     text-align: center;
-    margin: auto;
+    /* margin: auto; */
 }
 
 #author-top-nav li {
@@ -1661,12 +1746,92 @@ margin-top: 113px;
 #header .author-info {
     background-color: #54bad6;
 }
+
+#header .author-info .author-name, #header .author-info .author-logo, #header .author-info .author-description {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#header .author-info .author-logo {
+    text-align: center;
+}
+
+#header .author-info .author-name, #header .author-info .author-description {
+    max-width: 450px;
+    min-height: 157px;
+}
+
+#header .author-info .author-name .center {
+    display: inline-block;
+    float: right;
+}
+
+#header .author-info .author-name .title {
+    text-shadow: -2px 2px 2px #fff;
+    font-weight: 300;
+    font-size: 36px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#header .author-info .author-description h6 {
+    line-height: 1.4;
+    font-size: 16px;
+    font-weight: 300;
+    color: #fff;
+}
+
+
 /*end authors page*/
+
+/*account page */
+#main-register, #main-login {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/*login page*/
+#login-form li {
+    padding: 5px 0;
+}
+
+#login-form label {
+    font-size: 14px;
+    font-weight: normal;
+    min-width: 30%;
+}
+
+#login-form input[type="text"], #login-form input[type="password"] {
+	min-width: 70%;
+}
+
+#login-form input[type="submit"] {
+}
+
+/*end login page*/
+/*end account page */
+
 /*Responsive*/
 @media only screen and (min-width: 992px) {
 	.col-5 {
 		max-width: 20%;
 		width: 20%;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	body {
+		padding-top: 113px;
+	}
+	#top-header {
+		position: fixed;
+		top: 0;
+		z-index: 9999;
+		overflow: hidden;
 	}
 }
 /*End Responsive*/

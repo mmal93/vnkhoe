@@ -8,7 +8,7 @@ class Tu_van_nghe_nghiep extends Controller {
     public function index() 
     {
 		$this->view->loadPageConfig('index');
-		$this->view->show_header_banner();
+		//$this->view->show_header_banner();
 		$this->view->showHeader();
 		$this->view->mainStart('container-fluid');
 		$data = $this->model->getData();
@@ -17,14 +17,14 @@ class Tu_van_nghe_nghiep extends Controller {
 			$this->view->showTemplate('tu_van_nghe_nghiep'.DS.'new_unit');
 		}
 		
-		$this->view->showPartner();
+		//$this->view->showPartner();
 		$this->view->mainEnd();
 		$this->view->showFooter();
     }
 	
 	public function id() {
 		$this->view->loadPageConfig('index');
-		$this->view->show_header_banner();
+		//$this->view->show_header_banner();
 		$this->view->showHeader();
 		$this->view->mainStart('container-fluid');
 		$_id = $this->getParam('id');
@@ -36,7 +36,7 @@ class Tu_van_nghe_nghiep extends Controller {
 				$_name = $_detail_data[0]['name_vi'];
 				$_name_arr = preg_split("/[\s,]+/", $_name);
 				$_name_arr = array_unique($_name_arr);
-				$_related = $this->model->getRelatedData($_id, $_name_arr, 5);
+				$_related = $this->model->getRelatedData($_id, $_name_arr, 10);
 				if($_related) {
 					$this->view->assign('_related', $_related);
 					$this->view->showTemplate('tu_van_nghe_nghiep/related_unit');
@@ -48,7 +48,7 @@ class Tu_van_nghe_nghiep extends Controller {
 		} else {
 			echo 'Không tìm thấy nội dung!';
 		}
-		$this->view->showPartner();
+		//$this->view->showPartner();
 		$this->view->mainEnd();
 		$this->view->showFooter();
 	}

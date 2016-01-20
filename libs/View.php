@@ -96,8 +96,11 @@ class View extends Smarty{
 	public function showHeader($header_file_name = 'header.tpl') {
 		if(file_exists(USER_TEMPLATE_DIR.$header_file_name)) {
 			$this->display(USER_TEMPLATE_DIR.$header_file_name);
-			//$this->display(USER_TEMPLATE_DIR.$header_file_name);
 		}
+	}
+	
+	public function showTopSearch() {
+		$this->assign('_top_search', true);
 	}
 	
 	public function showFooter($footer_file_name = 'footer.tpl') {

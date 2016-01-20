@@ -36,7 +36,7 @@
 		</div>
 		<div class="col-sm-3 dich-vu-cong-them-block">
 			<div class="inner">
-				<h3 class="title">BASIC</h3>
+				<h3 class="title">EXTRA</h3>
 				<div class="description">
 					Đăng tuyển trên web tuyển dụng số #1 Việt Nam
 				</div>
@@ -61,7 +61,7 @@
 		</div>
 		<div class="col-sm-3 gui-don-hang-block">
 			<div class="inner">
-				<h3 class="title">BASIC</h3>
+				<h3 class="title">POWER</h3>
 				<div class="description">
 					Đăng tuyển trên web tuyển dụng số #1 Việt Nam
 				</div>
@@ -86,7 +86,7 @@
 		</div>
 		<div class="col-sm-3 gui-don-hang-block">
 			<div class="inner">
-				<h3 class="title">BASIC</h3>
+				<h3 class="title">SUPER</h3>
 				<div class="description">
 					Đăng tuyển trên web tuyển dụng số #1 Việt Nam
 				</div>

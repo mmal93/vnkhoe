@@ -16,16 +16,29 @@ jQuery(document).ready(function(){
 		captions: true,
 		hideControlOnEnd: true
     });
-	//login toggle
-	jQuery('.login-toggle-button').click(function() {
-		if(jQuery('.login-toggle-button').hasClass('active')) {
-			jQuery('.login-toggle-button').removeClass('active');
-			jQuery('.top-login-section').stop().slideUp('slow');
+	
+	//top account toggle
+	jQuery('.top-right-section .top-account-button-toggle').click(function() {
+		if(jQuery(this).hasClass('active')) {
+			jQuery('.top-right-section .account-toggle').slideUp('500');
+			jQuery(this).removeClass('active');
 		} else {
-			jQuery('.login-toggle-button').addClass('active');
-			jQuery('.top-login-section').stop().slideDown('slow');
+			jQuery('.top-right-section .account-toggle').slideDown('500');
+			jQuery(this).addClass('active');
 		}
 	});
+	
+	
+	//login toggle
+	// jQuery('.login-toggle-button').click(function() {
+		// if(jQuery('.login-toggle-button').hasClass('active')) {
+			// jQuery('.login-toggle-button').removeClass('active');
+			// jQuery('.top-login-section').stop().slideUp('slow');
+		// } else {
+			// jQuery('.login-toggle-button').addClass('active');
+			// jQuery('.top-login-section').stop().slideDown('slow');
+		// }
+	// });
 	
 	//logout toggle
 	jQuery('.top-logout-button').click(function() {
@@ -58,36 +71,36 @@ jQuery(document).ready(function(){
 	});
 	
 	//submit login form
-	jQuery("#top-login-form").submit(function(){
-		jQuery('#top-login-form .message').slideDown().html('<span class="checking">Đang kiểm tra...</span>');
-		var data = {
-			"action": 'check_login'
-		};
-		data = jQuery(this).serialize() + "&" + jQuery.param(data);
-		jQuery.ajax({
-			type: "POST",
-			dataType: "json",
-			url: "http://localhost/vnkhoe/controllers/ajax/index.php",
-			data: data,
-			success: function(data) {
-				if(data["is_member"] == false) {
-					jQuery('#top-login-form .message').html('<span class="error">Tài khoản <strong>' + data["email"] + '</strong> không tồn tại!</span>');
-				} else {
-					if(data["login"] == false) {
-						jQuery('#top-login-form .message').html('<span class="error">Mật khẩu đăng nhập không đúng!</span>');
-					} else {
-						jQuery('#top-login-form .message').html('<span class="success">Cảm ơn bạn <strong>' + data["firstname"] + ' ' + data['lastname'] + '</strong> đã đến với vnkhoe!</span>');
-						jQuery('.login-toggle-button').html('Đăng xuất');
+	// jQuery("#top-login-form").submit(function(){
+		// jQuery('#top-login-form .message').slideDown().html('<span class="checking">Đang kiểm tra...</span>');
+		// var data = {
+			// "action": 'check_login'
+		// };
+		// data = jQuery(this).serialize() + "&" + jQuery.param(data);
+		// jQuery.ajax({
+			// type: "POST",
+			// dataType: "json",
+			// url: "http://localhost/vnkhoe/controllers/ajax/index.php",
+			// data: data,
+			// success: function(data) {
+				// if(data["is_member"] == false) {
+					// jQuery('#top-login-form .message').html('<span class="error">Tài khoản <strong>' + data["email"] + '</strong> không tồn tại!</span>');
+				// } else {
+					// if(data["login"] == false) {
+						// jQuery('#top-login-form .message').html('<span class="error">Mật khẩu đăng nhập không đúng!</span>');
+					// } else {
+						// jQuery('#top-login-form .message').html('<span class="success">Cảm ơn bạn <strong>' + data["firstname"] + ' ' + data['lastname'] + '</strong> đã đến với vnkhoe!</span>');
+						// jQuery('.login-toggle-button').html('Đăng xuất');
 						
-						jQuery('.login-toggle-button').removeClass('active');
-						jQuery('.top-login-section').stop().delay(1000).slideUp('slow').delay(1000);
-						close = setTimeout(top_login_form_close, 2000);
-					}
-				}
-			}
-		});
-		return false;
-	});
+						// jQuery('.login-toggle-button').removeClass('active');
+						// jQuery('.top-login-section').stop().delay(1000).slideUp('slow').delay(1000);
+						// close = setTimeout(top_login_form_close, 2000);
+					// }
+				// }
+			// }
+		// });
+		// return false;
+	// });
 	
 	//popup
 	
@@ -178,6 +191,7 @@ function hllm_body_popup_resize(){
 }
 
 jQuery(document).ready(function(){
+	//slider of every top-slider id
 	jQuery('#top-slider .inner-slider').bxSlider({
 		auto: true,
 		pause: 3000,
@@ -189,6 +203,20 @@ jQuery(document).ready(function(){
 		slideMargin: 0,
 		preloadImages: 'all',
 	});
+	
+	//related article section slider
+	jQuery('#related-article-section .inner-slider').bxSlider({
+		auto: true,
+		pause: 3000,
+		minSlides: 5,
+		maxSlides: 5,
+		slideWidth: 480,
+		startSlides: 0,
+		moveSlides: 1,
+		slideMargin: 0,
+		preloadImages: 'all',
+	});
+	
 });
 /**/
 /* Medium and Above screens */
@@ -232,4 +260,16 @@ jQuery(window).on('orientationchange resize', function(){
 		productSlider.reloadSlider(slideSetup);
 
 	}, 500);
+});
+//social share popup in new window
+jQuery(document).on('click', '.social-share-popup', function() {
+	var w = 480;
+	var h = 470;
+	var w_w = screen.availWidth;
+	var w_h = screen.height;
+	if(w_w>w) {
+		var new_facebook_win = window.open(jQuery(this).attr('href'), "social-share-popup", "width=480px, height=470px, left="+(w_w-w)/2+"px, top="+(w_h-h)/2+"px");
+	} else {
+		var new_facebook_win = window.open(jQuery(this).attr('href'), "social-share-popup", "width=480px, height=470px, left=100px top = 80px");
+	}
 });

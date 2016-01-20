@@ -41,13 +41,8 @@ class Ajax extends Controller {
 		}
     }
     
-    function run()
-    {
-        $this->model->run();
-    }
-    
 	public function showLoginForm() {
-		$this->view->showTemplate('account'.DS.'login'.DS.'form.tpl');
+		$this->view->showTemplate('account'.DS.'login'.DS.'form');
 	}
 	
 	//Function to check if the request is an AJAX request
