@@ -237,7 +237,7 @@ section:before, section:after {
     /* color: fff; */
 }
 
-.login-button{
+.login-button, .register-button, .top-account-link.account-link-button {
 	background-color: #1a83c3;
 	border-radius: 3px;
 	border: none;
@@ -250,11 +250,11 @@ section:before, section:after {
 	text-decoration: none;
 }
 
-.login-button.btn {
+.login-button.btn , .register-button.btn{
 	color: #fff;
 }
 
-.login-button:hover {
+.login-button:hover, .register-button:hover, .top-right-section .top-logout-button:hover, .account-link-button:hover, .top-account-link.account-link-button:hover {
 	background-color: #FA4633;
 }
 /**/
@@ -425,6 +425,12 @@ nav {
     font-weight: bold;
     display: inline-block;
     padding: 0;
+}
+
+.top-right-section .top-account-link.account-link-button {
+	margin-top: 8px;
+	padding-top: 8px;
+	padding-bottom: 10px;
 }
 
 .top-account-button-toggle {
@@ -1814,6 +1820,73 @@ margin-top: 113px;
 
 /*end login page*/
 /*end account page */
+
+/*member - page*/
+body.member-page {
+    padding: 0;
+}
+
+.member-page .header-message {
+	background-color: #000;
+	min-height: 30px;
+	color: #fff;
+}
+
+body.member-page #top-header {
+	position: initial;
+}
+
+.member-page .top-banner {}
+
+.member-page .top-banner .content {
+    background-image: url('../images/member-header-banner.jpg');
+    min-height: 200px;
+    text-align: center;
+}
+
+.top-banner .content .title {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #000;
+    display: inline-block;
+    font-size: 36px;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 20px 40px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.member-page #main-dashboard {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.member-page #main-dashboard .member-menu-left, .member-page #main-dashboard .right-content {}
+
+.member-page #main-dashboard .member-menu-left {
+    padding: 0;
+}
+
+.member-page #main-dashboard .member-menu-left li {
+    background-color: rgba(0,0,0,0.5);
+    margin: 3px;
+    padding: 8px 20px;
+}
+
+.member-page #main-dashboard .member-menu-left li:hover {
+    background-color: rgba(0,0,0,0.1);
+}
+
+.member-page #main-dashboard .member-menu-left li * {
+    color: #fff;
+}
+
+.member-page #main-dashboard .member-menu-left li:hover * {
+    color: #00f;
+}
+/*end member - page*/
+
 
 /*Responsive*/
 @media only screen and (min-width: 992px) {

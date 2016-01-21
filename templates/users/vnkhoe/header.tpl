@@ -68,7 +68,7 @@
 					<li class="level-0"><a href="{$BASE_URL}tu_van_nghe_nghiep"><span>Tư vấn nghề nghiệp</span></a></li>
 					<li class="level-0"><a href="{$BASE_URL}tu_van_suc_khoe"><span>Tư vấn sức khỏe</span></a></li>
 				</nav>
-				{if isset($_session)&&(!empty($_session))}
+				{if isset($smarty.session.member_id)&&(!empty($smarty.session.member_id))}
 					{include file='account\\header_logout.tpl'}
 				{else}
 					{include file='account\\header_login.tpl'}

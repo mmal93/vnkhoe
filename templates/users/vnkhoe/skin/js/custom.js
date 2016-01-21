@@ -183,8 +183,8 @@ function hllm_body_popup_resize(){
 	}
 	var g_h = jQuery('#hllm-body-popup').height();
 	var w_h = jQuery(window).innerHeight();
-	if(g_h+160>w_h) {
-		jQuery('#hllm-body-popup').css('top', '80px');
+	if(g_h+200>w_h) {
+		jQuery('#hllm-body-popup').css('top', '120px');
 	} else {
 		jQuery('#hllm-body-popup').css('top', (w_h-g_h)/2);
 	}

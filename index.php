@@ -7,7 +7,7 @@ setlocale(LC_ALL, 'C.UTF-8', 'C');
 
 
 require 'app/config.php';
-require 'util/Auth.php';
+require 'libs/Auth.php';
 
 // Load the mainApp!
 $app = new mainApp();

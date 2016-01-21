@@ -84,25 +84,11 @@ class Account_Model extends Model
         $data = $sth->fetch();
 		$count =  $sth->rowCount();
         if ($count > 0) {
-            // login
-            Session::init();
-            Session::set('mebmer_id', $data['member_id']);
-            Session::set('member_email', $data['member_email']);
-            Session::set('member_firstname', $data['member_firstname']);
-            Session::set('member_lastname', $data['member_lastname']);
-            //Session::set('role', $data['tv_trangthai']);
-            Session::set('loggedIn', true);
-            //header('location: ../dashboard');
 			return $data;
         } else {
 			return false;
             //header('location: ./login');
         }
-	}
-	
-	public function logout() {
-		Session::destroy();
-		return true;
 	}
 	
 	

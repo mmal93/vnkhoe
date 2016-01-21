@@ -1,3 +1,4 @@
-<main>
-	<h1>Tài khoản của tôi</h1>
-</main>
+<section id="main-dashboard" class="row">
+	{include file='account\\dashboard\\left_menu.tpl'}
+	{include file='account\\dashboard\\right_index_content.tpl'}
+</secton>

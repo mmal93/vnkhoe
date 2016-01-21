@@ -6,7 +6,8 @@ class Controller {
         //Main controller
 		Session::init();
         $this->view = new View();
-		$this->view->assign('CURRENT_URL', $this->getCurrentPageURL());
+		$this->view->assign('CURRENT_URL', $this->getCurrentURL());
+		$this->view->assign('CURRENT_PAGE_URL', $this->getCurrentPageURL());
     }
     
     /**
@@ -27,6 +28,19 @@ class Controller {
     }
 	
 	function getCurrentPageURL() {
+		$currentURL = 'http';
+		if (!empty($_SERVER['HTTPS'])) {if($_SERVER['HTTPS'] == 'on'){$currentURL .= "s";}} 
+		$currentURL .= "://";
+		if ($_SERVER["SERVER_PORT"] != "80") {
+			$currentURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+		} else {
+			$currentURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+		}
+		$currentURL = preg_replace('/\?(.+)$/', '', $currentURL);
+		return $currentURL;
+	}
+	
+	function getCurrentURL() {
 		$pageURL = 'http';
 		if (!empty($_SERVER['HTTPS'])) {if($_SERVER['HTTPS'] == 'on'){$pageURL .= "s";}} 
 		$pageURL .= "://";

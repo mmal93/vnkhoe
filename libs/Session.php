@@ -22,7 +22,7 @@ class Session
     public static function destroy()
     {
         try{
-			unset($_SESSION);
+			//unset($_SESSION);
 			session_destroy();
 		} catch(Exception $e) {}
     }
