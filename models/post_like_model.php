@@ -9,7 +9,7 @@ class post_like_Model extends Model
 	
 	public function isset_member_job_like($membr_id, $job_id) {
 		try {
-			$sth = $this->db->prepare("SELECT id FROM tbl_member_like_job WHERE member_id = '".$membr_id."' and job_id = '".$job_id."'");
+			$sth = $this->db->prepare("SELECT id FROM tbl_member_like_job WHERE member_id = '".$membr_id."' and vieclam_id = '".$job_id."'");
 			$sth->execute();
 		} catch (PDOException $e) {
 			return false;
@@ -32,12 +32,12 @@ class post_like_Model extends Model
 				like_status = '".$_like."' 
 			WHERE 
 				member_id='".$member_id."' 
-				and job_id = '".$job_id."' 
+				and vieclam_id = '".$job_id."' 
 			";
 		} else {
 			$_sql = "INSERT INTO tbl_member_like_job(
 				member_id, 
-				job_id, 
+				vieclam_id, 
 				like_status 
 			)VALUES(
 				'".$member_id."', 

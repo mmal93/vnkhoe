@@ -77,20 +77,22 @@ class Contacts extends Controller {
 	
     function id() 
     {
-		$this->view->showBodyClass('job-page');
+		$this->view->showBodyClass('job-detail-page');
 		$this->view->loadPageConfig('job');
-		$this->view->show_header_banner();
+		//$this->view->show_header_banner();
         $this->view->showHeader();
-		$this->view->mainStart('container-fluid');
 		$_id = $this->getParam('id');
+		$_detail_data = null;
 		if($_id) {
 			$_detail_data = $this->model->getDetailData($_id);
 			if($_detail_data) {
 				$this->view->assign('_contact_data', $_detail_data);
-				$this->view->ShowTemplate('contacts/detail');
-			} else {
-				echo 'Không tìm thấy nội dung';
 			}
+		}
+		$this->view->showTemplate('contacts/secon_nav_detail');
+		$this->view->mainStart('container-fluid');
+		if($_detail_data) {
+			$this->view->ShowTemplate('contacts/detail');
 		} else {
 			echo 'Không tìm thấy nội dung!';
 		}
@@ -99,3 +101,4 @@ class Contacts extends Controller {
     }
 	
 }
+?>

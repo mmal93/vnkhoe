@@ -63,10 +63,10 @@
 					{if $root_config->nav->show_home_link==true}
 						<li class="level-0"><a class="home-link" href="{$BASE_URL}index.html"><span>{if $root_config->nav->text_link}{$root_config->nav->text_link}{else}Trang chủ{/if}</span></a></li>
 					{/if}
-					<li class="level-0"><a href="{$BASE_URL}contacts"><span>Danh bạ</span></a></li>
-					<li class="level-0"><a href="{$BASE_URL}jobs"><span>Việc làm</span></a></li>
-					<li class="level-0"><a href="{$BASE_URL}tu_van_nghe_nghiep"><span>Tư vấn nghề nghiệp</span></a></li>
-					<li class="level-0"><a href="{$BASE_URL}tu_van_suc_khoe"><span>Tư vấn sức khỏe</span></a></li>
+					<li class="level-0"><a href="{$BASE_URL}contacts.html"><span>Danh bạ</span></a></li>
+					<li class="level-0"><a href="{$BASE_URL}jobs.html"><span>Việc làm</span></a></li>
+					<li class="level-0"><a href="{$BASE_URL}tu_van_nghe_nghiep.html"><span>Tư vấn nghề nghiệp</span></a></li>
+					<li class="level-0"><a href="{$BASE_URL}tu_van_suc_khoe.html"><span>Tư vấn sức khỏe</span></a></li>
 				</nav>
 				{if isset($smarty.session.member_id)&&(!empty($smarty.session.member_id))}
 					{include file='account\\header_logout.tpl'}
@@ -81,10 +81,10 @@
 				{if $root_config->nav->show_home_link==true}
 					<li class="level-0"><a class="home-link" href="{$BASE_URL}index.html"><span>{if $root_config->nav->text_link}{$root_config->nav->text_link}{else}Trang chủ{/if}</span></a></li>
 				{/if}
-				<li class="level-0"><a href="{$BASE_URL}contacts"><span>Danh bạ</span></a></li>
-				<li class="level-0"><a href="{$BASE_URL}jobs"><span>Việc làm</span></a></li>
-				<li class="level-0"><a href="{$BASE_URL}tu-van-nghe-nghiep"><span>Tư vấn nghề nghiệp</span></a></li>
-				<li class="level-0"><a href="{$BASE_URL}tu-van-suc-khoe"><span>Tư vấn sức khỏe</span></a></li>
+				<li class="level-0"><a href="{$BASE_URL}contacts.html"><span>Danh bạ</span></a></li>
+				<li class="level-0"><a href="{$BASE_URL}jobs.html"><span>Việc làm</span></a></li>
+				<li class="level-0"><a href="{$BASE_URL}tu-van-nghe-nghiep.html"><span>Tư vấn nghề nghiệp</span></a></li>
+				<li class="level-0"><a href="{$BASE_URL}tu-van-suc-khoe.html"><span>Tư vấn sức khỏe</span></a></li>
 			</nav>
 			{if isset($_session)&&(!empty($_session))}
 				{include file='account\\header_logout.tpl'}

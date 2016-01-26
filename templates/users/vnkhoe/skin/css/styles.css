@@ -199,6 +199,11 @@ section:before, section:after {
 	clear: both;
 }
 
+::-webkit-input-placeholder
+{
+  color: transparent;
+}
+
 .hllm-error-box {
     border: 1px solid #C83D7A;
     padding: 5px;

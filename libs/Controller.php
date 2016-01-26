@@ -138,4 +138,19 @@ class Controller {
         }
         return $html;
     }
+	
+	public function addAutoIncrementData($_arr, $_str_head) {
+		if(!isset($_arr)||empty($_arr)) {
+			return false;
+		}
+		$_total = count($_arr);
+		$_count = $_total-1;
+		while($_count>=0) {
+			$_arr[$_count][$_str_head] = $_count + 1;
+			$_arr[$_count][$_total] = $_count + 1;
+			$_count --;
+		}
+		return $_arr;
+	}
+	
 }

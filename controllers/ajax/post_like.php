@@ -55,8 +55,7 @@ class PostLike extends Controller {
 		$member_id = null;
 		isset($_SESSION['member_id']) && $member_id=$_SESSION['member_id'];
 		$member_type = null;
-		$_id = $this->getParamFromURL('id', $_POST['current_url']);
-		//$_id = $this->getParamFromURL('id', 'http://localhost/vnkhoe/jobs/id/14');
+		$_id = $this->getParamFromURL('id', $_POST['current_url']);//$this->getParamFromURL('id','http://localhost/vnkhoe/jobs/id/17');//
 		if(isset($_SESSION['member_login'])) {
 			$is_login = $_SESSION['member_login'];
 		}
@@ -79,7 +78,6 @@ class PostLike extends Controller {
 				$return['message'] = 'Xin lỗi, yêu cầu của quý khách hiện chưa được xử lý, chúng tôi rất tiếc về điều này!';
 			}
 			$return['is_like'] = $is_like;
-			$return['str'] = $_result;
 		} else {
 			$return['is_login']=false;
 		}
@@ -131,7 +129,6 @@ class PostLike extends Controller {
 		isset($_SESSION['member_id']) && $member_id=$_SESSION['member_id'];
 		$member_type = null;
 		$_id = $this->getParamFromURL('id', $_POST['current_url']);
-		//$_id = "http://localhost/vnkhoe/tu_van_suc_khoe/id/6";//getParamFromURL('id', $_POST['current_url']);
 		if(isset($_SESSION['member_login'])) {
 			$is_login = $_SESSION['member_login'];
 		}
@@ -164,7 +161,7 @@ class PostLike extends Controller {
 
 $likepost = new PostLike();
 $likepost->index();
-//$likepost->member_job_like();
+// $likepost->member_job_like();
 //$likepost->member_tvsk_like();
 
 ?>

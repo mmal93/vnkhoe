@@ -1,16 +1,16 @@
 <?php
 class Account extends Controller {
 
-    function __construct() {
-        parent::__construct();
-    }
-    
-    function index() 
-    {    
+	function __construct() {
+		parent::__construct();
+	}
+	
+	function index() 
+	{	
 		header('location:'.BASE_URL.'account/dashboard.html');
-    }
-    
-    function login() {
+	}
+	
+	function login() {
 		isset($_GET['repos']) && $_redirect_url = $_GET['repos'];
 		isset($_redirect_url)|| $_redirect_url = BASE_URL.'index.html';
 		$_redirect_url = ($this->getCurrentPageURL()==$_redirect_url?BASE_URL.'index.html':$_redirect_url);
@@ -66,7 +66,7 @@ class Account extends Controller {
 		$this->view->mainStart('container');
 		$this->view->showTemplate('account/login_form');
 		$this->view->mainEnd();
-        $this->view->showFooter();
+		$this->view->showFooter();
 	}
 	
 	function register() {
@@ -145,7 +145,7 @@ class Account extends Controller {
 		$this->view->mainStart('container');
 		$this->view->showTemplate('account/register_form');
 		$this->view->mainEnd();
-        $this->view->showFooter();
+		$this->view->showFooter();
 	}
 	
 	public function dashboard() {
@@ -155,7 +155,7 @@ class Account extends Controller {
 		}
 		$this->view->showBodyClass('member-dashboard-page member-page');
 		$this->view->loadPageConfig('member');
-        $this->view->showHeader();
+		$this->view->showHeader();
 		$this->view->mainStart('container-fluid');
 		$this->view->showTemplate('account/dashboard/head_message');
 		$this->view->assign('header_title_member', 'Cập nhật thông tin hồ sơ');
@@ -163,7 +163,7 @@ class Account extends Controller {
 		$this->view->showTemplate('account/dashboard/index');
 		//$this->view->showTemplate('account/dashboard/right_index_content');
 		$this->view->mainEnd();
-        $this->view->showFooter();
+		$this->view->showFooter();
 	}
 	
 	public function user_info() {
@@ -173,7 +173,7 @@ class Account extends Controller {
 		}
 		$this->view->showBodyClass('member-dashboard-page member-page');
 		$this->view->loadPageConfig('member');
-        $this->view->showHeader();
+		$this->view->showHeader();
 		$this->view->mainStart('container-fluid');
 		$this->view->showTemplate('account/dashboard/head_message');
 		$this->view->assign('header_title_member', 'Cập nhật thông tin hồ sơ');
@@ -181,7 +181,7 @@ class Account extends Controller {
 		$this->view->showTemplate('account/dashboard/index');
 		//$this->view->showTemplate('account/dashboard/right_index_content');
 		$this->view->mainEnd();
-        $this->view->showFooter();
+		$this->view->showFooter();
 	}
 	
 	public function create_profile() {
@@ -191,7 +191,7 @@ class Account extends Controller {
 		}
 		$this->view->showBodyClass('member-dashboard-page member-page');
 		$this->view->loadPageConfig('member');
-        $this->view->showHeader();
+		$this->view->showHeader();
 		$this->view->mainStart('container-fluid');
 		$this->view->showTemplate('account/dashboard/head_message');
 		$this->view->assign('header_title_member', 'Cập nhật thông tin hồ sơ');
@@ -199,7 +199,7 @@ class Account extends Controller {
 		$this->view->showTemplate('account/dashboard/index');
 		//$this->view->showTemplate('account/dashboard/right_index_content');
 		$this->view->mainEnd();
-        $this->view->showFooter();
+		$this->view->showFooter();
 	}
 	
 	public function work_saved() {
@@ -209,15 +209,20 @@ class Account extends Controller {
 		}
 		$this->view->showBodyClass('member-dashboard-page member-page');
 		$this->view->loadPageConfig('member');
-        $this->view->showHeader();
+		$this->view->showHeader();
 		$this->view->mainStart('container-fluid');
 		$this->view->showTemplate('account/dashboard/head_message');
 		$this->view->assign('header_title_member', 'Cập nhật thông tin hồ sơ');
+		$data = $this->model->getListWorkSave($_user_id);
+		$data = $this->addAutoIncrementData($data, 'STT');
+		if($data) {
+			$this->view->assign('_data', $data);
+		}
 		//$this->view->showTemplate('account/dashboard/top_banner');
 		$this->view->showTemplate('account/dashboard/work_save_index');
 		//$this->view->showTemplate('account/dashboard/right_index_content');
 		$this->view->mainEnd();
-        $this->view->showFooter();
+		$this->view->showFooter();
 	}
 	
 	public function company_saved() {
@@ -227,7 +232,7 @@ class Account extends Controller {
 		}
 		$this->view->showBodyClass('member-dashboard-page member-page');
 		$this->view->loadPageConfig('member');
-        $this->view->showHeader();
+		$this->view->showHeader();
 		$this->view->mainStart('container-fluid');
 		$this->view->showTemplate('account/dashboard/head_message');
 		$this->view->assign('header_title_member', 'Cập nhật thông tin hồ sơ');
@@ -235,7 +240,7 @@ class Account extends Controller {
 		$this->view->showTemplate('account/dashboard/company_save_index');
 		//$this->view->showTemplate('account/dashboard/right_index_content');
 		$this->view->mainEnd();
-        $this->view->showFooter();
+		$this->view->showFooter();
 	}
 	
 	public function work_info() {
@@ -245,7 +250,7 @@ class Account extends Controller {
 		}
 		$this->view->showBodyClass('member-dashboard-page member-page');
 		$this->view->loadPageConfig('member');
-        $this->view->showHeader();
+		$this->view->showHeader();
 		$this->view->mainStart('container-fluid');
 		$this->view->showTemplate('account/dashboard/head_message');
 		$this->view->assign('header_title_member', 'Cập nhật thông tin hồ sơ');
@@ -253,7 +258,7 @@ class Account extends Controller {
 		$this->view->showTemplate('account/dashboard/work_info_index');
 		//$this->view->showTemplate('account/dashboard/right_index_content');
 		$this->view->mainEnd();
-        $this->view->showFooter();
+		$this->view->showFooter();
 	}
 	
 	public function admin() {
@@ -302,7 +307,7 @@ class Account extends Controller {
 		$this->view->mainStart('container');
 		$this->view->showTemplate('account/login_form');
 		$this->view->mainEnd();
-        $this->view->showFooter();
+		$this->view->showFooter();
 	}
 	
 	public function logout() {

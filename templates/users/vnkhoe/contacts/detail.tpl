@@ -9,7 +9,7 @@
 			</div>
 		</div>
 		<div class="col-sm-6 col-right">
-			<p class="logo center"><img src="{$MEDIA_URL}images/companies/{$_contact_data[0].congty_id}/{$_contact_data[0].congty_logo}" title="{$_contact_data[0].congty_name}"/></p>
+			<p class="logo center"><a href="{$BASE_URL}contacts/id/{$contact_data[0].congty_id}"><img src="{$MEDIA_URL}images/companies/{$_contact_data[0].congty_id}/{$_contact_data[0].congty_logo}" title="{$_contact_data[0].congty_name}"/></a></p>
 			<p class="sologan" style="text-overflow: ellipsis; ">{$_contact_data[0].congty_sologan}</p>
 		</div>
 	</div>

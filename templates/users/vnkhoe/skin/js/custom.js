@@ -67,23 +67,22 @@ jQuery(document).ready(function(){
 				}
 			},
 			error: function(jqXHR, exception) {
-				//debugger;
 				if (jqXHR.status === 0) {
-					alert('Not connect.\n Verify Network.');
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Not connect.\n Verify Network.</span>');
 				} else if (jqXHR.status == 404) {
-					alert('Requested page not found. [404]');
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Requested page not found. [404]</span>');
 				} else if (jqXHR.status == 500) {
-					alert('Internal Server Error [500].');
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Internal Server Error [500].</span>');
 				} else if (exception === 'parsererror') {
-					alert('Requested JSON parse failed.');
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Requested JSON parse failed.</span>');
 				} else if (exception === 'timeout') {
-					alert('Time out error.');
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Time out error.</span>');
 				} else if (exception === 'abort') {
-					alert('Ajax request aborted.');
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Ajax request aborted.</span>');
 				} else {
-					alert('Uncaught Error.\n' + jqXHR.responseText);
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Uncaught Error.\n' + jqXHR.responseText + '</span>');
 				}
-				jQuery('#hllm-body-popup').remove();
+				setTimeout(function(){jQuery('#hllm-body-popup').remove();}, 5000);
 			}
 		});
 		return false;
@@ -126,23 +125,22 @@ jQuery(document).ready(function(){
 				// }
 			// },
 			// error: function(jqXHR, exception) {
-				// //debugger;
 				// if (jqXHR.status === 0) {
-					// alert('Not connect.\n Verify Network.');
+					// jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Not connect.\n Verify Network.</span>');
 				// } else if (jqXHR.status == 404) {
-					// alert('Requested page not found. [404]');
+					// jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Requested page not found. [404]</span>');
 				// } else if (jqXHR.status == 500) {
-					// alert('Internal Server Error [500].');
+					// jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Internal Server Error [500].</span>');
 				// } else if (exception === 'parsererror') {
-					// alert('Requested JSON parse failed.');
+					// jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Requested JSON parse failed.</span>');
 				// } else if (exception === 'timeout') {
-					// alert('Time out error.');
+					// jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Time out error.</span>');
 				// } else if (exception === 'abort') {
-					// alert('Ajax request aborted.');
+					// jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Ajax request aborted.</span>');
 				// } else {
-					// alert('Uncaught Error.\n' + jqXHR.responseText);
+					// jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Uncaught Error.\n' + jqXHR.responseText + '</span>');
 				// }
-				// jQuery('#hllm-body-popup').remove();
+				// setTimeout(function(){jQuery('#hllm-body-popup').remove();}, 5000);
 			// }
 		// });
 		// return false;
@@ -413,6 +411,64 @@ jQuery(document).ready(function() {
 	jQuery('#hllm-body-popup #hllm-popup-content').click(function() {
 	return false;
 	});
+	
+	//confirm delete item
+	jQuery(document).on('click', '.member-job-list .delete', function() {
+		var conf = confirm("Bạn có muốn xóa dữ liệu?");
+		if(conf) {
+			var elm = '<div id="hllm-body-popup" class="hllm-body-popup"><div>';
+			elm = elm + '<div class="hllm-popup-close"><i class="fa fa-times"></i></div>';
+			elm = elm + '<div class="popup-overlay"></div>';
+			elm = elm + '<div class="hllm-popup-content" id="hllm-popup-content">';
+			elm = elm + '<span class="waiting">Đang xử lý...</span>';
+			elm = elm + '</div></div></div>';
+			jQuery('body').append(elm);
+			var data = {
+				"action": 'delete_member_job',
+				"vieclam_id": jQuery(this).attr('value')
+			};
+			data = jQuery.param(data);
+			jQuery.ajax({
+				type: "POST",
+				dataType: "json",
+				url: location.protocol + "//" + location.host+"/vnkhoe/controllers/ajax/delete_like_post.php",
+				data: data,
+				success: function(data) {
+					if(data['success'] == true) {
+						if(data['is_login']==false) {
+							jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Bạn phải đăng nhập để thực hiện chức năng này!</span>');
+							reload_current_page();
+						}
+						jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="success">' + data['message'] + '</span>');
+						//remove deleted item
+						jQuery('tr.item-'+data['vieclam_id']).remove();
+					} else {
+						jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">' + data['message'] + '</span>');
+					}
+					//setTimeout(function(){jQuery('#hllm-body-popup').remove();}, 3000);
+				},
+				error: function(jqXHR, exception) {
+					if (jqXHR.status === 0) {
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Not connect.\n Verify Network.</span>');
+					} else if (jqXHR.status == 404) {
+						jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Requested page not found. [404]</span>');
+					} else if (jqXHR.status == 500) {
+						jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Internal Server Error [500].</span>');
+					} else if (exception === 'parsererror') {
+						jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Requested JSON parse failed.</span>');
+					} else if (exception === 'timeout') {
+						jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Time out error.</span>');
+					} else if (exception === 'abort') {
+						jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Ajax request aborted.</span>');
+					} else {
+						jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Uncaught Error.\n' + jqXHR.responseText + '</span>');
+					}
+					setTimeout(function(){jQuery('#hllm-body-popup').remove();}, 5000);
+				}
+			});
+			return false;
+		}
+	});
 });
 jQuery(window).resize(function() {
 	hllm_body_popup_resize();
@@ -507,3 +563,46 @@ jQuery(document).on('click', '.social-share-popup', function() {
 		var new_facebook_win = window.open(jQuery(this).attr('href'), "social-share-popup", "width=480px, height=470px, left=100px top = 80px");
 	}
 });
+
+//hllm-input-fix 
+(function($){
+	$(window).load(function(){
+	var isIE = false;
+	var ua = window.navigator.userAgent;
+    var msie = ua.indexOf('MSIE ') > 0;
+    var ie11 = ua.indexOf('Trident/') > 0;
+    var ie12 = ua.indexOf('Edge/') > 0;
+    isIE = (msie || ie11 || ie12);
+    //if browser is microsoft internet exployer
+    if(isIE) {
+    
+		$('[placeholder]').focus(function() {
+			var input = $(this);
+			var plhd = input.attr('placeholder')
+			if (input.val() == input.attr('placeholder')) {
+				input.val('');
+				input.removeClass('placeholder');
+			}
+		}).blur(function() {
+			var input = $(this);
+			if (input.val() == '' || input.val() == input.attr('placeholder')) {
+				input.addClass('placeholder');
+				input.val(input.attr('placeholder'));
+			}
+		}).blur();
+		
+		//submit button click
+		$('[placeholder]').parents('form').submit(function() {
+			$(this).find('[placeholder]').each(function() {
+				var input = $(this);
+				if (input.val() == input.attr('placeholder')) {
+					input.val('');
+				}
+			})
+		});
+	}
+	}); 
+	$(document).ready( function(){
+		
+	} );
+})(jQuery)
