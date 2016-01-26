@@ -43,25 +43,48 @@ class Tu_van_suc_khoe extends Controller {
 		$this->view->showHeader();
 		$this->view->mainStart('container-fluid');
 		$_id = $this->getParam('id');
-		if($_id) {
-			$_detail_data = $this->model->getData($_id);
-			if($_detail_data) {
-				$this->view->assign('_healthy_data', $_detail_data);
-				$this->view->ShowTemplate('tu_van_suc_khoe/detail');
-				$_name = $_detail_data[0]['tvsk_tieude'];
-				$_name_arr = preg_split("/[\s,]+/", $_name);
-				$_name_arr = array_unique($_name_arr);
-				$_related = $this->model->getRelatedData($_id, $_name_arr, 5);
-				if($_related) {
-					$this->view->assign('_related', $_related);
-					$this->view->showTemplate('tu_van_suc_khoe/related_unit');
+		if(Session::get('member_id')) {
+			$member_id = Session::get('member_id');
+			if($_id) {
+				$_detail_data = $this->model->getData($_id, $member_id);
+				if($_detail_data) {
+					$this->view->assign('_healthy_data', $_detail_data);
+					$this->view->ShowTemplate('tu_van_suc_khoe/detail');
+					$_name = $_detail_data[0]['tvsk_tieude'];
+					$_name_arr = preg_split("/[\s,]+/", $_name);
+					$_name_arr = array_unique($_name_arr);
+					$_related = $this->model->getRelatedData($_id, $_name_arr, 5);
+					if($_related) {
+						$this->view->assign('_related', $_related);
+						$this->view->showTemplate('tu_van_suc_khoe/related_unit');
+					}
+				} else {
+					echo 'Không tìm thấy nội dung';
 				}
 			} else {
-				echo 'Không tìm thấy nội dung';
+				echo 'Không tìm thấy nội dung!';
 			}
-			
 		} else {
-			echo 'Không tìm thấy nội dung!';
+			if($_id) {
+				$_detail_data = $this->model->getData($_id);
+				if($_detail_data) {
+					$this->view->assign('_healthy_data', $_detail_data);
+					$this->view->ShowTemplate('tu_van_suc_khoe/detail');
+					$_name = $_detail_data[0]['tvsk_tieude'];
+					$_name_arr = preg_split("/[\s,]+/", $_name);
+					$_name_arr = array_unique($_name_arr);
+					$_related = $this->model->getRelatedData($_id, $_name_arr, 5);
+					if($_related) {
+						$this->view->assign('_related', $_related);
+						$this->view->showTemplate('tu_van_suc_khoe/related_unit');
+					}
+				} else {
+					echo 'Không tìm thấy nội dung';
+				}
+				
+			} else {
+				echo 'Không tìm thấy nội dung!';
+			}
 		}
 		//$this->view->showPartner();
 		$this->view->mainEnd();

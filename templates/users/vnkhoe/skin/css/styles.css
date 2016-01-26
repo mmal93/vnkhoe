@@ -1485,12 +1485,20 @@ background-color: #1a83c3;
 
 .job-detail-page #detail-section .like .heart, .job-detail-page #detail-section .like .send-mail {
     display: inline-block;
+    padding: 0;
+    background: none;
+	outline: none;
 }
 
 .job-detail-page #detail-section .like .heart i, .job-detail-page #detail-section .like .send-mail i {
     padding: 10px 10px;
     cursor: pointer;
     margin-right: 10px;
+}
+
+.job-detail-page #detail-section .like .heart.active i, #detail-job-article-section .heart.tvnn-heart.active i, #detail-healthy-section .social-like .tvsk-heart.active i {
+    background-color: #ff623f;
+    color: #ffe1d7;
 }
 
 .job-detail-page #detail-section .like .heart i {
@@ -1632,19 +1640,18 @@ background-color: #1a83c3;
     cursor: pointer;
 }
 
-#detail-healthy-section .right .right-social:hover, #detail-job-article-section .right .right-social:hover {
+#detail-healthy-section .right .right-social:hover, #detail-job-article-section .right .right-social:hover, #detail-healthy-section .right .like.active, #detail-job-article-section .right .like.active {
     background-color: #fa4633;
 }
 
-#detail-healthy-section .right .like, #detail-job-article-section .right .like {
-    border: 1px solid #ffbaaf;
-    color: #ff8b6e;
+#detail-healthy-section .right .like.active, #detail-job-article-section .right .like.active {
+	color: blue;
 }
 
-#detail-healthy-section .right .like:hover, #detail-job-article-section .right .like:hover {
-    border-color: #1a83c3;
-    background-color: #1a83c3;
-    color: #fff;
+#detail-healthy-section .right .like, #detail-job-article-section .right .like, #detail-healthy-section .right .like.active:hover, #detail-job-article-section .right .like.active:hover {
+	background-color: transparent;
+    border: 1px solid #ffbaaf;
+    color: #ff8b6e;
 }
 
 #related-article-section .relative {
@@ -1882,8 +1889,40 @@ body.member-page #top-header {
     color: #fff;
 }
 
+.member-page #main-dashboard .member-menu-left li a {
+	display: block;
+	font-size: 16px;
+}
+
+.member-page #main-dashboard .member-menu-left li a:hover {
+	text-decoration: none;
+}
+
+.member-page #main-dashboard .member-menu-left li i {
+	padding-right: 7px;
+}
+
 .member-page #main-dashboard .member-menu-left li:hover * {
     color: #00f;
+}
+
+#main-dashboard .update-info ul li label, #main-dashboard .update-password ul li label {
+    min-width: 167px;
+    display: inline-block;
+    text-align: right;
+    padding-right: 10px;
+}
+
+#main-dashboard .update-info, #main-dashboard .update-password {
+	max-width: 600px;
+}
+
+#main-dashboard .update-info ul li, #main-dashboard .update-password ul li {
+    margin: 5px 0;
+}
+
+#main-dashboard .update-info ul li input, #main-dashboard .update-password ul li input {
+	min-width: 400px;
 }
 /*end member - page*/
 

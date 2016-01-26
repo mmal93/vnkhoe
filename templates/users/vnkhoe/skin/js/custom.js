@@ -56,18 +56,45 @@ jQuery(document).ready(function(){
 		jQuery.ajax({
 			type: "POST",
 			dataType: "json",
-			url: "http://localhost/vnkhoe/controllers/ajax/index.php",
+			url: location.protocol + "//" + location.host+"/vnkhoe/controllers/ajax/index.php",
 			data: data,
 			success: function(data) {
 				if(data['success'] == true) {
 					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="success">' + data['message'] + '</span>');
-					close = setTimeout(top_login_form_close, 2000);
+					close = setTimeout(reload_current_page, 2000);
 				} else {
 					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">' + data['message'] + '</span>');
 				}
+			},
+			error: function(jqXHR, exception) {
+				//debugger;
+				if (jqXHR.status === 0) {
+					alert('Not connect.\n Verify Network.');
+				} else if (jqXHR.status == 404) {
+					alert('Requested page not found. [404]');
+				} else if (jqXHR.status == 500) {
+					alert('Internal Server Error [500].');
+				} else if (exception === 'parsererror') {
+					alert('Requested JSON parse failed.');
+				} else if (exception === 'timeout') {
+					alert('Time out error.');
+				} else if (exception === 'abort') {
+					alert('Ajax request aborted.');
+				} else {
+					alert('Uncaught Error.\n' + jqXHR.responseText);
+				}
+				jQuery('#hllm-body-popup').remove();
 			}
 		});
 		return false;
+	});
+	
+	//popup
+	jQuery(document).on('click', '.hllm-popup-close', function(){
+		jQuery(this).parents().find('#hllm-body-popup').remove();
+	});
+	jQuery(document).on('click', '.popup-overlay', function(){
+		jQuery(this).parents().find('#hllm-body-popup').remove();
 	});
 	
 	//submit login form
@@ -80,7 +107,7 @@ jQuery(document).ready(function(){
 		// jQuery.ajax({
 			// type: "POST",
 			// dataType: "json",
-			// url: "http://localhost/vnkhoe/controllers/ajax/index.php",
+			// url: location.protocol + "//" + location.host+"/vnkhoe/controllers/ajax/index.php",
 			// data: data,
 			// success: function(data) {
 				// if(data["is_member"] == false) {
@@ -94,22 +121,243 @@ jQuery(document).ready(function(){
 						
 						// jQuery('.login-toggle-button').removeClass('active');
 						// jQuery('.top-login-section').stop().delay(1000).slideUp('slow').delay(1000);
-						// close = setTimeout(top_login_form_close, 2000);
+						// close = setTimeout(reload_current_page, 2000);
 					// }
 				// }
+			// },
+			// error: function(jqXHR, exception) {
+				// //debugger;
+				// if (jqXHR.status === 0) {
+					// alert('Not connect.\n Verify Network.');
+				// } else if (jqXHR.status == 404) {
+					// alert('Requested page not found. [404]');
+				// } else if (jqXHR.status == 500) {
+					// alert('Internal Server Error [500].');
+				// } else if (exception === 'parsererror') {
+					// alert('Requested JSON parse failed.');
+				// } else if (exception === 'timeout') {
+					// alert('Time out error.');
+				// } else if (exception === 'abort') {
+					// alert('Ajax request aborted.');
+				// } else {
+					// alert('Uncaught Error.\n' + jqXHR.responseText);
+				// }
+				// jQuery('#hllm-body-popup').remove();
 			// }
 		// });
 		// return false;
 	// });
 	
-	//popup
-	
-	jQuery('.hllm-popup-close i').click(function() {
-		jQuery('#hllm-body-popup').hide();
+	//job like action
+	jQuery(document).on('click', '.job-like .heart', function() {
+		var elm = '<div id="hllm-body-popup" class="hllm-body-popup"><div>';
+		elm = elm + '<div class="hllm-popup-close"><i class="fa fa-times"></i></div>';
+		elm = elm + '<div class="popup-overlay"></div>';
+		elm = elm + '<div class="hllm-popup-content" id="hllm-popup-content">';
+		elm = elm + '<span class="waiting">Đang xử lý...</span>';
+		elm = elm + '</div></div></div>';
+		jQuery('body').append(elm);
+		var is_like = false;
+		if(jQuery('.job-like .heart').hasClass('active')) {
+			is_like = true;
+		}
+		var data = {
+			"action": 'job_like',
+			"is_like": is_like,
+			"current_url": location.href
+		};
+		data = jQuery.param(data);
+		jQuery.ajax({
+			type: "POST",
+			dataType: "json",
+			url: location.protocol + "//" + location.host+"/vnkhoe/controllers/ajax/post_like.php",
+			data: data,
+			success: function(data) {
+				if(data['is_login']==true) {
+					if(data['success']==true) {
+						//success
+						if(data['is_like']==true) {
+							jQuery('.job-like .heart').addClass('active');
+							jQuery('.job-like .heart').attr('title', 'Xóa khỏi danh sách việc làm yêu thích');
+						} else {
+							jQuery('.job-like .heart').removeClass('active');
+							jQuery('.job-like .heart').attr('title', 'Lưu vào việc làm yêu thích');
+						}
+						jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="success">'+data['message']+'</span>');
+					} else {
+						//not success
+						jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">'+data['message']+'</span>');
+					}
+					setTimeout(function(){jQuery('#hllm-body-popup').remove();}, 3000);
+				} else {
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Vui lòng đăng nhập để có thể lưu lại công việc yêu thích.</span><div><a href="'+location.protocol + "//" + location.host+"/vnkhoe/account/login.html?repos="+location.href+'"><button>Đăng nhập</button></a></div>');
+				}
+			},
+			error: function(jqXHR, exception) {
+				//debugger;
+				if (jqXHR.status === 0) {
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Not connect.\n Verify Network.</span>');
+				} else if (jqXHR.status == 404) {
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Requested page not found. [404]</span>');
+				} else if (jqXHR.status == 500) {
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Internal Server Error [500].</span>');
+				} else if (exception === 'parsererror') {
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Requested JSON parse failed.</span>');
+				} else if (exception === 'timeout') {
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Time out error.</span>');
+				} else if (exception === 'abort') {
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Ajax request aborted.</span>');
+				} else {
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Uncaught Error.\n' + jqXHR.responseText + '</span>');
+				}
+				setTimeout(function(){jQuery('#hllm-body-popup').remove();}, 5000);
+			}
+		});
+		return false;
 	});
 	
-	jQuery('.hllm-popup-close').click(function() {
-		jQuery('#hllm-body-popup').hide();
+	//tu van nghe nghiep like action
+	jQuery(document).on('click', '.tvnn-heart', function() {
+		var elm = '<div id="hllm-body-popup" class="hllm-body-popup"><div>';
+		elm = elm + '<div class="hllm-popup-close"><i class="fa fa-times"></i></div>';
+		elm = elm + '<div class="popup-overlay"></div>';
+		elm = elm + '<div class="hllm-popup-content" id="hllm-popup-content">';
+		elm = elm + '<span class="waiting">Đang xử lý...</span>';
+		elm = elm + '</div></div></div>';
+		jQuery('body').append(elm);
+		var is_like = false;
+		if(jQuery('.right-social.tvnn-heart').hasClass('active')) {
+			is_like = true;
+		}
+		var data = {
+			"action": 'tvnn_like',
+			"is_like": is_like,
+			"current_url": location.href
+		};
+		data = jQuery.param(data);
+		jQuery.ajax({
+			type: "POST",
+			dataType: "json",
+			url: location.protocol + "//" + location.host+"/vnkhoe/controllers/ajax/post_like.php",
+			data: data,
+			success: function(data) {
+				if(data['is_login']==true) {
+					if(data['success']==true) {
+						//success
+						if(data['is_like']==true) {
+							jQuery('.tvnn-heart').each(function(index, value) {
+								jQuery(value).addClass('active');
+								jQuery(value).attr('title', 'Xóa khỏi danh sách nghề yêu thích');
+							});
+						} else {
+							jQuery('.tvnn-heart').each(function(index, value) {
+								jQuery(value).removeClass('active');
+								jQuery(value).attr('title', 'Lưu vào nghề yêu thích');
+							});
+						}
+						jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="success">'+data['message']+'</span>');
+					} else {
+						//not success
+						jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">'+data['message']+'</span>');
+					}
+					setTimeout(function(){jQuery('#hllm-body-popup').remove();}, 3000);
+				} else {
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Vui lòng đăng nhập để có thể lưu lại công việc yêu thích.</span><div><a href="'+location.protocol + "//" + location.host+"/vnkhoe/account/login.html?repos="+location.href+'"><button>Đăng nhập</button></a></div>');
+				}
+			},
+			error: function(jqXHR, exception) {
+				//debugger;
+				if (jqXHR.status === 0) {
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Not connect.\n Verify Network.</span>');
+				} else if (jqXHR.status == 404) {
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Requested page not found. [404]</span>');
+				} else if (jqXHR.status == 500) {
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Internal Server Error [500].</span>');
+				} else if (exception === 'parsererror') {
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Requested JSON parse failed.</span>');
+				} else if (exception === 'timeout') {
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Time out error.</span>');
+				} else if (exception === 'abort') {
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Ajax request aborted.</span>');
+				} else {
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Uncaught Error.\n' + jqXHR.responseText + '</span>');
+				}
+				setTimeout(function(){jQuery('#hllm-body-popup').remove();}, 5000);
+			}
+		});
+		return false;
+	});
+	
+	//tu van sức khỏe like action
+	jQuery(document).on('click', '.tvsk-heart', function() {
+		var elm = '<div id="hllm-body-popup" class="hllm-body-popup"><div>';
+		elm = elm + '<div class="hllm-popup-close"><i class="fa fa-times"></i></div>';
+		elm = elm + '<div class="popup-overlay"></div>';
+		elm = elm + '<div class="hllm-popup-content" id="hllm-popup-content">';
+		elm = elm + '<span class="waiting">Đang xử lý...</span>';
+		elm = elm + '</div></div></div>';
+		jQuery('body').append(elm);
+		var is_like = false;
+		if(jQuery(this).hasClass('active')) {
+			is_like = true;
+		}
+		var data = {
+			"action": 'tvsk_like',
+			"is_like": is_like,
+			"current_url": location.href
+		};
+		data = jQuery.param(data);
+		jQuery.ajax({
+			type: "POST",
+			dataType: "json",
+			url: location.protocol + "//" + location.host+"/vnkhoe/controllers/ajax/post_like.php",
+			data: data,
+			success: function(data) {
+				if(data['is_login']==true) {
+					if(data['success']==true) {
+						//success
+						if(data['is_like']==true) {
+							jQuery('.tvsk-heart').each(function(index, value) {
+								jQuery(value).addClass('active');
+								jQuery(value).attr('title', 'Xóa khỏi danh sách bài viết yêu thích');
+							});
+						} else {
+							jQuery('.tvsk-heart').each(function(index, value) {
+								jQuery(value).removeClass('active');
+								jQuery(value).attr('title', 'Lưu vào bài viết yêu thích');
+							});
+						}
+						jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="success">'+data['message']+'</span>');
+					} else {
+						//not success
+						jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">'+data['message']+'</span>');
+					}
+					setTimeout(function(){jQuery('#hllm-body-popup').remove();}, 3000);
+				} else {
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Vui lòng đăng nhập để có thể lưu lại công việc yêu thích.</span><div><a href="'+location.protocol + "//" + location.host+"/vnkhoe/account/login.html?repos="+location.href+'"><button>Đăng nhập</button></a></div>');
+				}
+			},
+			error: function(jqXHR, exception) {
+				//debugger;
+				if (jqXHR.status === 0) {
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Not connect.\n Verify Network.</span>');
+				} else if (jqXHR.status == 404) {
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Requested page not found. [404]</span>');
+				} else if (jqXHR.status == 500) {
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Internal Server Error [500].</span>');
+				} else if (exception === 'parsererror') {
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Requested JSON parse failed.</span>');
+				} else if (exception === 'timeout') {
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Time out error.</span>');
+				} else if (exception === 'abort') {
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Ajax request aborted.</span>');
+				} else {
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Uncaught Error.\n' + jqXHR.responseText + '</span>');
+				}
+				setTimeout(function(){jQuery('#hllm-body-popup').remove();}, 5000);
+			}
+		});
+		return false;
 	});
 	
 	//tuyen-dung click event
@@ -135,7 +383,7 @@ jQuery(document).ready(function(){
 	});
 });
 
-function top_login_form_close() {
+function reload_current_page() {
 	window.location.reload();
 	clearTimeout(close);
 }
@@ -232,21 +480,7 @@ var largeSlider = {
 		prevText: 'Prev',
 		nextText: 'Next'
 }
-/* Small and below screens */
-var smallSlider = {
-		minSlides: 1,
-		maxSlides: 1,
-		moveSlides: 1,
-		slideWidth: 480,
-		preloadImages: 'all',
-		pager: false,
-		infiniteLoop: false,
-		hideControlOnEnd: true,
-		nextSelector: '.right-arrow',
-		prevSelector: '.left-arrow',
-		prevText: 'Prev',
-		nextText: 'Next'
-}
+
 jQuery(window).on('orientationchange resize', function(){
 	setTimeout(function(){ 
 		var screenWidth = jQuery(window).width();

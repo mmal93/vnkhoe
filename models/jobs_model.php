@@ -137,7 +137,7 @@ class Jobs_Model extends Model
         }
 	}
 	
-	public function getDetailData($_id) {
+	public function getDetailData($_id, $member_id = null) {
 		$sth = $this->db->prepare("SELECT distinct tbl_vieclam.vieclam_id, 
 			tbl_congty.congty_id, 
 			tbl_vieclam.congty_name, 
@@ -170,10 +170,36 @@ class Jobs_Model extends Model
         $data = $sth->fetchAll();
         $count =  $sth->rowCount();
         if ($count > 0) {
+			if(isset($member_id)&&(!empty($member_id))) {
+				$_like = $this->getMemberLikeStatus($member_id, $_id);
+				if($_like) {
+					$data[0]['like_status'] = '1';
+				} else {
+					$data[0]['like_status'] = '0';
+				}
+			}
 			return $data;
-        } else {
-			return false;
         }
+		return false;
+        
+	}
+	
+	public function getMemberLikeStatus($member_id, $job_id) {
+		$sth = $this->db->prepare("SELECT like_status 
+		FROM tbl_member_like_job 
+		WHERE tbl_member_like_job.job_id ='".$job_id."' 
+			and tbl_member_like_job.member_id = '".$member_id."' 
+        ");
+        $sth->execute();
+        $data = $sth->fetchAll();
+        $count =  $sth->rowCount();
+        if ($count > 0) {
+			$like_status = $data[0]["like_status"];
+			if($like_status=='1') {
+				return true;
+			}
+        }
+		return false;
 	}
 	
 	public function getSearchData() {

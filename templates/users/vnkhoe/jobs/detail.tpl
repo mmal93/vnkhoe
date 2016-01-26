@@ -11,7 +11,7 @@
 		<div class="col-sm-6 col-right">
 			<p class="logo center"><img src="{$MEDIA_URL}images/companies/{$_job_data[0].congty_id}/{$_job_data[0].congty_logo}" title="{$_job_data[0].congty_name}"/></p>
 			<p class="sologan" style="text-overflow: ellipsis; ">{$_job_data[0].vieclam_gioithieu}</p>
-			<form method="post" class="like"><div class="heart"><i class="fa fa-heart"></i></div><div class="send-mail"><i class="fa fa-envelope-o"></i>Gửi cho bạn bè</div></form>
+			<form method="post" class="like job-like"><div class="heart{if isset($_job_data[0].like_status)&&$_job_data[0].like_status=='1'} active{/if}" title="{if isset($_job_data[0].like_status)&&$_job_data[0].like_status=='1'}Xóa khỏi danh sách việc làm yêu thích{else}Lưu vào việc làm yêu thích{/if}"><i class="fa fa-heart"></i></div><div class="send-mail"><i class="fa fa-envelope-o"></i>Gửi cho bạn bè</div></form>
 		</div>
 	</div>
 	<div class="row require-info">

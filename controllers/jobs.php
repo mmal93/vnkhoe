@@ -79,19 +79,34 @@ class Jobs extends Controller {
 		$this->view->showBodyClass('job-detail-page');
 		$this->view->loadPageConfig('job-detail');
 		$this->view->show_header_banner();
-        $this->view->showHeader();
+		$this->view->showHeader();
 		$this->view->mainStart('container-fluid');
 		$_id = $this->getParam('id');
-		if($_id) {
-			$_detail_data = $this->model->getDetailData($_id);
-			if($_detail_data) {
-				$this->view->assign('_job_data', $_detail_data);
-				$this->view->ShowTemplate('jobs/detail');
+		if(Session::get('member_id')) {
+			$member_id = Session::get('member_id');
+			if($_id) {
+				$_detail_data = $this->model->getDetailData($_id, $member_id);
+				if($_detail_data) {
+					$this->view->assign('_job_data', $_detail_data);
+					$this->view->ShowTemplate('jobs/detail');
+				} else {
+					echo 'Không tìm thấy nội dung';
+				}
 			} else {
-				echo 'Không tìm thấy nội dung';
+				echo 'Không tìm thấy nội dung!';
 			}
 		} else {
-			echo 'Không tìm thấy nội dung!';
+			if($_id) {
+				$_detail_data = $this->model->getDetailData($_id);
+				if($_detail_data) {
+					$this->view->assign('_job_data', $_detail_data);
+					$this->view->ShowTemplate('jobs/detail');
+				} else {
+					echo 'Không tìm thấy nội dung';
+				}
+			} else {
+				echo 'Không tìm thấy nội dung!';
+			}
 		}
 		$this->view->mainEnd();
         $this->view->showFooter();

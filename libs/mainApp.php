@@ -76,6 +76,7 @@ class mainApp {
         $url = $this->rstrtrim($url, '/');//rtrim($url, '/');
 		$url = $this->rstrtrim($url, '.html');
 		$url = $this->rstrtrim($url, '.htm');
+		$url = preg_replace('/-/', '_', $url);
         $url = filter_var($url, FILTER_SANITIZE_URL);
 		$this->_url = explode('/', $url);
     }

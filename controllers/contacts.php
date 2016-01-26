@@ -82,7 +82,7 @@ class Contacts extends Controller {
 		$this->view->show_header_banner();
         $this->view->showHeader();
 		$this->view->mainStart('container-fluid');
-		$_id = $this->getId();
+		$_id = $this->getParam('id');
 		if($_id) {
 			$_detail_data = $this->model->getDetailData($_id);
 			if($_detail_data) {
@@ -98,7 +98,4 @@ class Contacts extends Controller {
         $this->view->showFooter();
     }
 	
-	function getId() {
-		return $this->getParam('id');
-	}
 }

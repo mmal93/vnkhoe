@@ -19,6 +19,8 @@ class Account extends Controller {
 		Session::set('member_email', null);
 		Session::set('member_firstname', null);
 		Session::set('member_lastname', null);
+		Session::set('member_login', false);
+		Session::set('member_type', null);
 		$_username = $_password = $_remember = null;
 		if(isset($_POST['submit'])) {
 			isset($_POST['username']) && $_username = $_POST['username'];
@@ -41,6 +43,7 @@ class Account extends Controller {
 					Session::set('member_email', $_result['member_email']);
 					Session::set('member_firstname', $_result['member_firstname']);
 					Session::set('member_lastname', $_result['member_lastname']);
+					Session::set('member_type', 'member');
 					//Session::set('role', $_result['member_status']);
 					Session::set('member_login', true);
 					$this->view->assign('success_message', 'Cảm ơn bạn <strong><em>'.Session::get('member_firstname').' '.Session::get('member_lastname').'</em></strong> đã đăng nhập vào vnkhoe!');
@@ -156,8 +159,99 @@ class Account extends Controller {
 		$this->view->mainStart('container-fluid');
 		$this->view->showTemplate('account/dashboard/head_message');
 		$this->view->assign('header_title_member', 'Cập nhật thông tin hồ sơ');
-		$this->view->showTemplate('account/dashboard/top_banner');
+		//$this->view->showTemplate('account/dashboard/top_banner');
 		$this->view->showTemplate('account/dashboard/index');
+		//$this->view->showTemplate('account/dashboard/right_index_content');
+		$this->view->mainEnd();
+        $this->view->showFooter();
+	}
+	
+	public function user_info() {
+		$_user_id = Session::get('member_id');
+		if(!isset($_user_id) || $_user_id==null) {
+			header('location: '.BASE_URL.'account/login.html?repos='.BASE_URL.'account/dashboard.html');
+		}
+		$this->view->showBodyClass('member-dashboard-page member-page');
+		$this->view->loadPageConfig('member');
+        $this->view->showHeader();
+		$this->view->mainStart('container-fluid');
+		$this->view->showTemplate('account/dashboard/head_message');
+		$this->view->assign('header_title_member', 'Cập nhật thông tin hồ sơ');
+		//$this->view->showTemplate('account/dashboard/top_banner');
+		$this->view->showTemplate('account/dashboard/index');
+		//$this->view->showTemplate('account/dashboard/right_index_content');
+		$this->view->mainEnd();
+        $this->view->showFooter();
+	}
+	
+	public function create_profile() {
+		$_user_id = Session::get('member_id');
+		if(!isset($_user_id) || $_user_id==null) {
+			header('location: '.BASE_URL.'account/login.html?repos='.BASE_URL.'account/dashboard.html');
+		}
+		$this->view->showBodyClass('member-dashboard-page member-page');
+		$this->view->loadPageConfig('member');
+        $this->view->showHeader();
+		$this->view->mainStart('container-fluid');
+		$this->view->showTemplate('account/dashboard/head_message');
+		$this->view->assign('header_title_member', 'Cập nhật thông tin hồ sơ');
+		//$this->view->showTemplate('account/dashboard/top_banner');
+		$this->view->showTemplate('account/dashboard/index');
+		//$this->view->showTemplate('account/dashboard/right_index_content');
+		$this->view->mainEnd();
+        $this->view->showFooter();
+	}
+	
+	public function work_saved() {
+		$_user_id = Session::get('member_id');
+		if(!isset($_user_id) || $_user_id==null) {
+			header('location: '.BASE_URL.'account/login.html?repos='.BASE_URL.'account/dashboard.html');
+		}
+		$this->view->showBodyClass('member-dashboard-page member-page');
+		$this->view->loadPageConfig('member');
+        $this->view->showHeader();
+		$this->view->mainStart('container-fluid');
+		$this->view->showTemplate('account/dashboard/head_message');
+		$this->view->assign('header_title_member', 'Cập nhật thông tin hồ sơ');
+		//$this->view->showTemplate('account/dashboard/top_banner');
+		$this->view->showTemplate('account/dashboard/work_save_index');
+		//$this->view->showTemplate('account/dashboard/right_index_content');
+		$this->view->mainEnd();
+        $this->view->showFooter();
+	}
+	
+	public function company_saved() {
+		$_user_id = Session::get('member_id');
+		if(!isset($_user_id) || $_user_id==null) {
+			header('location: '.BASE_URL.'account/login.html?repos='.BASE_URL.'account/dashboard.html');
+		}
+		$this->view->showBodyClass('member-dashboard-page member-page');
+		$this->view->loadPageConfig('member');
+        $this->view->showHeader();
+		$this->view->mainStart('container-fluid');
+		$this->view->showTemplate('account/dashboard/head_message');
+		$this->view->assign('header_title_member', 'Cập nhật thông tin hồ sơ');
+		//$this->view->showTemplate('account/dashboard/top_banner');
+		$this->view->showTemplate('account/dashboard/company_save_index');
+		//$this->view->showTemplate('account/dashboard/right_index_content');
+		$this->view->mainEnd();
+        $this->view->showFooter();
+	}
+	
+	public function work_info() {
+		$_user_id = Session::get('member_id');
+		if(!isset($_user_id) || $_user_id==null) {
+			header('location: '.BASE_URL.'account/login.html?repos='.BASE_URL.'account/dashboard.html');
+		}
+		$this->view->showBodyClass('member-dashboard-page member-page');
+		$this->view->loadPageConfig('member');
+        $this->view->showHeader();
+		$this->view->mainStart('container-fluid');
+		$this->view->showTemplate('account/dashboard/head_message');
+		$this->view->assign('header_title_member', 'Cập nhật thông tin hồ sơ');
+		//$this->view->showTemplate('account/dashboard/top_banner');
+		$this->view->showTemplate('account/dashboard/work_info_index');
+		//$this->view->showTemplate('account/dashboard/right_index_content');
 		$this->view->mainEnd();
         $this->view->showFooter();
 	}
