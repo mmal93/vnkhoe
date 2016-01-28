@@ -159,14 +159,13 @@ class Account extends Controller {
 		$this->view->mainStart('container-fluid');
 		$this->view->showTemplate('account/dashboard/head_message');
 		$this->view->assign('header_title_member', 'Cập nhật thông tin hồ sơ');
-		//$this->view->showTemplate('account/dashboard/top_banner');
 		$this->view->showTemplate('account/dashboard/index');
-		//$this->view->showTemplate('account/dashboard/right_index_content');
 		$this->view->mainEnd();
 		$this->view->showFooter();
 	}
 	
 	public function user_info() {
+		$header_message = '';
 		$_user_id = Session::get('member_id');
 		if(!isset($_user_id) || $_user_id==null) {
 			header('location: '.BASE_URL.'account/login.html?repos='.BASE_URL.'account/dashboard.html');
@@ -175,11 +174,36 @@ class Account extends Controller {
 		$this->view->loadPageConfig('member');
 		$this->view->showHeader();
 		$this->view->mainStart('container-fluid');
+		var_dump($_POST);
+		if(isset($_POST['info-update'])) {
+			$_is_member = $this->model->checkMemberById($_user_id);
+			if($_is_member) {
+				$member_firstname = $member_lastname = $member_email = $member_sex = $member_phone = $member_job_name = $member_password = null;
+				isset($_POST['firstname']) && $member_firstname = $_POST['firstname'];
+				isset($_POST['lastname']) && $member_lastname = $_POST['lastname'];
+				isset($_POST['member_email']) && $member_lastname = $_POST['email'];
+				isset($_POST['gender']) && $member_sex = $_POST['gender'];
+				isset($_POST['tel']) && $member_phone = $_POST['tel'];
+				isset($_POST['password']) && $member_password = $_POST['password'];
+				isset($_POST['member_job_name']) && $member_job_name = $_POST['member_job_name'];
+				$_result = $this->model->update_member_info($_user_id, $member_firstname, $member_lastname, $member_email, $member_sex, $member_phone, $member_job_name =null, $member_password);
+				if($_result) {
+					$header_message .= '<p>Cập nhật thông tin thành công.</p>';
+				} else {
+					$header_message .= '<p>Cập nhật thông tin thất bại</p>';
+				}
+			} else {
+				$header_message .= '<p>Bạn chưa được phép cập nhật thông tin này<br>Vui lòng liên hệ với ban quản trị để biết thêm thông tin.</p>';
+			}
+		}
+		$this->view->assign('header_message', $header_message);
 		$this->view->showTemplate('account/dashboard/head_message');
+		$data = $this->model->getMemberDetail($_user_id);
+		if($data) {
+			$this->view->assign('user_data', $data);
+		}
 		$this->view->assign('header_title_member', 'Cập nhật thông tin hồ sơ');
-		//$this->view->showTemplate('account/dashboard/top_banner');
-		$this->view->showTemplate('account/dashboard/index');
-		//$this->view->showTemplate('account/dashboard/right_index_content');
+		$this->view->showTemplate('account/dashboard/user_info_index');
 		$this->view->mainEnd();
 		$this->view->showFooter();
 	}
@@ -254,9 +278,7 @@ class Account extends Controller {
 		$this->view->mainStart('container-fluid');
 		$this->view->showTemplate('account/dashboard/head_message');
 		$this->view->assign('header_title_member', 'Cập nhật thông tin hồ sơ');
-		//$this->view->showTemplate('account/dashboard/top_banner');
 		$this->view->showTemplate('account/dashboard/work_info_index');
-		//$this->view->showTemplate('account/dashboard/right_index_content');
 		$this->view->mainEnd();
 		$this->view->showFooter();
 	}

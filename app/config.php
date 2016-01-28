@@ -9,7 +9,7 @@ if (!defined('DS')) {
 // Always provide a TRAILING SLASH (/) AFTER A PATH
 //$url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
-define('BASE_URL', $url.'/vnkhoe/');
+define('BASE_URL', $url.'/');
 define('MEDIA_URL', BASE_URL.'media/');
 
 //define('BASE_DIR', rtrim(str_replace('\\', '/', dirname(__FILE__)), 'app'));

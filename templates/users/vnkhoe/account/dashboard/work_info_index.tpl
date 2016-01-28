@@ -31,4 +31,4 @@
 			</div>
 		</div>
 	</div>
-</secton>
+</section>

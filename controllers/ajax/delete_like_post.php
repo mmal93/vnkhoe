@@ -65,7 +65,7 @@ class DeleteLikePost extends Controller {
 				$return['success'] = true;
 				$return['message'] = 'Đã xóa dữ liệu';
 			} else {
-				$return['message'] = 'Chúng tôi rất tiếc vì hiện tại chưa thể xử lý yêu cầu này!';
+				$return['message'] = nl2br('Chúng tôi rất tiếc vì hiện tại chưa thể xử lý yêu cầu này!\n<font color="#f00">Bạn nên tải lại trình duyệt để làm mới dữ liệu.</font>');
 			}
 		}
 		echo json_encode($return);

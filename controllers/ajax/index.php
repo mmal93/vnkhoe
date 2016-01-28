@@ -97,7 +97,7 @@ class Ajax extends Controller {
 			$return['message'] = 'Bạn đã đang xuất khỏi vnkhoe!';
 			$return['success'] = true;
 		} else {
-			$return['message'] = 'Có lỗi trong quá trình xử lý!<br />Vui lòng thử lại sau.';
+			$return['message'] = nl2br('Chúng tôi rất tiếc vì hiện tại chưa thể xử lý yêu cầu này!\n<font color="#f00">Bạn nên tải lại trình duyệt để làm mới dữ liệu.</font>');
 			$return['success'] = false;
 		}
 		return json_encode($return);

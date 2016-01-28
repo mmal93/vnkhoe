@@ -75,7 +75,7 @@ class PostLike extends Controller {
 				$is_like==true?$return['message'] = 'Liked!':$return['message'] = 'Unliked!';
 				$return['success'] = true;
 			} else {
-				$return['message'] = 'Xin lỗi, yêu cầu của quý khách hiện chưa được xử lý, chúng tôi rất tiếc về điều này!';
+				$return['message'] = nl2br('Chúng tôi rất tiếc vì hiện tại chưa thể xử lý yêu cầu này!\n<font color="#f00">Bạn nên tải lại trình duyệt để làm mới dữ liệu.</font>');
 			}
 			$return['is_like'] = $is_like;
 		} else {
@@ -111,7 +111,7 @@ class PostLike extends Controller {
 				$is_like==true?$return['message'] = 'Liked!':$return['message'] = 'Unliked!';
 				$return['success'] = true;
 			} else {
-				$return['message'] = 'Xin lỗi, yêu cầu của quý khách hiện chưa được xử lý, chúng tôi rất tiếc về điều này!';
+				$return['message'] = nl2br('Chúng tôi rất tiếc vì hiện tại chưa thể xử lý yêu cầu này!\n<font color="#f00">Bạn nên tải lại trình duyệt để làm mới dữ liệu.</font>');
 			}
 			$return['is_like'] = $is_like;
 			$return['str'] = $_result;
@@ -148,7 +148,7 @@ class PostLike extends Controller {
 				$is_like==true?$return['message'] = 'Liked!':$return['message'] = 'Unliked!';
 				$return['success'] = true;
 			} else {
-				$return['message'] = 'Xin lỗi, yêu cầu của quý khách hiện chưa được xử lý, chúng tôi rất tiếc về điều này!';
+				$return['message'] = nl2br('Chúng tôi rất tiếc vì hiện tại chưa thể xử lý yêu cầu này!\n<font color="#f00">Bạn nên tải lại trình duyệt để làm mới dữ liệu.</font>');
 			}
 			$return['is_like'] = $is_like;
 			$return['str'] = $_result;

@@ -1,4 +1,4 @@
-<section id="main-dashboard" class="row">
+<section id="member-work-save" class="row">
 	<div class="col-sm-2 member-menu-left left">
 		{include file='account\\dashboard\\left_menu.tpl'}
 	</div>
@@ -52,4 +52,4 @@
 			</div>
 		</div>
 	</div>
-</secton>
+</section>

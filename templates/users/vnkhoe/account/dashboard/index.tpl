@@ -8,4 +8,4 @@
 			{include file='account\\dashboard\\right_index_content.tpl'}
 		</div>
 	</div>
-</secton>
+</section>

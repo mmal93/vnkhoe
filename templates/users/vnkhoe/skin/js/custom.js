@@ -56,7 +56,7 @@ jQuery(document).ready(function(){
 		jQuery.ajax({
 			type: "POST",
 			dataType: "json",
-			url: location.protocol + "//" + location.host+"/vnkhoe/controllers/ajax/index.php",
+			url: location.protocol + "//" + location.host+"/controllers/ajax/index.php",
 			data: data,
 			success: function(data) {
 				if(data['success'] == true) {
@@ -106,7 +106,7 @@ jQuery(document).ready(function(){
 		// jQuery.ajax({
 			// type: "POST",
 			// dataType: "json",
-			// url: location.protocol + "//" + location.host+"/vnkhoe/controllers/ajax/index.php",
+			// url: location.protocol + "//" + location.host+"/controllers/ajax/index.php",
 			// data: data,
 			// success: function(data) {
 				// if(data["is_member"] == false) {
@@ -168,7 +168,7 @@ jQuery(document).ready(function(){
 		jQuery.ajax({
 			type: "POST",
 			dataType: "json",
-			url: location.protocol + "//" + location.host+"/vnkhoe/controllers/ajax/post_like.php",
+			url: location.protocol + "//" + location.host+"/controllers/ajax/post_like.php",
 			data: data,
 			success: function(data) {
 				if(data['is_login']==true) {
@@ -188,7 +188,7 @@ jQuery(document).ready(function(){
 					}
 					setTimeout(function(){jQuery('#hllm-body-popup').remove();}, 3000);
 				} else {
-					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Vui lòng đăng nhập để có thể lưu lại công việc yêu thích.</span><div><a href="'+location.protocol + "//" + location.host+"/vnkhoe/account/login.html?repos="+location.href+'"><button>Đăng nhập</button></a></div>');
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Vui lòng đăng nhập để có thể lưu lại công việc yêu thích.</span><div><a href="'+location.protocol + "//" + location.host+"/account/login.html?repos="+location.href+'"><button>Đăng nhập</button></a></div>');
 				}
 			},
 			error: function(jqXHR, exception) {
@@ -236,7 +236,7 @@ jQuery(document).ready(function(){
 		jQuery.ajax({
 			type: "POST",
 			dataType: "json",
-			url: location.protocol + "//" + location.host+"/vnkhoe/controllers/ajax/post_like.php",
+			url: location.protocol + "//" + location.host+"/controllers/ajax/post_like.php",
 			data: data,
 			success: function(data) {
 				if(data['is_login']==true) {
@@ -260,7 +260,7 @@ jQuery(document).ready(function(){
 					}
 					setTimeout(function(){jQuery('#hllm-body-popup').remove();}, 3000);
 				} else {
-					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Vui lòng đăng nhập để có thể lưu lại công việc yêu thích.</span><div><a href="'+location.protocol + "//" + location.host+"/vnkhoe/account/login.html?repos="+location.href+'"><button>Đăng nhập</button></a></div>');
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Vui lòng đăng nhập để có thể lưu lại công việc yêu thích.</span><div><a href="'+location.protocol + "//" + location.host+"/account/login.html?repos="+location.href+'"><button>Đăng nhập</button></a></div>');
 				}
 			},
 			error: function(jqXHR, exception) {
@@ -308,7 +308,7 @@ jQuery(document).ready(function(){
 		jQuery.ajax({
 			type: "POST",
 			dataType: "json",
-			url: location.protocol + "//" + location.host+"/vnkhoe/controllers/ajax/post_like.php",
+			url: location.protocol + "//" + location.host+"/controllers/ajax/post_like.php",
 			data: data,
 			success: function(data) {
 				if(data['is_login']==true) {
@@ -332,7 +332,7 @@ jQuery(document).ready(function(){
 					}
 					setTimeout(function(){jQuery('#hllm-body-popup').remove();}, 3000);
 				} else {
-					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Vui lòng đăng nhập để có thể lưu lại công việc yêu thích.</span><div><a href="'+location.protocol + "//" + location.host+"/vnkhoe/account/login.html?repos="+location.href+'"><button>Đăng nhập</button></a></div>');
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Vui lòng đăng nhập để có thể lưu lại công việc yêu thích.</span><div><a href="'+location.protocol + "//" + location.host+"/account/login.html?repos="+location.href+'"><button>Đăng nhập</button></a></div>');
 				}
 			},
 			error: function(jqXHR, exception) {
@@ -431,7 +431,7 @@ jQuery(document).ready(function() {
 			jQuery.ajax({
 				type: "POST",
 				dataType: "json",
-				url: location.protocol + "//" + location.host+"/vnkhoe/controllers/ajax/delete_like_post.php",
+				url: location.protocol + "//" + location.host+"/controllers/ajax/delete_like_post.php",
 				data: data,
 				success: function(data) {
 					if(data['success'] == true) {
