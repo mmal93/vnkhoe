@@ -34,6 +34,14 @@ if (!defined('SMARTY_RESOURCE_CHAR_SET')) {
 	// require_once LIBS .'smarty/Smarty.class.php';
 // }
 
+if(!defined('DESCRIPTION')) {
+	define('DESCRIPTION', '');
+}
+
+if(!defined('KEYWORDS')) {
+	define('KEYWORDS', '');
+}
+
 class View extends Smarty{
 	
 	public $title;
@@ -97,6 +105,14 @@ class View extends Smarty{
 		if(file_exists(USER_TEMPLATE_DIR.$header_file_name)) {
 			$this->display(USER_TEMPLATE_DIR.$header_file_name);
 		}
+	}
+	
+	public function showDescription($new_des = null) {
+		$this->assign('_DESCRIPTION', DESCRIPTION.isset($new_des)?$new_des:'');
+	}
+	
+	public function showKeyword($new_keyw = null) {
+		$this->assign('_KEYWORDS', DESCRIPTION.isset($new_keyw)?$new_keyw:'');
 	}
 	
 	public function showTopSearch() {

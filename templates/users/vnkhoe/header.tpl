@@ -15,9 +15,11 @@
 				{$root_config->head->title->value}
 			{/if}
 		</title>
-		<meta property="og:description" content="vnkhoe.com - Tư vấn nghề nghiệp, tìm kiếm công việc, tư vấn sức khoẻ chuyên nghiệp" />
-		<meta name="description" content="vnkhoe.com - Tư vấn nghề nghiệp, tìm kiếm công việc, tư vấn sức khoẻ chuyên nghiệp" />
-		<meta name="keywords" content="vnkhoe.com - Tư vấn nghề nghiệp, tìm kiếm công việc, tư vấn sức khoẻ chuyên nghiệp">
+		{if $root_config->head->keywords}<meta name="keywords" content="{$root_config->head->keywords}">{/if}
+		{if $root_config->head->description}<meta name="description" content="{$root_config->head->description}">{/if}
+		{if isset($_DESCRIPTION)}<meta name="description" content="{$_DESCRIPTION}">{/if}
+		{if isset($_KEYWORDS)}<meta name="keywords" content="{$_KEYWORDS}">{/if}
+		<meta name="author" content="hllm">
 		
 		{if $CSS|@count > 0}
 			{foreach from=$CSS item=css}

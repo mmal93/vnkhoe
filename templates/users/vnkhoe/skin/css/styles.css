@@ -1454,12 +1454,12 @@ border-color: #48a948;
     padding: 25px 0;
 }
 
-#dang-tuyen-section .submit {
+#dang-tuyen-section .submit-box {
     padding: 25px 0;
     text-align: center;
 }
 
-#dang-tuyen-section .submit button {
+#dang-tuyen-section .submit-box .submit {
     background-color: #ff9b00;
     padding: 15px 0;
     width: 80%;
@@ -1467,7 +1467,7 @@ border-color: #48a948;
     font-weight: 700;
 }
 
-#dang-tuyen-section .submit button:hover {
+#dang-tuyen-section .submit-box .submit:hover {
     
 background-color: #1a83c3;
 }

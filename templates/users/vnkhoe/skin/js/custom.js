@@ -42,13 +42,7 @@ jQuery(document).ready(function(){
 	
 	//logout toggle
 	jQuery('.top-logout-button').click(function() {
-		var elm = '<div id="hllm-body-popup" class="hllm-body-popup"><div>';
-		elm = elm + '<div class="hllm-popup-close"><i class="fa fa-times"></i></div>';
-		elm = elm + '<div class="popup-overlay"></div>';
-		elm = elm + '<div class="hllm-popup-content" id="hllm-popup-content">';
-		elm = elm + '<span class="waiting">Đang xử lý...</span>';
-		elm = elm + '</div></div></div>';
-		jQuery('body').append(elm);
+		add_hllm_popup();
 		var data = {
 			"action": 'logout'
 		};
@@ -148,13 +142,7 @@ jQuery(document).ready(function(){
 	
 	//job like action
 	jQuery(document).on('click', '.job-like .heart', function() {
-		var elm = '<div id="hllm-body-popup" class="hllm-body-popup"><div>';
-		elm = elm + '<div class="hllm-popup-close"><i class="fa fa-times"></i></div>';
-		elm = elm + '<div class="popup-overlay"></div>';
-		elm = elm + '<div class="hllm-popup-content" id="hllm-popup-content">';
-		elm = elm + '<span class="waiting">Đang xử lý...</span>';
-		elm = elm + '</div></div></div>';
-		jQuery('body').append(elm);
+		add_hllm_popup();
 		var is_like = false;
 		if(jQuery('.job-like .heart').hasClass('active')) {
 			is_like = true;
@@ -216,13 +204,7 @@ jQuery(document).ready(function(){
 	
 	//tu van nghe nghiep like action
 	jQuery(document).on('click', '.tvnn-heart', function() {
-		var elm = '<div id="hllm-body-popup" class="hllm-body-popup"><div>';
-		elm = elm + '<div class="hllm-popup-close"><i class="fa fa-times"></i></div>';
-		elm = elm + '<div class="popup-overlay"></div>';
-		elm = elm + '<div class="hllm-popup-content" id="hllm-popup-content">';
-		elm = elm + '<span class="waiting">Đang xử lý...</span>';
-		elm = elm + '</div></div></div>';
-		jQuery('body').append(elm);
+		add_hllm_popup();
 		var is_like = false;
 		if(jQuery('.right-social.tvnn-heart').hasClass('active')) {
 			is_like = true;
@@ -288,13 +270,7 @@ jQuery(document).ready(function(){
 	
 	//tu van sức khỏe like action
 	jQuery(document).on('click', '.tvsk-heart', function() {
-		var elm = '<div id="hllm-body-popup" class="hllm-body-popup"><div>';
-		elm = elm + '<div class="hllm-popup-close"><i class="fa fa-times"></i></div>';
-		elm = elm + '<div class="popup-overlay"></div>';
-		elm = elm + '<div class="hllm-popup-content" id="hllm-popup-content">';
-		elm = elm + '<span class="waiting">Đang xử lý...</span>';
-		elm = elm + '</div></div></div>';
-		jQuery('body').append(elm);
+		add_hllm_popup();
 		var is_like = false;
 		if(jQuery(this).hasClass('active')) {
 			is_like = true;
@@ -379,6 +355,50 @@ jQuery(document).ready(function(){
 		});
 		jQuery(this).addClass('active');
 	});
+	
+	//hirring event step1
+	jQuery("#tuyen-dung-form").submit(function(){
+		add_hllm_popup();
+		//jQuery('#hllm-body-popup .hllm-popup-content').html('');
+		var data = {
+			"action": 'step-1'
+		};
+		data = jQuery(this).serialize() + "&" + jQuery.param(data);
+		jQuery.ajax({
+			type: "POST",
+			dataType: "json",
+			url: location.protocol + "//" + location.host+"/controllers/ajax/hirring.php",
+			data: data,
+			success: function(data) {
+				if(data["is_member"] == false) {
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Tài khoản <strong>' + data["email"] + '</strong> không tồn tại!</span>');
+				} else {
+						close = setTimeout(reload_current_page, 2000);
+					}
+				}
+			},
+			error: function(jqXHR, exception) {
+				//debugger;
+				if (jqXHR.status === 0) {
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Not connect.\n Verify Network.</span>');
+				} else if (jqXHR.status == 404) {
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Requested page not found. [404]</span>');
+				} else if (jqXHR.status == 500) {
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Internal Server Error [500].</span>');
+				} else if (exception === 'parsererror') {
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Requested JSON parse failed.</span>');
+				} else if (exception === 'timeout') {
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Time out error.</span>');
+				} else if (exception === 'abort') {
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Ajax request aborted.</span>');
+				} else {
+					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Uncaught Error.\n' + jqXHR.responseText + '</span>');
+				}
+				setTimeout(function(){jQuery('#hllm-body-popup').remove();}, 5000);
+			}
+		});
+		return;
+	});
 });
 
 function reload_current_page() {
@@ -387,6 +407,15 @@ function reload_current_page() {
 }
 
 /*hllm-popup*/
+function add_hllm_popup() {
+	var elm = '<div id="hllm-body-popup" class="hllm-body-popup"><div>';
+	elm = elm + '<div class="hllm-popup-close"><i class="fa fa-times"></i></div>';
+	elm = elm + '<div class="popup-overlay"></div>';
+	elm = elm + '<div class="hllm-popup-content" id="hllm-popup-content">';
+	elm = elm + '<span class="waiting">Đang xử lý...</span>';
+	elm = elm + '</div></div></div>';
+	jQuery('body').append(elm);
+}
 
 jQuery(document).ready(function() {
 	jQuery('#hllm-body-popup').hide();
@@ -412,17 +441,12 @@ jQuery(document).ready(function() {
 	return false;
 	});
 	
+	//member admin event
 	//confirm delete item
 	jQuery(document).on('click', '.member-job-list .delete', function() {
 		var conf = confirm("Bạn có muốn xóa dữ liệu?");
 		if(conf) {
-			var elm = '<div id="hllm-body-popup" class="hllm-body-popup"><div>';
-			elm = elm + '<div class="hllm-popup-close"><i class="fa fa-times"></i></div>';
-			elm = elm + '<div class="popup-overlay"></div>';
-			elm = elm + '<div class="hllm-popup-content" id="hllm-popup-content">';
-			elm = elm + '<span class="waiting">Đang xử lý...</span>';
-			elm = elm + '</div></div></div>';
-			jQuery('body').append(elm);
+			add_hllm_popup();
 			var data = {
 				"action": 'delete_member_job',
 				"vieclam_id": jQuery(this).attr('value')
@@ -601,8 +625,5 @@ jQuery(document).on('click', '.social-share-popup', function() {
 			})
 		});
 	}
-	}); 
-	$(document).ready( function(){
-		
-	} );
-})(jQuery)
+	});
+}(jQuery))
