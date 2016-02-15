@@ -50,6 +50,11 @@ class Hiring extends Controller {
 					$_company_name = $_company_email = $_company_password = $_company_re_password = $_company_tel = $_company_address = $_company_position = $_company_anser = '';
 					isset($_POST['company-name']) && $_company_name = $_POST['company-name'];
 					isset($_POST['email']) && $_company_email = $_POST['email'];
+					if($this->model->issetCompany($_company_email)) {
+						$this->view->assign('_message', '<div class="error"><i class="fa fa-times"></i> Địa chỉ email <strong>'.$_company_email.'</strong> đã được sử dụng!</div>');
+						$_step_id = 3;
+						break;
+					}
 					isset($_POST['password']) && $_company_password = $_POST['password'];
 					isset($_POST['re-password']) && $_company_re_password = $_POST['re-password'];
 					isset($_POST['tel']) && $_company_tel = $_POST['tel'];
@@ -92,12 +97,17 @@ class Hiring extends Controller {
 					$is_done = $this->model->setStep2Data($_company_name, $_company_email, $_company_password, $_company_re_password, $_company_tel, $_company_address, $_company_position, $_company_anser, $gioi_thieu_id, $van_phong_id, $nhan_su_id, $viec_lam_id);
 					if($is_done) {
 						$_step_id = 3;
+						$_ms = '<div class="success">Chúc mừng bạn đã hoàn thành quá trình đăng ký tài khoản tại vnkhoe.com!</div>';
+						$_ms .= '<h3>Thông tin công ty:</h3>';
+						$_ms .= '<ul class="company-info">';
+						$_ms .= '<li><label>Tên công ty: </label><span>'.$_company_name.'</span></li>';
+						$_ms .= '<li><label>Email công ty: </label><span>'.$_company_email.'</span></li>';
+						$_ms .= '<li><label>Địa chỉ công ty: </label><span>'.$_company_address.'</span></li></ul>';
+						$this->view->assign('_message', $_ms);
 					} else {
-						$_step_id = 2;
+						$this->view->assign('_message', '<div class="error">Đã xảy ra lỗi trong quá trình xử lý!</div>');
+						$_step_id = 3;
 					}
-					break;
-				case '3':
-					
 					break;
 				default: 
 					$_step_id = 1;

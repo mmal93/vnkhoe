@@ -338,15 +338,27 @@ jQuery(document).ready(function(){
 	jQuery(document).on('click', '#dang-tuyen-section .top-control .control', function() {
 		var id = jQuery(this).attr('id');
 		if(id=='dich-vu-goi') {
-			if(!jQuery('#tuyen-dung-form').hasClass('active')) {
-				jQuery('#tuyen-dung-form').stop().slideDown(500);
-				jQuery('#tuyen-dung-form').addClass('active');
+			if(!jQuery('#dich-vu-goi').hasClass('active')) {
+				reload_current_page();
 			}
+		} else if(id=='dich-vu-cong-them'){
+			if(jQuery('#gui-don-hang').hasClass('active')) {
+				add_hllm_popup();
+				var tm = setTimeout(function() {close_hllm_popup(); clearTimeout(tm);}, 500);
+				jQuery('#tuyen-dung-form-step-2 .step-2').show();
+				jQuery('#tuyen-dung-form-step-2 .step-3').hide();
+				jQuery('#gui-don-hang').removeClass('active');
+				jQuery('#dich-vu-cong-them').addClass('active');
+				return false;
+			} else {
+				return;
+			}
+			// if(jQuery('#tuyen-dung-form').hasClass('active')) {
+				// jQuery('#tuyen-dung-form').stop().slideUp(500);
+				// jQuery('#tuyen-dung-form').removeClass('active');
+			// }
 		} else {
-			if(jQuery('#tuyen-dung-form').hasClass('active')) {
-				jQuery('#tuyen-dung-form').stop().slideUp(500);
-				jQuery('#tuyen-dung-form').removeClass('active');
-			}
+			return;
 		}
 		jQuery('#dang-tuyen-section .top-control .control').each(function(index, value) {
 			if(jQuery(value).hasClass('active')) {
@@ -369,7 +381,8 @@ jQuery(document).ready(function(){
 });
 
 function reload_current_page() {
-	window.location.reload();
+	//window.location.reload();
+	window.location.href = window.location.href;
 	clearTimeout(close);
 }
 

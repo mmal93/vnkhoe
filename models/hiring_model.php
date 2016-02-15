@@ -124,9 +124,19 @@ class Hiring_Model extends Model
 		$count =  $sth->rowCount();
 		if ($count > 0) {
 			return $data;
-		} else {
-			return false;
 		}
+		return false;
+	}
+	
+	public function issetCompany($company_email) {
+		$sth = $this->db->prepare("SELECT congty_id FROM tbl_congty WHERE congty_email = '".$company_email."'");
+		$sth->execute();
+		$data = $sth->fetchAll();
+		$count =  $sth->rowCount();
+		if ($count > 0) {
+			return true;
+		}
+		return false;
 	}
 	
 	public function getStep2Data($goi_id) {
@@ -182,6 +192,9 @@ class Hiring_Model extends Model
 	
 	public function setStep2Data($_company_name, $_company_email, $_company_password, $_company_re_password, $_company_tel, $_company_address, $_company_position, $_company_anser, $gioi_thieu_id, $van_phong_id, $nhan_su_id, $viec_lam_id) {
 		$success = true;
+		if($this->issetCompany($_company_email)) {
+			return false;
+		}
 		$_sql_company = "
 			INSERT INTO tbl_congty(
 				congty_name, 
@@ -204,17 +217,13 @@ class Hiring_Model extends Model
 		//insert new data to company table
 		try{
 			$this->db->beginTransaction();
-			$sth = $this->db->prepare($_sql_company);
-			$sth->execute();
-			$this->db->commit();
+			$this->db->exec($_sql_company);
 			$_company_id = $this->db->lastInsertId();
 		} catch(PDOException $e) {
 			echo $e->getMessage();
 			$success = false;
 		}
 		if($_company_id <=0) {
-			try{$this->db->rollBack();} catch(PDOException $e) {echo $e->getMessage();}
-			echo $_company_id;
 			return false;
 		}
 		$_sql_gt = $_sql_vp = $_sql_ns = $_sql_vl = '';
@@ -222,9 +231,9 @@ class Hiring_Model extends Model
 			$_sql_gt = "INSERT INTO tbl_congty_gioithieu(
 				congty_id, 
 				item_id
-			) ";
+			) VALUES";
 			foreach($gioi_thieu_id as $gt_id) {
-				$_sql_gt = $_sql_gt."VALUES(
+				$_sql_gt = $_sql_gt."(
 				'".$_company_id."', 
 				'".$gt_id."'
 			), ";
@@ -236,9 +245,9 @@ class Hiring_Model extends Model
 			$_sql_vp = "INSERT INTO tbl_congty_vanphong(
 				congty_id, 
 				item_id
-			) ";
+			) VALUES";
 			foreach($van_phong_id as $vp_id) {
-				$_sql_vp = $_sql_vp."VALUES(
+				$_sql_vp = $_sql_vp."(
 				'".$_company_id."', 
 				'".$vp_id."'
 			), ";
@@ -250,9 +259,9 @@ class Hiring_Model extends Model
 			$_sql_ns = "INSERT INTO tbl_congty_nhansu(
 				congty_id, 
 				item_id
-			) ";
+			) VALUES";
 			foreach($nhan_su_id as $ns_id) {
-				$_sql_ns = $_sql_ns."VALUES(
+				$_sql_ns = $_sql_ns."(
 				'".$_company_id."', 
 				'".$ns_id."'
 			), ";
@@ -264,37 +273,26 @@ class Hiring_Model extends Model
 			$_sql_vl = "INSERT INTO tbl_congty_vieclam(
 				congty_id, 
 				item_id
-			) ";
+			) VALUES";
 			foreach($viec_lam_id as $vl_id) {
-				$_sql_vl = $_sql_vl."VALUES(
+				$_sql_vl = $_sql_vl."(
 				'".$_company_id."', 
 				'".$vl_id."'
 			), ";
 			}
 			$_sql_vl = rtrim($_sql_vl, ', ').';';
 		}
-		
 		$_sql_goi = $_sql_gt.$_sql_vp.$_sql_ns.$_sql_vl;
 		//insert goi data width company
 		try {
-			$this->db->beginTransaction();
-			$sth = $this->db->prepare($_sql_goi);
-			$sth->execute();
+			$this->db->exec($_sql_goi);
 			$this->db->commit();
 		} catch (PDOException $e) {
 			echo $e->getMessage();
 			$success = false;
 			try{$this->db->rollBack();} catch(PDOException $e2) {}
 		}
-		echo $sth->queryString;
-		
-		if($success) {
-			echo 'done';
-			return true;
-		} else {
-			echo 'fail';
-			return false;
-		}
+		return $success;
 	}
 	
 }

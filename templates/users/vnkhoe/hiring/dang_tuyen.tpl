@@ -4,13 +4,15 @@
 		<div class="col-sm-12 relative">
 			<div id="dich-vu-goi" class="control step-1{if $_step_id==1 && isset($_data_step1) && $_data_step1|@count > 0} active{/if}">Chọn gói dịch vụ</div>
 			<div id="dich-vu-cong-them" class="control step-2{if $_step_id==2 && isset($_data_step2) && $_data_step2|@count > 0} active{/if}">Dịch vụ cộng thêm</div>
-			<div id="gui-don-hang" class="control step-3{if $_step_id==3} active{/if}">Gửi đơn hàng</div>
+			<div id="gui-don-hang" class="control step-3">Gửi đơn hàng</div>
+			<div id="completed" class="control {if $_step_id==3}active{/if} last"><i class="fa fa-check"> Hoàn thành</i></div>
 			<div class="middle"></div>
 		</div>
 	</div>
 	<div class="row bottom-content">
 		{if $_step_id==1}
 		{if isset($_data_step1) && $_data_step1|@count > 0}
+			{assign var=star_count value=1}
 			{foreach from=$_data_step1 item=$_item}
 				<form name="tuyen-dung-form-{$_item.goi_id}" id="tuyen-dung-form-{$_item.goi_id}" class="col-sm-3 item-step-1 item-{$_item.goi_id}" action="" method="post">
 					<div class="inner">
@@ -20,10 +22,13 @@
 						</div>
 						<div class="review-section">
 							<span class="review-star">
+								{for $var=1 to $_data_step1|@count+1}
+								{if $var<=$star_count+1}
 								<i class="fa fa-star"></i>
+								{else}
 								<i class="fa fa-star-o"></i>
-								<i class="fa fa-star-o"></i>
-								<i class="fa fa-star-o"></i>
+								{/if}
+								{/for}
 							</span>
 							<span class="review-number">{$_item.goi_view} lượt xem</span>
 						</div>
@@ -52,18 +57,22 @@
 							</div>
 					</div>
 				</form>
+				{$star_count = $star_count+1}
 			{/foreach}
 		{/if}
 		{else if $_step_id==2}
 		{if isset($_data_step2) && $_data_step2|@count > 0}
 			<form name="tuyen-dung-form-step-2" id="tuyen-dung-form-step-2" class="col-sm-12" action="" method="post">
 				<div class="step-2">
+					{if isset($_message)}
+					<ul><li class="message">{$_message}</li></ul>
+					{/if}
 				{foreach from=$_data_step2.item item=$_item}
 					<ul class="{$_item.class} item-title">
 					<li><span class="item-title">{$_item.name}</span>
 					{foreach from=$_item item=$_sub_item}
 						{if isset($_sub_item.item_id) && !empty($_sub_item.item_id)}
-						<li><input id="{$_item.class}-{$_sub_item.item_id}" name="{$_item.class}-{$_sub_item.item_id}" type="checkbox" value="{$_sub_item.item_id}" /> <label class="item-title" for="{$_item.class}-{$_sub_item.item_id}">{$_sub_item.item_value}</label></li>
+						<li class="row"><div class="col-sm-10"><input id="{$_item.class}-{$_sub_item.item_id}" name="{$_item.class}-{$_sub_item.item_id}" type="checkbox" value="{$_sub_item.item_id}" /> <label class="item-title" for="{$_item.class}-{$_sub_item.item_id}">{$_sub_item.item_value}</label></div><div class="col-sm-2 price">{$_sub_item.item_price}</div></li>
 						{/if}
 					{/foreach}
 					</li>
@@ -115,7 +124,9 @@
 			</form>
 		{/if}
 		{else if $_step_id==3}
-		Step 4
+			{if isset($_message)}
+				{$_message}
+			{/if}
 		{else}
 		{/if}
 	</div>

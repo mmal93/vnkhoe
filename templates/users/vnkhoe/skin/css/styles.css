@@ -117,7 +117,7 @@ input[type="submit"], button {
     -o-transition: all 0.2s ease;
 }
 
-input[type="text"], input[type="submit"], input[type="password"], input[type="submit"], input[type="email"], input[type="tel"], textarea {
+input[type="text"], input[type="submit"], input[type="password"], input[type="submit"], input[type="email"], input[type="tel"], textarea, select {
 	border: 1px solid #ddd;
 	border-radius: 3px;
 	padding: 9px;
@@ -1396,7 +1396,8 @@ border-color: #48a948;
 }
 
 #dang-tuyen-section .bottom-content {
-	
+	padding-top: 25px;
+	padding-bottom: 25px;
 }
 
 #dang-tuyen-section .bottom-content .inner {
@@ -1414,12 +1415,12 @@ border-color: #48a948;
     padding: 17px 0;
 }
 
-#dang-tuyen-section .bottom-content .review-section, #dang-tuyen-section .bottom-content .inner .description, #dang-tuyen-section .list-info, #dang-tuyen-section .price {
+#dang-tuyen-section .inner .bottom-content .review-section, #dang-tuyen-section .inner .bottom-content .inner .description, #dang-tuyen-section .inner .list-info, #dang-tuyen-section .inner .price {
     border-bottom: 2px dotted #6cbbe0;
 }
 
 #dang-tuyen-section .bottom-content .inner .description {
-    height: 160px;
+    height: 100px;
     vertical-align: middle;
     display: table-cell;
 }
@@ -1450,7 +1451,7 @@ border-color: #48a948;
     color: #48b248;
 }
 
-#dang-tuyen-section .price {
+#dang-tuyen-section .inner .price {
     padding: 25px 0;
 }
 
@@ -1472,6 +1473,62 @@ border-color: #48a948;
 background-color: #1a83c3;
 }
 
+#dang-tuyen-section .step-3 {
+	display: none;
+}
+
+#dang-tuyen-section .step-2 li, #dang-tuyen-section .step-3 li {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#dang-tuyen-section li span.item-title {
+    background-color: #1a83c3;
+    color: #fff;
+    display: inline-block;
+    padding: 4px 20px 5px 24px;
+    position: relative;
+}
+
+#dang-tuyen-section li span.item-title:before {
+    border: 16px solid transparent;
+    border-left-color: #fff;
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+}
+
+#dang-tuyen-section .step-3 li label {
+    min-width: 132px;
+}
+
+#dang-tuyen-section .company-info li label {
+    min-width: 110px;
+}
+
+#dang-tuyen-section .step-2 ul li:nth-child(2n) {
+    background-color: #E8E8E8;
+}
+
+#dang-tuyen-section .step-2 ul li:nth-child(2n):hover, #dang-tuyen-section .step-2 ul li:nth-child(2n+1):hover {
+	background-color: #1a83c3;
+	color: #fff !important;
+}
+
+#dang-tuyen-section .step-2 ul li:first-child:hover {
+	background-color: transparent;
+}
+
+#dang-tuyen-section li div label.item-title {
+    cursor: pointer;
+}
 /*end hiring*/
 
 /*job - detail page */
@@ -1930,11 +1987,6 @@ body.member-page #top-header {
 	min-width: 400px;
 }
 /*end member - page*/
-/*hire page*/
-.step-3 {
-	display: none;
-}
-/*hire page*/
 
 /*Responsive*/
 @media only screen and (min-width: 992px) {
