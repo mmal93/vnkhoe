@@ -67,8 +67,8 @@ class Account_Model extends Model
 		} catch (PDOException $e) {
 			echo $e->getMessage();
 			if ($sth->isTransactionActive()){
-				$sth->rollBack();
-				try { $sth->rollBack(); } catch (Exception $e2) {}
+				$this->db->rollBack();
+				try { $this->db->rollBack(); } catch (Exception $e2) {}
 			}
 			return false;
 		}

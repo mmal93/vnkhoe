@@ -1930,7 +1930,11 @@ body.member-page #top-header {
 	min-width: 400px;
 }
 /*end member - page*/
-
+/*hire page*/
+.step-3 {
+	display: none;
+}
+/*hire page*/
 
 /*Responsive*/
 @media only screen and (min-width: 992px) {

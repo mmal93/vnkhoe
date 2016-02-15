@@ -356,48 +356,15 @@ jQuery(document).ready(function(){
 		jQuery(this).addClass('active');
 	});
 	
-	//hirring event step1
-	jQuery("#tuyen-dung-form").submit(function(){
+	//hirring event step2
+	jQuery("#tuyen-dung-form-step-2 .btn-step2-submit").click(function(){
 		add_hllm_popup();
-		//jQuery('#hllm-body-popup .hllm-popup-content').html('');
-		var data = {
-			"action": 'step-1'
-		};
-		data = jQuery(this).serialize() + "&" + jQuery.param(data);
-		jQuery.ajax({
-			type: "POST",
-			dataType: "json",
-			url: location.protocol + "//" + location.host+"/controllers/ajax/hirring.php",
-			data: data,
-			success: function(data) {
-				if(data["is_member"] == false) {
-					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Tài khoản <strong>' + data["email"] + '</strong> không tồn tại!</span>');
-				} else {
-						close = setTimeout(reload_current_page, 2000);
-					}
-				}
-			},
-			error: function(jqXHR, exception) {
-				//debugger;
-				if (jqXHR.status === 0) {
-					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Not connect.\n Verify Network.</span>');
-				} else if (jqXHR.status == 404) {
-					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Requested page not found. [404]</span>');
-				} else if (jqXHR.status == 500) {
-					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Internal Server Error [500].</span>');
-				} else if (exception === 'parsererror') {
-					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Requested JSON parse failed.</span>');
-				} else if (exception === 'timeout') {
-					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Time out error.</span>');
-				} else if (exception === 'abort') {
-					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Ajax request aborted.</span>');
-				} else {
-					jQuery('#hllm-body-popup .hllm-popup-content').html('<span class="error">Uncaught Error.\n' + jqXHR.responseText + '</span>');
-				}
-				setTimeout(function(){jQuery('#hllm-body-popup').remove();}, 5000);
-			}
-		});
-		return;
+		var tm = setTimeout(function() {close_hllm_popup(); clearTimeout(tm);}, 500);
+		jQuery('#tuyen-dung-form-step-2 .step-2').hide();
+		jQuery('#tuyen-dung-form-step-2 .step-3').show();
+		jQuery('#dich-vu-cong-them').removeClass('active');
+		jQuery('#gui-don-hang').addClass('active');
+		return false;
 	});
 });
 
@@ -415,6 +382,9 @@ function add_hllm_popup() {
 	elm = elm + '<span class="waiting">Đang xử lý...</span>';
 	elm = elm + '</div></div></div>';
 	jQuery('body').append(elm);
+}
+function close_hllm_popup() {
+	jQuery("#hllm-body-popup").remove();
 }
 
 jQuery(document).ready(function() {
